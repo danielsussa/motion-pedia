@@ -31,30 +31,30 @@ const signs = (pts) =>
   });
 
 const SOLIDS = [
-  { name: 'TETRAEDRO', ...solid([[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]]) },
-  { name: 'CUBO', ...solid(signs([[1, 1, 1]])) },
-  { name: 'OCTAEDRO', ...solid(signs([[1, 0, 0], [0, 1, 0], [0, 0, 1]])) },
-  { name: 'DODECAEDRO', ...solid([...signs([[1, 1, 1]]), ...signs(perms(0, 1 / PHI, PHI))]) },
-  { name: 'ICOSAEDRO', ...solid(signs(perms(0, 1, PHI))) },
+  { name: 'TETRAHEDRON', ...solid([[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]]) },
+  { name: 'CUBE', ...solid(signs([[1, 1, 1]])) },
+  { name: 'OCTAHEDRON', ...solid(signs([[1, 0, 0], [0, 1, 0], [0, 0, 1]])) },
+  { name: 'DODECAHEDRON', ...solid([...signs([[1, 1, 1]]), ...signs(perms(0, 1 / PHI, PHI))]) },
+  { name: 'ICOSAHEDRON', ...solid(signs(perms(0, 1, PHI))) },
 ];
 
 export default {
   id: 'wireframe',
   title: 'Wireframe Solids',
-  description: 'Os cinco sólidos platônicos em wireframe girando em perspectiva; as arestas se recolhem e renascem a cada troca.',
+  description: 'The five Platonic solids spinning in wireframe perspective; the edges retract and regrow with every swap.',
   category: 'formas',
-  tags: ['3d', 'forma', 'loop'],
+  tags: ['3d', 'shape', 'loop'],
   duration: 12.5,
 
   params: {
-    color: { type: 'color', label: 'Linha', default: '#e9f1ff' },
-    accent: { type: 'color', label: 'Destaque', default: '#6c8cff' },
-    bg: { type: 'color', label: 'Fundo', default: '#07080c' },
-    size: { type: 'range', label: 'Tamanho', min: 0.15, max: 0.45, step: 0.01, default: 0.32 },
-    width: { type: 'range', label: 'Espessura', min: 0.5, max: 8, step: 0.1, default: 3 },
-    inner: { type: 'boolean', label: 'Sólido interno', default: true },
-    glow: { type: 'boolean', label: 'Brilho', default: true },
-    label: { type: 'boolean', label: 'Legenda', default: true },
+    color: { type: 'color', label: 'Line', default: '#e9f1ff' },
+    accent: { type: 'color', label: 'Accent', default: '#6c8cff' },
+    bg: { type: 'color', label: 'Background', default: '#07080c' },
+    size: { type: 'range', label: 'Size', min: 0.15, max: 0.45, step: 0.01, default: 0.32 },
+    width: { type: 'range', label: 'Thickness', min: 0.5, max: 8, step: 0.1, default: 3 },
+    inner: { type: 'boolean', label: 'Inner solid', default: true },
+    glow: { type: 'boolean', label: 'Glow', default: true },
+    label: { type: 'boolean', label: 'Caption', default: true },
   },
 
   render(ctx, t, { w, h, p, px, duration, progress: u }) {
@@ -171,7 +171,7 @@ export default {
       ctx.fillStyle = rgba(p.color, 0.35);
       const ly = Math.min(h - m * 0.07, cy + R * 1.55);
       const L = k < 0.5 ? S : N;
-      ctx.fillText(`${L.v.length} V · ${L.e.length} A`, cx, ly + fs * 1.7);
+      ctx.fillText(`${L.v.length} V · ${L.e.length} E`, cx, ly + fs * 1.7);
       ctx.fillStyle = rgba(p.color, 0.85 * vis);
       ctx.fillText(L.name.split('').join(' '), cx, ly);
     }

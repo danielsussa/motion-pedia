@@ -20,22 +20,22 @@ const FLIP = 0.075; // duração de cada virada (s)
 export default {
   id: 'split-flap',
   title: 'Split-Flap',
-  description: 'Painel de aeroporto (Solari): as placas viram letra a letra, em cascata, até formar as palavras.',
+  description: 'An airport Solari board: the flaps flip letter by letter, cascading until the words form.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro', 'ui'],
+  tags: ['typography', 'intro', 'ui'],
   duration: 6,
   poster: 3.2,
 
   params: {
-    text: { type: 'textarea', label: 'Texto (uma linha por fileira)', rows: 3, default: 'EMBARQUE\nPORTAO 12\nNO HORARIO' },
-    header: { type: 'text', label: 'Cabeçalho', default: 'PARTIDAS  ·  DEPARTURES' },
-    cols: { type: 'range', label: 'Colunas (0 = auto)', min: 0, max: 24, step: 1, default: 0 },
-    flips: { type: 'range', label: 'Viradas por placa', min: 2, max: 30, step: 1, default: 12 },
+    text: { type: 'textarea', label: 'Text (one line per row)', rows: 3, default: 'BOARDING\nGATE 12\nON TIME' },
+    header: { type: 'text', label: 'Header', default: 'FLIGHTS  ·  DEPARTURES' },
+    cols: { type: 'range', label: 'Columns (0 = auto)', min: 0, max: 24, step: 1, default: 0 },
+    flips: { type: 'range', label: 'Flips per flap', min: 2, max: 30, step: 1, default: 12 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 3 },
-    color: { type: 'color', label: 'Letras', default: '#f2efe6' },
-    accent: { type: 'color', label: 'Última linha', default: '#ffc23d' },
-    flap: { type: 'color', label: 'Placa', default: '#1c1d21' },
-    bg: { type: 'color', label: 'Fundo', default: '#0b0b0d' },
+    color: { type: 'color', label: 'Letters', default: '#f2efe6' },
+    accent: { type: 'color', label: 'Last line', default: '#ffc23d' },
+    flap: { type: 'color', label: 'Flap', default: '#1c1d21' },
+    bg: { type: 'color', label: 'Background', default: '#0b0b0d' },
   },
 
   setup({ p, duration }) {

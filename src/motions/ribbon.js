@@ -18,21 +18,21 @@ const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 export default {
   id: 'ribbon',
   title: 'Ribbon',
-  description: 'Fita 3D torcida percorrendo um nó tórico, com frente e verso em cores diferentes, girando em loop.',
+  description: 'A twisted 3D ribbon tracing a torus knot, with different colors front and back, spinning in a loop.',
   category: 'formas',
-  tags: ['3d', 'forma', 'loop'],
+  tags: ['3d', 'shape', 'loop'],
   duration: 10,
 
   params: {
-    knot: { type: 'select', label: 'Nó (p,q)', options: Object.keys(KNOTS), default: '2,3' },
-    front: { type: 'color', label: 'Frente', default: '#ff5a36' },
-    back: { type: 'color', label: 'Verso', default: '#f1ebe0' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0e12' },
-    width: { type: 'range', label: 'Largura', min: 0.1, max: 1.2, step: 0.01, default: 0.52 },
-    twists: { type: 'range', label: 'Torções', min: 0, max: 12, step: 1, default: 3 },
-    size: { type: 'range', label: 'Tamanho', min: 0.5, max: 1.5, step: 0.01, default: 1 },
-    segments: { type: 'range', label: 'Segmentos', min: 120, max: 900, step: 10, default: 400 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    knot: { type: 'select', label: 'Knot (p,q)', options: Object.keys(KNOTS), default: '2,3' },
+    front: { type: 'color', label: 'Front', default: '#ff5a36' },
+    back: { type: 'color', label: 'Back', default: '#f1ebe0' },
+    bg: { type: 'color', label: 'Background', default: '#0d0e12' },
+    width: { type: 'range', label: 'Width', min: 0.1, max: 1.2, step: 0.01, default: 0.52 },
+    twists: { type: 'range', label: 'Twists', min: 0, max: 12, step: 1, default: 3 },
+    size: { type: 'range', label: 'Size', min: 0.5, max: 1.5, step: 0.01, default: 1 },
+    segments: { type: 'range', label: 'Segments', min: 120, max: 900, step: 10, default: 400 },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ p }) {

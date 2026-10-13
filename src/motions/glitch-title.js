@@ -15,22 +15,22 @@ const JUNK = '#%&@$!?/\\<>[]{}=+*01';
 export default {
   id: 'glitch-title',
   title: 'Glitch Title',
-  description: 'Título que entra e sai em falha digital: separação RGB, fatias deslocadas, caracteres corrompidos e jitter.',
+  description: 'A title that glitches in and out: RGB split, shifted slices, corrupted characters and jitter.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro', 'loop'],
+  tags: ['typography', 'intro', 'loop'],
   duration: 4,
   poster: 1.5,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'SIGNAL LOST' },
-    sub: { type: 'text', label: 'Legenda', default: 'TRANSMISSÃO INTERROMPIDA · 04:13' },
-    intensity: { type: 'range', label: 'Intensidade', min: 0, max: 2, step: 0.01, default: 1 },
+    text: { type: 'text', label: 'Text', default: 'SIGNAL LOST' },
+    sub: { type: 'text', label: 'Caption', default: 'TRANSMISSION INTERRUPTED · 04:13' },
+    intensity: { type: 'range', label: 'Intensity', min: 0, max: 2, step: 0.01, default: 1 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
-    color: { type: 'color', label: 'Texto', default: '#f4f1ea' },
-    colorA: { type: 'color', label: 'Canal A', default: '#ff2a5f' },
-    colorB: { type: 'color', label: 'Canal B', default: '#1fe0ff' },
-    bg: { type: 'color', label: 'Fundo', default: '#09090c' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    color: { type: 'color', label: 'Text', default: '#f4f1ea' },
+    colorA: { type: 'color', label: 'Channel A', default: '#ff2a5f' },
+    colorB: { type: 'color', label: 'Channel B', default: '#1fe0ff' },
+    bg: { type: 'color', label: 'Background', default: '#09090c' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   render(ctx, t, { w, h, p }) {

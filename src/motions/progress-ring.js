@@ -46,22 +46,22 @@ function drawOdometer(ctx, c, maxDigits, right, y, size, color) {
 export default {
   id: 'progress-ring',
   title: 'Progress Ring',
-  description: 'Anel de progresso que preenche com cabeça luminosa enquanto a porcentagem rola no centro.',
+  description: 'A progress ring fills with a glowing head while the percentage rolls in the center.',
   category: 'dados',
-  tags: ['dados', 'ui', 'alpha'],
+  tags: ['data', 'ui', 'alpha'],
   duration: 5,
   poster: 3,
 
   params: {
-    value: { type: 'range', label: 'Valor (%)', min: 0, max: 100, step: 1, default: 78 },
-    label: { type: 'text', label: 'Rótulo central', default: 'CONCLUÍDO' },
-    caption: { type: 'text', label: 'Legenda', default: 'Meta trimestral de vendas' },
-    style: { type: 'select', label: 'Estilo', options: ['anel', 'donut', 'segmentos'], default: 'anel' },
-    thickness: { type: 'range', label: 'Espessura', min: 0.3, max: 2.5, step: 0.05, default: 1 },
-    accent: { type: 'color', label: 'Destaque', default: '#3ddc97' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    value: { type: 'range', label: 'Value (%)', min: 0, max: 100, step: 1, default: 78 },
+    label: { type: 'text', label: 'Center label', default: 'COMPLETE' },
+    caption: { type: 'text', label: 'Caption', default: 'Quarterly sales goal' },
+    style: { type: 'select', label: 'Style', options: ['anel', 'donut', 'segmentos'], default: 'anel' },
+    thickness: { type: 'range', label: 'Thickness', min: 0.3, max: 2.5, step: 0.05, default: 1 },
+    accent: { type: 'color', label: 'Accent', default: '#3ddc97' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   render(ctx, t, { w, h, p, px }) {

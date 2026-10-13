@@ -114,19 +114,19 @@ void main() {
 export default {
   id: 'dither',
   title: 'Dither',
-  description: 'Cena em 1-bit com dithering Bayer, como Obra Dinn ou Playdate: planeta com anel, mar sob a lua ou ondas de luz.',
+  description: 'A 1-bit scene with Bayer dithering, Obra Dinn or Playdate style: a ringed planet, a moonlit sea or waves of light.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'shader', 'padrão'],
+  tags: ['background', 'loop', 'shader', 'pattern'],
   duration: 12,
 
   params: {
-    mode: { type: 'select', label: 'Cena', options: ['planeta', 'mar', 'ondas'], default: 'planeta' },
-    dark: { type: 'color', label: 'Cor escura', default: '#1f1e1a' },
-    light: { type: 'color', label: 'Cor clara', default: '#e6e1d3' },
-    pixel: { type: 'range', label: 'Tamanho do pixel', min: 1, max: 16, step: 1, default: 4 },
-    scale: { type: 'range', label: 'Escala', min: 0.4, max: 2.5, step: 0.05, default: 1 },
-    bright: { type: 'range', label: 'Brilho', min: -0.4, max: 0.4, step: 0.01, default: 0 },
-    contrast: { type: 'range', label: 'Contraste', min: 0.5, max: 2.5, step: 0.05, default: 1.2 },
+    mode: { type: 'select', label: 'Scene', options: ['planeta', 'mar', 'ondas'], default: 'planeta' },
+    dark: { type: 'color', label: 'Dark color', default: '#1f1e1a' },
+    light: { type: 'color', label: 'Light color', default: '#e6e1d3' },
+    pixel: { type: 'range', label: 'Pixel size', min: 1, max: 16, step: 1, default: 4 },
+    scale: { type: 'range', label: 'Scale', min: 0.4, max: 2.5, step: 0.05, default: 1 },
+    bright: { type: 'range', label: 'Brightness', min: -0.4, max: 0.4, step: 0.01, default: 0 },
+    contrast: { type: 'range', label: 'Contrast', min: 0.5, max: 2.5, step: 0.05, default: 1.2 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 5 },
   },
 

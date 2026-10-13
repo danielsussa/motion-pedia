@@ -9,9 +9,9 @@ let MC = null;
 const measure = () => (MC ||= document.createElement('canvas').getContext('2d'));
 const fmt = new Intl.NumberFormat('pt-BR');
 
-const DEFAULT = `Básico | 29 | Para começar | 1 projeto; 5 GB de armazenamento; Exportação em HD; Suporte por e-mail
-Pro | 79 | Para equipes pequenas | Projetos ilimitados; 100 GB de armazenamento; Exportação em 4K; Suporte prioritário
-Empresa | 199 | Para operações grandes | Tudo do Pro; SSO e auditoria; Gerente dedicado; SLA de 99,9%`;
+const DEFAULT = `Basic | 29 | To get started | 1 project; 5 GB of storage; HD export; Email support
+Pro | 79 | For small teams | Unlimited projects; 100 GB of storage; 4K export; Priority support
+Enterprise | 199 | For large operations | Everything in Pro; SSO and audit logs; Dedicated manager; 99.9% SLA`;
 
 function parse(text) {
   const out = [];
@@ -60,24 +60,24 @@ const T_CLICK = 5.6; // clique no botão do recomendado
 export default {
   id: 'pricing-table',
   title: 'Pricing Table',
-  description: 'Tabela de planos: cards sobem em sequência, o recomendado se destaca com selo e o seletor troca para preços anuais.',
+  description: 'Pricing plans: cards rise in sequence, the recommended one stands out with a badge and the toggle flips to annual prices.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 8,
   poster: 3.6,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Escolha seu plano' },
-    plans: { type: 'textarea', label: 'Planos (nome | preço | descrição | recurso; recurso)', rows: 5, default: DEFAULT },
-    featured: { type: 'range', label: 'Plano recomendado', min: 1, max: 4, step: 1, default: 2 },
-    badge: { type: 'text', label: 'Selo', default: 'Mais popular' },
-    discount: { type: 'range', label: 'Desconto anual (%)', min: 0, max: 50, step: 1, default: 20 },
-    currency: { type: 'text', label: 'Moeda', default: 'R$' },
-    accent: { type: 'color', label: 'Destaque', default: '#c6f26b' },
+    title: { type: 'text', label: 'Title', default: 'Choose your plan' },
+    plans: { type: 'textarea', label: 'Plans (name | price | description | feature; feature)', rows: 5, default: DEFAULT },
+    featured: { type: 'range', label: 'Recommended plan', min: 1, max: 4, step: 1, default: 2 },
+    badge: { type: 'text', label: 'Badge', default: 'Most popular' },
+    discount: { type: 'range', label: 'Annual discount (%)', min: 0, max: 50, step: 1, default: 20 },
+    currency: { type: 'text', label: 'Currency', default: 'R$' },
+    accent: { type: 'color', label: 'Accent', default: '#c6f26b' },
     card: { type: 'color', label: 'Card', default: '#16181d' },
-    ink: { type: 'color', label: 'Texto', default: '#f3f1ec' },
-    bg: { type: 'color', label: 'Fundo', default: '#0b0c0f' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    ink: { type: 'color', label: 'Text', default: '#f3f1ec' },
+    bg: { type: 'color', label: 'Background', default: '#0b0c0f' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {
@@ -165,8 +165,8 @@ export default {
       // seletor Mensal | Anual
       const fs = 22 * u;
       ctx.font = F(650, fs);
-      const labA = 'Mensal';
-      const labB = 'Anual';
+      const labA = 'Monthly';
+      const labB = 'Annual';
       const wa = ctx.measureText(labA).width + 48 * u;
       const wb = ctx.measureText(labB).width + 48 * u;
       const sh = 50 * u;
@@ -305,12 +305,12 @@ export default {
       ctx.letterSpacing = '0px';
       ctx.font = F(500, 22 * cu);
       ctx.fillStyle = rgba(ink, 0.5);
-      ctx.fillText('/mês', nx + numW + 8 * cu, base);
+      ctx.fillText('/mo', nx + numW + 8 * cu, base);
       y += ps + 10 * cu;
       ctx.font = F(500, 18 * cu);
       ctx.fillStyle = rgba(ink, 0.4);
       ctx.globalAlpha = alphaBase * dim * (0.35 + 0.65 * clamp(cnt));
-      const billed = roll > 0.5 ? `${cur}${fmt.format(annual * 12)} cobrados por ano` : 'cobrado mensalmente';
+      const billed = roll > 0.5 ? `${cur}${fmt.format(annual * 12)} billed yearly` : 'billed monthly';
       ctx.fillText(billed, pad, y + 18 * cu);
       ctx.globalAlpha = alphaBase * dim;
       y += 26 * cu;
@@ -350,7 +350,7 @@ export default {
       ctx.textBaseline = 'middle';
       ctx.fillStyle = feat ? p.bg : ink;
       const done = feat && t > T_CLICK + 0.2;
-      ctx.fillText(done ? 'Plano escolhido ✓' : feat ? 'Assinar agora' : 'Começar', 0, cu);
+      ctx.fillText(done ? 'Plan selected ✓' : feat ? 'Subscribe now' : 'Get started', 0, cu);
       ctx.restore();
 
       // recursos

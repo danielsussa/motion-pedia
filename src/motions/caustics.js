@@ -69,20 +69,20 @@ void main() {
 export default {
   id: 'caustics',
   title: 'Caustics',
-  description: 'Fundo de piscina iluminado, com as cáusticas da água correndo pelos azulejos em loop.',
+  description: 'A sunlit pool floor with water caustics rippling across the tiles in a loop.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'padrão', 'shader'],
+  tags: ['background', 'loop', 'pattern', 'shader'],
   duration: 16,
 
   params: {
-    deep: { type: 'color', label: 'Água funda', default: '#03303d' },
-    shallow: { type: 'color', label: 'Água rasa', default: '#0a6270' },
-    light: { type: 'color', label: 'Luz', default: '#d8fff6' },
-    scale: { type: 'range', label: 'Escala', min: 0.3, max: 3, step: 0.05, default: 1.7 },
-    intensity: { type: 'range', label: 'Intensidade', min: 0, max: 2, step: 0.01, default: 1.1 },
-    dispersion: { type: 'range', label: 'Dispersão', min: 0, max: 1, step: 0.01, default: 0.25 },
-    tiles: { type: 'boolean', label: 'Azulejos', default: true },
-    grain: { type: 'range', label: 'Granulado', min: 0, max: 0.12, step: 0.005, default: 0.02 },
+    deep: { type: 'color', label: 'Deep water', default: '#03303d' },
+    shallow: { type: 'color', label: 'Shallow water', default: '#0a6270' },
+    light: { type: 'color', label: 'Light', default: '#d8fff6' },
+    scale: { type: 'range', label: 'Scale', min: 0.3, max: 3, step: 0.05, default: 1.7 },
+    intensity: { type: 'range', label: 'Intensity', min: 0, max: 2, step: 0.01, default: 1.1 },
+    dispersion: { type: 'range', label: 'Spread', min: 0, max: 1, step: 0.01, default: 0.25 },
+    tiles: { type: 'boolean', label: 'Tiles', default: true },
+    grain: { type: 'range', label: 'Grain', min: 0, max: 0.12, step: 0.005, default: 0.02 },
   },
 
   render(ctx, t, env) {

@@ -17,20 +17,20 @@ function profile(u, neck) {
 export default {
   id: 'hourglass',
   title: 'Hourglass',
-  description: 'Ampulheta com a areia escorrendo em filete, cratera em cima e monte embaixo, virando com mola no fim.',
+  description: 'An hourglass with sand trickling in a thin stream, a crater on top and a mound below, flipping with a spring at the end.',
   category: 'formas',
-  tags: ['forma', 'loop', 'simulação'],
+  tags: ['shape', 'loop', 'simulation'],
   duration: 8,
   poster: 3.2,
 
   params: {
-    fill: { type: 'range', label: 'Quantidade de areia', min: 0.3, max: 0.85, step: 0.01, default: 0.62 },
-    neck: { type: 'range', label: 'Gargalo', min: 0.03, max: 0.2, step: 0.005, default: 0.07 },
-    flip: { type: 'range', label: 'Duração do giro (s)', min: 0.6, max: 2.4, step: 0.05, default: 1.4 },
-    sand: { type: 'color', label: 'Areia', default: '#f2a541' },
-    ink: { type: 'color', label: 'Estrutura', default: '#ece6da' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f13' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    fill: { type: 'range', label: 'Sand amount', min: 0.3, max: 0.85, step: 0.01, default: 0.62 },
+    neck: { type: 'range', label: 'Neck', min: 0.03, max: 0.2, step: 0.005, default: 0.07 },
+    flip: { type: 'range', label: 'Flip duration (s)', min: 0.6, max: 2.4, step: 0.05, default: 1.4 },
+    sand: { type: 'color', label: 'Sand', default: '#f2a541' },
+    ink: { type: 'color', label: 'Frame', default: '#ece6da' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f13' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p }) {

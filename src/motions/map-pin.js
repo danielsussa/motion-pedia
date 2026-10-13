@@ -22,20 +22,20 @@ function pinPath(ctx, H) {
 export default {
   id: 'map-pin',
   title: 'Map Pin',
-  description: 'Um pin cai sobre um mapa estilizado, quica, solta ondas e revela o nome do local num cartão.',
+  description: 'A pin drops onto a stylized map, bounces, sends out ripples and reveals the place name on a card.',
   category: 'dados',
   tags: ['ui', 'overlay', 'alpha'],
   duration: 5.4,
   poster: 2.4,
 
   params: {
-    place: { type: 'text', label: 'Local', default: 'São Paulo' },
-    detail: { type: 'text', label: 'Detalhe', default: '23°33′S · 46°38′O' },
-    theme: { type: 'select', label: 'Mapa', options: ['escuro', 'claro'], default: 'escuro' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    scale: { type: 'range', label: 'Escala', min: 0.5, max: 1.6, step: 0.01, default: 1 },
-    seed: { type: 'range', label: 'Seed do mapa', min: 1, max: 99, step: 1, default: 7 },
-    transparent: { type: 'boolean', label: 'Fundo transparente (sem mapa)', default: false },
+    place: { type: 'text', label: 'Place', default: 'São Paulo' },
+    detail: { type: 'text', label: 'Detail', default: '23°33′S · 46°38′W' },
+    theme: { type: 'select', label: 'Map', options: ['escuro', 'claro'], default: 'escuro' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    scale: { type: 'range', label: 'Scale', min: 0.5, max: 1.6, step: 0.01, default: 1 },
+    seed: { type: 'range', label: 'Map seed', min: 1, max: 99, step: 1, default: 7 },
+    transparent: { type: 'boolean', label: 'Transparent background (no map)', default: false },
   },
 
   // Mapa procedural: duas malhas de ruas em ângulos diferentes, avenidas, quadras de parque e um rio.

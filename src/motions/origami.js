@@ -282,11 +282,11 @@ const DIH_R = 0.25;
 const DIH_L = 0.25;
 
 const LABELS = [
-  [1.0, 'Pontas até o vinco central'],
-  [2.7, 'Bordas até o centro'],
-  [4.5, 'Dobre ao meio'],
-  [6.3, 'Abaixe as asas'],
-  [8.2, 'Abra e lance'],
+  [1.0, 'Corners to the center crease'],
+  [2.7, 'Edges to the center'],
+  [4.5, 'Fold in half'],
+  [6.3, 'Fold down the wings'],
+  [8.2, 'Open and throw'],
 ];
 
 const shade = (c, k) => `rgb(${Math.min(255, Math.round(c[0] * k))},${Math.min(255, Math.round(c[1] * k))},${Math.min(255, Math.round(c[2] * k))})`;
@@ -294,20 +294,20 @@ const shade = (c, k) => `rgb(${Math.min(255, Math.round(c[0] * k))},${Math.min(2
 export default {
   id: 'origami',
   title: 'Origami',
-  description: 'Folha de papel que se dobra em 3D, etapa por etapa, até virar um avião de papel que abre as asas e sai voando.',
+  description: 'A sheet of paper folds in 3D, step by step, into a paper plane that spreads its wings and flies away.',
   category: 'formas',
-  tags: ['3d', 'forma'],
+  tags: ['3d', 'shape'],
   duration: 14,
   poster: 10.6,
 
   params: {
-    bg: { type: 'color', label: 'Fundo', default: '#16171b' },
-    front: { type: 'color', label: 'Papel (frente)', default: '#f3efe7' },
-    back: { type: 'color', label: 'Papel (verso)', default: '#ff6a3d' },
-    accent: { type: 'color', label: 'Destaque (legendas)', default: '#ff6a3d' },
-    size: { type: 'range', label: 'Tamanho', min: 0.5, max: 1.4, step: 0.01, default: 1 },
-    speed: { type: 'range', label: 'Ritmo das dobras', min: 0.6, max: 1.6, step: 0.05, default: 1 },
-    labels: { type: 'boolean', label: 'Legendas das etapas', default: true },
+    bg: { type: 'color', label: 'Background', default: '#16171b' },
+    front: { type: 'color', label: 'Paper (front)', default: '#f3efe7' },
+    back: { type: 'color', label: 'Paper (back)', default: '#ff6a3d' },
+    accent: { type: 'color', label: 'Accent (captions)', default: '#ff6a3d' },
+    size: { type: 'range', label: 'Size', min: 0.5, max: 1.4, step: 0.01, default: 1 },
+    speed: { type: 'range', label: 'Fold pace', min: 0.6, max: 1.6, step: 0.05, default: 1 },
+    labels: { type: 'boolean', label: 'Step captions', default: true },
   },
 
   setup({ w, h, p, px }) {

@@ -16,19 +16,19 @@ const T_OUT = 0.94;
 export default {
   id: 'maze',
   title: 'Maze',
-  description: 'Labirinto que se cava sozinho (backtracker) e depois é resolvido por uma linha que corre da entrada à saída.',
+  description: 'A maze that carves itself (backtracker), then gets solved by a line racing from entrance to exit.',
   category: 'formas',
-  tags: ['forma', 'padrão', 'simulação'],
+  tags: ['shape', 'pattern', 'simulation'],
   duration: 10,
   poster: 7.6,
 
   params: {
-    bg: { type: 'color', label: 'Fundo', default: '#0f1013' },
-    paper: { type: 'color', label: 'Corredores', default: '#ebe7df' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    cells: { type: 'range', label: 'Células (lado menor)', min: 6, max: 30, step: 1, default: 13 },
-    wall: { type: 'range', label: 'Espessura da parede', min: 0.12, max: 0.6, step: 0.01, default: 0.3 },
-    backSpeed: { type: 'range', label: 'Velocidade da volta', min: 1, max: 6, step: 0.5, default: 3 },
+    bg: { type: 'color', label: 'Background', default: '#0f1013' },
+    paper: { type: 'color', label: 'Corridors', default: '#ebe7df' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    cells: { type: 'range', label: 'Cells (short side)', min: 6, max: 30, step: 1, default: 13 },
+    wall: { type: 'range', label: 'Wall thickness', min: 0.12, max: 0.6, step: 0.01, default: 0.3 },
+    backSpeed: { type: 'range', label: 'Return speed', min: 1, max: 6, step: 0.5, default: 3 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 11 },
   },
 

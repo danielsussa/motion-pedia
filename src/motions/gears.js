@@ -82,21 +82,21 @@ function gearPath(N, r) {
 export default {
   id: 'gears',
   title: 'Gears',
-  description: 'Engrenagens encaixadas girando em sincronia, com relação de dentes exata e avanço em passos com mola.',
+  description: 'Meshed gears turning in sync, with exact tooth ratios and springy step-by-step advance.',
   category: 'formas',
-  tags: ['forma', 'loop', 'simulação'],
+  tags: ['shape', 'loop', 'simulation'],
   duration: 12,
   poster: 2.3,
 
   params: {
-    count: { type: 'range', label: 'Engrenagens', min: 2, max: 8, step: 1, default: 7 },
-    mode: { type: 'select', label: 'Movimento', options: ['passos', 'contínuo'], default: 'passos' },
-    speed: { type: 'range', label: 'Velocidade', min: 1, max: 3, step: 1, default: 1 },
+    count: { type: 'range', label: 'Gears', min: 2, max: 8, step: 1, default: 7 },
+    mode: { type: 'select', label: 'Motion', options: ['passos', 'contínuo'], default: 'passos' },
+    speed: { type: 'range', label: 'Speed', min: 1, max: 3, step: 1, default: 1 },
     zoom: { type: 'range', label: 'Zoom', min: 0.5, max: 1.6, step: 0.01, default: 1 },
-    accent: { type: 'color', label: 'Motora', default: '#ff6a3d' },
-    ink: { type: 'color', label: 'Engrenagens', default: '#ece6da' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f13' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    accent: { type: 'color', label: 'Drive gear', default: '#ff6a3d' },
+    ink: { type: 'color', label: 'Gears', default: '#ece6da' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f13' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p }) {

@@ -12,11 +12,11 @@ const BEZEL = 13;
 const TOP = 104; // fim do cabeçalho fixo
 const TAB = 82; // barra de abas
 
-const DEFAULT = `marina.luz | Primeiro dia de sol depois de uma semana inteira de chuva ☀️
-rafa.lima | Novo retrato pro portfólio. Luz de janela e nada mais.
-estudio.norte | "Movimento é a cola entre uma ideia e outra."
-bia.campos | Fim de tarde no mirante, valeu cada degrau
-joao.pedro | Testando lente nova, o que acharam?`;
+const DEFAULT = `marina.luz | First sunny day after a whole week of rain ☀️
+rafa.lima | New portrait for the portfolio. Window light and nothing else.
+estudio.norte | "Motion is the glue between one idea and the next."
+bia.campos | Late afternoon at the lookout, worth every step
+joao.pedro | Testing a new lens, what do you think?`;
 
 // variações de mídia (mesmas duas fotos com enquadramentos diferentes + um card de citação)
 const VARIANTS = [
@@ -47,21 +47,21 @@ const fmt = new Intl.NumberFormat('pt-BR');
 export default {
   id: 'phone-feed',
   title: 'Phone Feed',
-  description: 'Mockup de celular rolando um feed social com stories, fotos, citação e curtida com toque duplo.',
+  description: 'A phone mockup scrolling a social feed with stories, photos, a quote and a double-tap like.',
   category: 'dados',
-  tags: ['ui', 'dados', 'imagem'],
+  tags: ['ui', 'data', 'image'],
   duration: 10,
   poster: 2.9,
 
   params: {
-    posts: { type: 'textarea', label: 'Posts (perfil | legenda)', rows: 5, default: DEFAULT },
-    app: { type: 'text', label: 'Nome do app', default: 'momento' },
-    photoA: { type: 'image', label: 'Foto 1', default: '/samples/landscape.jpg' },
-    photoB: { type: 'image', label: 'Foto 2', default: '/samples/portrait.jpg' },
-    theme: { type: 'select', label: 'Tema do app', options: ['claro', 'escuro'], default: 'claro' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff3b5c' },
-    bg: { type: 'color', label: 'Fundo', default: '#e9e5df' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    posts: { type: 'textarea', label: 'Posts (profile | caption)', rows: 5, default: DEFAULT },
+    app: { type: 'text', label: 'App name', default: 'momento' },
+    photoA: { type: 'image', label: 'Photo 1', default: '/samples/landscape.jpg' },
+    photoB: { type: 'image', label: 'Photo 2', default: '/samples/portrait.jpg' },
+    theme: { type: 'select', label: 'App theme', options: ['claro', 'escuro'], default: 'claro' },
+    accent: { type: 'color', label: 'Accent', default: '#ff3b5c' },
+    bg: { type: 'color', label: 'Background', default: '#e9e5df' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px, duration }) {
@@ -71,8 +71,8 @@ export default {
       .filter(Boolean)
       .slice(0, 8);
     let y = 112; // após os stories
-    const posts = (lines.length ? lines : ['perfil | legenda']).map((l, i) => {
-      const [user = 'perfil', caption = ''] = l.split('|').map((s) => s.trim());
+    const posts = (lines.length ? lines : ['profile | caption']).map((l, i) => {
+      const [user = 'profile', caption = ''] = l.split('|').map((s) => s.trim());
       const v = VARIANTS[i % VARIANTS.length];
       const post = { user, caption, v, top: y, likes: 380 + ((i * 7919) % 2400), i };
       y += 54 + v.hh + 44 + 20 + 22 + 20 + 26;
@@ -250,7 +250,7 @@ export default {
 
     // stories
     if (viewTop < 112) {
-      const names = ['Seu story', ...posts.map((po) => po.user)].slice(0, 6);
+      const names = ['Your story', ...posts.map((po) => po.user)].slice(0, 6);
       ctx.textAlign = 'center';
       ctx.textBaseline = 'alphabetic';
       names.forEach((nm, i) => {
@@ -316,7 +316,7 @@ export default {
       ctx.fillText(po.user, 58, y + 20);
       ctx.fillStyle = MUTED;
       ctx.font = `400 11.5px ${F}`;
-      ctx.fillText(['São Paulo', 'Lisboa', 'Patrocinado', 'Florianópolis', 'Rio de Janeiro'][po.i % 5], 58, y + 36);
+      ctx.fillText(['São Paulo', 'Lisbon', 'Sponsored', 'Florianópolis', 'Rio de Janeiro'][po.i % 5], 58, y + 36);
       ctx.fillStyle = INK;
       for (let d = -1; d <= 1; d++) {
         ctx.beginPath();
@@ -453,20 +453,20 @@ export default {
       ctx.textBaseline = 'middle';
       ctx.fillStyle = INK;
       ctx.font = `600 13px ${F}`;
-      ctx.fillText(`${fmt.format(po.likes + (liked ? 1 : 0))} curtidas`, 14, y + 8);
+      ctx.fillText(`${fmt.format(po.likes + (liked ? 1 : 0))} likes`, 14, y + 8);
       y += 20;
       // legenda: perfil em negrito + texto
       ctx.font = `600 13px ${F}`;
       ctx.fillText(po.user, 14, y + 10);
       const uw = ctx.measureText(po.user).width;
       ctx.font = `400 13px ${F}`;
-      ctx.fillText(ellipsize(ctx, v.kind === 'quote' ? 'Frase da semana ✦' : po.caption, SW - 28 - uw - 8), 14 + uw + 6, y + 10);
+      ctx.fillText(ellipsize(ctx, v.kind === 'quote' ? 'Quote of the week ✦' : po.caption, SW - 28 - uw - 8), 14 + uw + 6, y + 10);
       y += 22;
       ctx.fillStyle = MUTED;
-      ctx.fillText(`Ver todos os ${12 + ((po.i * 37) % 80)} comentários`, 14, y + 9);
+      ctx.fillText(`View all ${12 + ((po.i * 37) % 80)} comments`, 14, y + 9);
       y += 20;
       ctx.font = `400 10.5px ${F}`;
-      ctx.fillText(['HÁ 2 HORAS', 'HÁ 5 HORAS', 'ONTEM', 'HÁ 2 DIAS', 'HÁ 3 DIAS'][po.i % 5], 14, y + 8);
+      ctx.fillText(['2 HOURS AGO', '5 HOURS AGO', 'YESTERDAY', '2 DAYS AGO', '3 DAYS AGO'][po.i % 5], 14, y + 8);
     }
     ctx.restore(); // feed
 

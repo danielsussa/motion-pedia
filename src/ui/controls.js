@@ -1,8 +1,11 @@
 import { el } from './dom.js';
+import { OPTION_LABELS } from './option-labels.js';
 
 async function upload(file) {
+  // na galeria publicada (estática) não há servidor: o arquivo fica só no navegador
+  if (!import.meta.env.DEV) return URL.createObjectURL(file);
   const res = await fetch('/__upload', { method: 'POST', headers: { 'x-filename': encodeURIComponent(file.name) }, body: file });
-  if (!res.ok) throw new Error('upload falhou');
+  if (!res.ok) throw new Error('upload failed');
   return (await res.json()).url;
 }
 
@@ -46,7 +49,7 @@ export function buildControls(schema, values, onChange) {
         input = el(
           'select',
           { onchange: (e) => set(e.target.value) },
-          d.options.map((o) => el('option', { value: o, selected: o === values[key] }, o)),
+          d.options.map((o) => el('option', { value: o, selected: o === values[key] }, OPTION_LABELS[o] ?? o)),
         );
         break;
       case 'textarea':
@@ -61,7 +64,7 @@ export function buildControls(schema, values, onChange) {
           onchange: async (e) => {
             const f = e.target.files[0];
             if (!f) return;
-            name.textContent = 'enviando…';
+            name.textContent = 'uploading…';
             try {
               set(await upload(f));
               name.textContent = f.name;
@@ -70,8 +73,8 @@ export function buildControls(schema, values, onChange) {
             }
           },
         });
-        const reset = el('button.btn.mini', { type: 'button', onclick: () => ((name.textContent = d.default.split('/').pop()), set(d.default)) }, 'padrão');
-        input = el('div.file-row', {}, el('label.btn.mini', {}, 'Escolher…', file), name, reset);
+        const reset = el('button.btn.mini', { type: 'button', onclick: () => ((name.textContent = d.default.split('/').pop()), set(d.default)) }, 'default');
+        input = el('div.file-row', {}, el('label.btn.mini', {}, 'Choose…', file), name, reset);
         break;
       }
       default:

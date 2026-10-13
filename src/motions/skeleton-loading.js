@@ -4,18 +4,18 @@ import { coverRect } from '../lib/image.js';
 
 const F = 'Inter, system-ui, sans-serif';
 
-const DEFAULT = `Como animar com molas sem perder o ritmo | Ana Ribeiro | Motion
-Paletas contidas: menos cor, mais foco | Rafael Lima | Design
-O guia definitivo de easing para vídeo | Bia Campos | Tutorial
-Tipografia que se move em 7 truques | João Pedro | Tipografia
-Grids que respiram em qualquer formato | Marina Luz | Layout`;
+const DEFAULT = `How to animate with springs without losing rhythm | Ana Ribeiro | Motion
+Restrained palettes: less color, more focus | Rafael Lima | Design
+The definitive guide to easing for video | Bia Campos | Tutorial
+Typography that moves in 7 tricks | João Pedro | Typography
+Grids that breathe in any format | Marina Luz | Layout`;
 
 const BODIES = [
-  'Um passo a passo com exemplos reais, do primeiro quadro até a exportação final.',
-  'Por que uma cor de destaque basta e como escolher os neutros ao redor dela.',
-  'Curvas, durações e pausas: o que separa um movimento bom de um movimento ótimo.',
-  'Peso, tracking e entrada letra a letra sem cansar quem está assistindo.',
-  'Margens, colunas e respiro que funcionam do 16:9 ao vertical sem refazer nada.',
+  'A step-by-step walkthrough with real examples, from the first frame to the final export.',
+  'Why one accent color is enough and how to pick the neutrals around it.',
+  'Curves, durations and pauses: what separates good motion from great motion.',
+  'Weight, tracking and letter-by-letter entrances without tiring the viewer.',
+  'Margins, columns and breathing room that work from 16:9 to vertical with no rework.',
 ];
 
 const CROPS = [
@@ -56,20 +56,20 @@ const T_BACK = 5.15;
 export default {
   id: 'skeleton-loading',
   title: 'Skeleton Loading',
-  description: 'Tela de cards em skeleton com brilho deslizando que se resolve, em cascata, no conteúdo real.',
+  description: 'A screen of skeleton cards with a sliding shimmer that resolves, in a cascade, into real content.',
   category: 'dados',
-  tags: ['ui', 'dados', 'loop'],
+  tags: ['ui', 'data', 'loop'],
   duration: 6,
   poster: 3.6,
 
   params: {
-    items: { type: 'textarea', label: 'Cards (título | autor | categoria)', rows: 5, default: DEFAULT },
-    imageA: { type: 'image', label: 'Foto 1', default: '/samples/landscape.jpg' },
-    imageB: { type: 'image', label: 'Foto 2', default: '/samples/portrait.jpg' },
-    theme: { type: 'select', label: 'Tema', options: ['claro', 'escuro'], default: 'claro' },
-    accent: { type: 'color', label: 'Destaque', default: '#5b5bf0' },
-    bg: { type: 'color', label: 'Fundo', default: '#f1f0ec' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    items: { type: 'textarea', label: 'Cards (title | author | category)', rows: 5, default: DEFAULT },
+    imageA: { type: 'image', label: 'Photo 1', default: '/samples/landscape.jpg' },
+    imageB: { type: 'image', label: 'Photo 2', default: '/samples/portrait.jpg' },
+    theme: { type: 'select', label: 'Theme', options: ['claro', 'escuro'], default: 'claro' },
+    accent: { type: 'color', label: 'Accent', default: '#5b5bf0' },
+    bg: { type: 'color', label: 'Background', default: '#f1f0ec' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {
@@ -82,7 +82,7 @@ export default {
         const [title = '', author = '', tag = ''] = l.split('|').map((s) => s.trim());
         return { title, author, tag, body: BODIES[i % BODIES.length], crop: CROPS[i % CROPS.length] };
       });
-    if (!items.length) items.push({ title: 'Título', author: 'Autor', tag: 'Tag', body: BODIES[0], crop: CROPS[0] });
+    if (!items.length) items.push({ title: 'Title', author: 'Author', tag: 'Tag', body: BODIES[0], crop: CROPS[0] });
 
     // ---------- grade conforme o formato ----------
     const ar = w / h;
@@ -124,7 +124,7 @@ export default {
         const meta = `${it.author}`;
         els.push({ kind: 'text', x: P + 46 * cu, y: y + 0 * cu, w: mc.measureText(meta).width, h: 18 * cu, text: meta, fs: 14.5 * cu, weight: 600, ink: true });
         mc.font = `400 ${13 * cu}px ${F}`;
-        const sub = `${4 + ((i * 3) % 7)} min de leitura`;
+        const sub = `${4 + ((i * 3) % 7)} min read`;
         els.push({ kind: 'text', x: P + 46 * cu, y: y + 18 * cu, w: mc.measureText(sub).width, h: 17 * cu, text: sub, fs: 13 * cu, weight: 400 });
         ch = y + 34 * cu + P;
       } else {

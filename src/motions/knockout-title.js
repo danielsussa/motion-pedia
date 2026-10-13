@@ -7,22 +7,22 @@ import { SOURCE_PARAM, createSource } from '../lib/source.js';
 export default {
   id: 'knockout-title',
   title: 'Knockout Title',
-  description: 'Um título gigante vazado, com outro motion (domain warp, aurora…) correndo dentro das letras.',
+  description: 'A giant knockout title with another motion (domain warp, aurora…) running inside the letters.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro'],
+  tags: ['typography', 'intro'],
   duration: 6,
   poster: 2.4,
 
   params: {
-    text: { type: 'textarea', label: 'Título', rows: 2, default: 'FLUXO' },
-    sub: { type: 'text', label: 'Linha de apoio', default: 'cada letra é uma janela' },
+    text: { type: 'textarea', label: 'Title', rows: 2, default: 'FLOW' },
+    sub: { type: 'text', label: 'Subtitle', default: 'every letter is a window' },
     source: SOURCE_PARAM('domain-warp'),
-    size: { type: 'range', label: 'Tamanho', min: 0.2, max: 0.8, step: 0.01, default: 0.5 },
-    ambient: { type: 'range', label: 'Fonte fora das letras', min: 0, max: 0.4, step: 0.01, default: 0.07 },
-    edge: { type: 'range', label: 'Contorno', min: 0, max: 1, step: 0.01, default: 0.5 },
-    speed: { type: 'range', label: 'Velocidade da fonte', min: 0.25, max: 2, step: 0.05, default: 1 },
-    color: { type: 'color', label: 'Texto de apoio', default: '#f4f1ea' },
-    bg: { type: 'color', label: 'Fundo', default: '#0b0b0e' },
+    size: { type: 'range', label: 'Size', min: 0.2, max: 0.8, step: 0.01, default: 0.5 },
+    ambient: { type: 'range', label: 'Source outside letters', min: 0, max: 0.4, step: 0.01, default: 0.07 },
+    edge: { type: 'range', label: 'Outline', min: 0, max: 1, step: 0.01, default: 0.5 },
+    speed: { type: 'range', label: 'Source speed', min: 0.25, max: 2, step: 0.05, default: 1 },
+    color: { type: 'color', label: 'Subtitle color', default: '#f4f1ea' },
+    bg: { type: 'color', label: 'Background', default: '#0b0b0e' },
   },
 
   setup(env) {

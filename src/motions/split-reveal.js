@@ -3,21 +3,21 @@ import { seg, ease, rgba } from '../lib/anim.js';
 export default {
   id: 'split-reveal',
   title: 'Split Reveal',
-  description: 'Um título é cortado ao meio; as metades deslizam em sentidos opostos e revelam a segunda linha na fenda.',
+  description: 'A title is sliced in half; the halves slide apart and reveal a second line in the gap.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro'],
+  tags: ['typography', 'intro'],
   duration: 4.5,
   poster: 2.6,
 
   params: {
-    line1: { type: 'text', label: 'Linha 1', default: 'MOTION' },
-    line2: { type: 'text', label: 'Linha 2 (revelada)', default: 'em cada frame' },
-    size: { type: 'range', label: 'Tamanho', min: 0.1, max: 0.45, step: 0.005, default: 0.3 },
-    angle: { type: 'range', label: 'Ângulo do corte (°)', min: -15, max: 15, step: 0.5, default: -4 },
-    slide: { type: 'range', label: 'Deslize lateral', min: 0, max: 0.3, step: 0.005, default: 0.08 },
-    color: { type: 'color', label: 'Texto', default: '#f4f1ea' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0d10' },
+    line1: { type: 'text', label: 'Line 1', default: 'MOTION' },
+    line2: { type: 'text', label: 'Line 2 (revealed)', default: 'in every frame' },
+    size: { type: 'range', label: 'Size', min: 0.1, max: 0.45, step: 0.005, default: 0.3 },
+    angle: { type: 'range', label: 'Cut angle (°)', min: -15, max: 15, step: 0.5, default: -4 },
+    slide: { type: 'range', label: 'Side slide', min: 0, max: 0.3, step: 0.005, default: 0.08 },
+    color: { type: 'color', label: 'Text', default: '#f4f1ea' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    bg: { type: 'color', label: 'Background', default: '#0d0d10' },
   },
 
   render(ctx, t, { w, h, p }) {

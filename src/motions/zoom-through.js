@@ -60,21 +60,21 @@ function counterOf(ch) {
 export default {
   id: 'zoom-through',
   title: 'Zoom Through',
-  description: 'Zoom infinito para dentro da letra "O" de cada palavra, que revela a palavra seguinte, em cadeia.',
+  description: 'An endless zoom into the letter "O" of each word, revealing the next word, in a chain.',
   category: 'tipografia',
-  tags: ['tipografia', 'loop', 'transição'],
+  tags: ['typography', 'loop', 'transition'],
   duration: 8,
   poster: 1.2,
 
   params: {
-    words: { type: 'textarea', label: 'Palavras (uma por linha)', rows: 4, default: 'FOCO\nPROJETO\nMOVIMENTO\nMUNDO' },
-    letter: { type: 'text', label: 'Letra do mergulho', default: 'O' },
-    hold: { type: 'range', label: 'Pausa em cada palavra', min: 0, max: 0.8, step: 0.05, default: 0.4 },
-    size: { type: 'range', label: 'Largura da palavra', min: 0.4, max: 0.95, step: 0.01, default: 0.78 },
-    color: { type: 'color', label: 'Claro', default: '#f2ede4' },
-    dark: { type: 'color', label: 'Escuro', default: '#111014' },
-    accent: { type: 'color', label: 'Letra-portal', default: '#ff5a36' },
-    alternate: { type: 'boolean', label: 'Alternar claro/escuro', default: true },
+    words: { type: 'textarea', label: 'Words (one per line)', rows: 4, default: 'FOCUS\nPROJECT\nMOTION\nWORLD' },
+    letter: { type: 'text', label: 'Dive letter', default: 'O' },
+    hold: { type: 'range', label: 'Hold on each word', min: 0, max: 0.8, step: 0.05, default: 0.4 },
+    size: { type: 'range', label: 'Word width', min: 0.4, max: 0.95, step: 0.01, default: 0.78 },
+    color: { type: 'color', label: 'Light', default: '#f2ede4' },
+    dark: { type: 'color', label: 'Dark', default: '#111014' },
+    accent: { type: 'color', label: 'Portal letter', default: '#ff5a36' },
+    alternate: { type: 'boolean', label: 'Alternate light/dark', default: true },
   },
 
   setup({ w, h, p }) {

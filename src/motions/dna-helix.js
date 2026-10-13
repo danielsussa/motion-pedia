@@ -11,23 +11,23 @@ const Z_BINS = 10;
 export default {
   id: 'dna-helix',
   title: 'DNA Helix',
-  description: 'Dupla hélice girando em 3D, com pares de bases coloridos, sulcos maior e menor e neblina de profundidade.',
+  description: 'A double helix spinning in 3D, with colored base pairs, major and minor grooves and depth fog.',
   category: 'formas',
-  tags: ['3d', 'forma', 'loop'],
+  tags: ['3d', 'shape', 'loop'],
   duration: 8,
   poster: 1.3,
 
   params: {
-    turns: { type: 'range', label: 'Voltas por loop', min: 1, max: 4, step: 1, default: 1 },
-    radius: { type: 'range', label: 'Raio', min: 0.08, max: 0.3, step: 0.005, default: 0.17 },
-    pairs: { type: 'range', label: 'Pares por volta', min: 6, max: 16, step: 1, default: 10 },
-    tilt: { type: 'range', label: 'Inclinação', min: -0.8, max: 0.8, step: 0.01, default: -0.22 },
-    groove: { type: 'range', label: 'Sulco', min: 0.5, max: 1, step: 0.01, default: 0.78 },
+    turns: { type: 'range', label: 'Turns per loop', min: 1, max: 4, step: 1, default: 1 },
+    radius: { type: 'range', label: 'Radius', min: 0.08, max: 0.3, step: 0.005, default: 0.17 },
+    pairs: { type: 'range', label: 'Pairs per turn', min: 6, max: 16, step: 1, default: 10 },
+    tilt: { type: 'range', label: 'Tilt', min: -0.8, max: 0.8, step: 0.01, default: -0.22 },
+    groove: { type: 'range', label: 'Groove', min: 0.5, max: 1, step: 0.01, default: 0.78 },
     accent: { type: 'color', label: 'Bases A', default: '#ff6a3d' },
     second: { type: 'color', label: 'Bases B', default: '#8fa3b8' },
-    ink: { type: 'color', label: 'Fitas', default: '#ece6da' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f13' },
-    seed: { type: 'range', label: 'Semente', min: 1, max: 99, step: 1, default: 7 },
+    ink: { type: 'color', label: 'Strands', default: '#ece6da' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f13' },
+    seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
   },
 
   setup({ w, h, p }) {

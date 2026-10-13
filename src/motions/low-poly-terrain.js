@@ -19,22 +19,22 @@ const pathX = (z) => 6.5 * Math.sin((TAU * z) / P) + 2.6 * Math.sin((TAU * 2 * z
 
 export default {
   id: 'low-poly-terrain',
-  title: 'Terreno Low-poly',
-  description: 'Voo rasante por um vale de montanhas low-poly, com luz chapada por face, rio e névoa no horizonte.',
+  title: 'Low-poly Terrain',
+  description: 'A low flight through a valley of low-poly mountains, with flat per-face lighting, a river and haze on the horizon.',
   category: 'fundos',
-  tags: ['fundo', 'loop', '3d'],
+  tags: ['background', 'loop', '3d'],
   duration: 16,
   poster: 5,
 
   params: {
-    skyTop: { type: 'color', label: 'Céu (topo)', default: '#2a2d52' },
-    fog: { type: 'color', label: 'Névoa / horizonte', default: '#f0b99a' },
-    land: { type: 'color', label: 'Terreno', default: '#4b4f7a' },
-    light: { type: 'color', label: 'Luz do sol', default: '#ffc58f' },
-    water: { type: 'color', label: 'Água', default: '#7fb2c9' },
-    relief: { type: 'range', label: 'Relevo', min: 0.4, max: 1.8, step: 0.01, default: 1 },
-    speed: { type: 'range', label: 'Velocidade', min: 1, max: 3, step: 1, default: 1 },
-    river: { type: 'boolean', label: 'Rio', default: true },
+    skyTop: { type: 'color', label: 'Sky (top)', default: '#2a2d52' },
+    fog: { type: 'color', label: 'Fog / horizon', default: '#f0b99a' },
+    land: { type: 'color', label: 'Terrain', default: '#4b4f7a' },
+    light: { type: 'color', label: 'Sunlight', default: '#ffc58f' },
+    water: { type: 'color', label: 'Water', default: '#7fb2c9' },
+    relief: { type: 'range', label: 'Relief', min: 0.4, max: 1.8, step: 0.01, default: 1 },
+    speed: { type: 'range', label: 'Speed', min: 1, max: 3, step: 1, default: 1 },
+    river: { type: 'boolean', label: 'River', default: true },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 3 },
   },
 

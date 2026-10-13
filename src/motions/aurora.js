@@ -40,19 +40,19 @@ function mixHexHex(a, b, t) {
 export default {
   id: 'aurora',
   title: 'Aurora',
-  description: 'Cortinas de luz verde e violeta ondulando num céu estrelado, sobre um horizonte escuro. Loop perfeito.',
+  description: 'Curtains of green and violet light rippling across a starry sky above a dark horizon. Seamless loop.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'gradiente'],
+  tags: ['background', 'loop', 'gradient'],
   duration: 12,
 
   params: {
-    c1: { type: 'color', label: 'Cor da base', default: '#3dffa8' },
-    c2: { type: 'color', label: 'Cor do topo', default: '#8a5cff' },
-    sky: { type: 'color', label: 'Céu', default: '#040814' },
-    curtains: { type: 'range', label: 'Cortinas', min: 1, max: 4, step: 1, default: 3 },
-    intensity: { type: 'range', label: 'Intensidade', min: 0.2, max: 1.6, step: 0.01, default: 1 },
-    speed: { type: 'range', label: 'Movimento', min: 1, max: 4, step: 1, default: 2 },
-    ground: { type: 'boolean', label: 'Horizonte', default: true },
+    c1: { type: 'color', label: 'Base color', default: '#3dffa8' },
+    c2: { type: 'color', label: 'Top color', default: '#8a5cff' },
+    sky: { type: 'color', label: 'Sky', default: '#040814' },
+    curtains: { type: 'range', label: 'Curtains', min: 1, max: 4, step: 1, default: 3 },
+    intensity: { type: 'range', label: 'Intensity', min: 0.2, max: 1.6, step: 0.01, default: 1 },
+    speed: { type: 'range', label: 'Motion', min: 1, max: 4, step: 1, default: 2 },
+    ground: { type: 'boolean', label: 'Horizon', default: true },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 4 },
   },
 

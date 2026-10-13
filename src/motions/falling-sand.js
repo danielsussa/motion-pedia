@@ -191,20 +191,20 @@ function simulate(GW, GH, mask, seed) {
 export default {
   id: 'falling-sand',
   title: 'Falling Sand',
-  description: 'Areia cai grão a grão por cima de um molde invisível e vai preenchendo o logo de baixo para cima; no fim, escoa.',
+  description: 'Sand falls grain by grain over an invisible mold, filling the logo from the bottom up, then drains away.',
   category: 'particulas',
-  tags: ['simulação', 'partículas', 'intro', 'loop'],
+  tags: ['simulation', 'particles', 'intro', 'loop'],
   duration: 10,
   poster: 7.6,
 
   params: {
     image: { type: 'image', label: 'Logo (PNG/SVG)', default: '/samples/logo.svg' },
-    bg: { type: 'color', label: 'Fundo', default: '#ece6db' },
-    ghost: { type: 'color', label: 'Molde', default: '#ddd5c7' },
-    size: { type: 'range', label: 'Tamanho do logo', min: 0.3, max: 0.85, step: 0.01, default: 0.56 },
-    grains: { type: 'range', label: 'Grãos (lado maior)', min: 90, max: 240, step: 10, default: 170 },
-    jitter: { type: 'range', label: 'Variação do grão', min: 0, max: 0.3, step: 0.01, default: 0.12 },
-    sheen: { type: 'boolean', label: 'Brilho no fim', default: true },
+    bg: { type: 'color', label: 'Background', default: '#ece6db' },
+    ghost: { type: 'color', label: 'Mold', default: '#ddd5c7' },
+    size: { type: 'range', label: 'Logo size', min: 0.3, max: 0.85, step: 0.01, default: 0.56 },
+    grains: { type: 'range', label: 'Grains (long side)', min: 90, max: 240, step: 10, default: 170 },
+    jitter: { type: 'range', label: 'Grain variation', min: 0, max: 0.3, step: 0.01, default: 0.12 },
+    sheen: { type: 'boolean', label: 'Glow at the end', default: true },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 5 },
   },
 

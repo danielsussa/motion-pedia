@@ -59,31 +59,31 @@ function fitFont(ctx, text, maxW, size, font) {
 const INTER = (wt) => (s) => `${wt} ${s}px Inter, system-ui, sans-serif`;
 const MONO = (s) => `500 ${s}px 'JetBrains Mono', ui-monospace, monospace`;
 
-const DEFAULT = `2019 | Fundação em São Paulo | Três pessoas e uma garagem
-2020 | Primeiro produto no ar | 1.000 clientes no primeiro mês
-2021 | 100 mil usuários
-2023 | Rodada Série A | R$ 40 milhões para crescer
-2025 | Expansão para a América Latina | Escritórios em Bogotá e na Cidade do México`;
+const DEFAULT = `2019 | Founded in São Paulo | Three people and a garage
+2020 | First product goes live | 1,000 customers in the first month
+2021 | 100K users
+2023 | Series A round | $40 million to grow
+2025 | Expansion across Latin America | Offices in Bogotá and Mexico City`;
 
 export default {
   id: 'timeline',
   title: 'Timeline',
-  description: 'Linha do tempo que se desenha com marcos pulsando, datas e cards surgindo; vira vertical no 9:16.',
+  description: 'A timeline that draws itself with pulsing milestones, dates and cards popping in; goes vertical in 9:16.',
   category: 'dados',
-  tags: ['dados', 'ui', 'tipografia'],
+  tags: ['data', 'ui', 'typography'],
   duration: 9,
   poster: 6.4,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Nossa história' },
-    data: { type: 'textarea', label: 'Marcos (data | título | descrição)', rows: 6, default: DEFAULT },
-    orientation: { type: 'select', label: 'Orientação', options: ['auto', 'horizontal', 'vertical'], default: 'auto' },
-    cards: { type: 'boolean', label: 'Cards com fundo', default: true },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
+    title: { type: 'text', label: 'Title', default: 'Our story' },
+    data: { type: 'textarea', label: 'Milestones (date | title | description)', rows: 6, default: DEFAULT },
+    orientation: { type: 'select', label: 'Orientation', options: ['auto', 'horizontal', 'vertical'], default: 'auto' },
+    cards: { type: 'boolean', label: 'Cards with background', default: true },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
     panel: { type: 'color', label: 'Card', default: '#1a1c21' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ p }) {
@@ -134,7 +134,7 @@ export default {
       ctx.font = INTER(500)(m * 0.03);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Sem marcos — use uma linha "data | título" por marco', w / 2, h / 2);
+      ctx.fillText('No milestones — use one "date | title" line per milestone', w / 2, h / 2);
       return;
     }
 

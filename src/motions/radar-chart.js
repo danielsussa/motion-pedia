@@ -122,33 +122,33 @@ function drawHeader(ctx, t, w, h, p, outAll) {
   return { m, portrait, wide, padX, top, titleSize, subSize, bot: top + titleSize * 0.2 + subSize * 2.4 };
 }
 
-const DEFAULT_DATA = `Velocidade, 86, 64
-Confiabilidade, 92, 78
+const DEFAULT_DATA = `Speed, 86, 64
+Reliability, 92, 78
 Design, 74, 83
-Preço, 58, 76
-Suporte, 88, 60
-Integrações, 71, 52`;
+Price, 58, 76
+Support, 88, 60
+Integrations, 71, 52`;
 
 export default {
   id: 'radar-chart',
   title: 'Radar Chart',
-  description: 'Gráfico de radar em que a grade se abre e duas séries se desenham vértice a vértice com mola, comparando notas por eixo.',
+  description: 'A radar chart whose grid opens as two series draw in vertex by vertex with a spring, comparing scores per axis.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 8,
   poster: 4.6,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Comparativo de produto' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Notas de 0 a 100 · pesquisa com 1.200 usuários' },
-    data: { type: 'textarea', label: 'Dados (Eixo, série A, série B)', rows: 8, default: DEFAULT_DATA },
-    nameA: { type: 'text', label: 'Nome da série A', default: 'Nosso produto' },
-    nameB: { type: 'text', label: 'Nome da série B', default: 'Concorrente' },
-    max: { type: 'range', label: 'Escala máxima (0 = auto)', min: 0, max: 1000, step: 1, default: 100 },
-    grid: { type: 'select', label: 'Grade', options: ['polígono', 'círculo'], default: 'polígono' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
+    title: { type: 'text', label: 'Title', default: 'Product comparison' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'Scores from 0 to 100 · survey of 1,200 users' },
+    data: { type: 'textarea', label: 'Data (axis, series A, series B)', rows: 8, default: DEFAULT_DATA },
+    nameA: { type: 'text', label: 'Series A name', default: 'Our product' },
+    nameB: { type: 'text', label: 'Series B name', default: 'Competitor' },
+    max: { type: 'range', label: 'Max scale (0 = auto)', min: 0, max: 1000, step: 1, default: 100 },
+    grid: { type: 'select', label: 'Grid', options: ['polígono', 'círculo'], default: 'polígono' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
   },
 
   setup({ w, h, px, p }) {
@@ -177,7 +177,7 @@ export default {
       ctx.font = INTER(500)(H.subSize * 1.3);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Use ao menos 3 linhas "Eixo, valor A, valor B"', w / 2, h / 2);
+      ctx.fillText('Use at least 3 lines "Axis, value A, value B"', w / 2, h / 2);
       return;
     }
 

@@ -76,12 +76,12 @@ function strokePart(ctx, cv, k) {
   ctx.stroke();
 }
 
-const DEFAULT = `Produto: Roadmap, Protótipo, Testes
-Marketing: Campanha, Redes sociais, Imprensa
-Vendas: Parceiros, Preços
-Pessoas: Contratação, Treinamento
-Dados: Métricas, Pesquisa, Painel
-Suporte: Central de ajuda, Comunidade`;
+const DEFAULT = `Product: Roadmap, Prototype, Testing
+Marketing: Campaign, Social media, Press
+Sales: Partners, Pricing
+People: Hiring, Training
+Data: Metrics, Research, Dashboard
+Support: Help center, Community`;
 
 // unidades do mapa
 const CF = 46; // fonte do centro
@@ -92,22 +92,22 @@ const LG = 46; // passo vertical das folhas
 export default {
   id: 'mind-map',
   title: 'Mind Map',
-  description: 'Mapa mental crescendo do centro: ramos curvos desenham até os tópicos, que soltam suas folhas em sequência.',
+  description: 'A mind map growing from the center: curved branches reach out to topics, which sprout their leaves in sequence.',
   category: 'dados',
-  tags: ['dados', 'ui', 'forma'],
+  tags: ['data', 'ui', 'shape'],
   duration: 8,
   poster: 4.6,
 
   params: {
-    center: { type: 'text', label: 'Tema central', default: 'Lançamento 2027' },
-    branches: { type: 'textarea', label: 'Tópicos (tópico: folha, folha)', rows: 6, default: DEFAULT },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5b2e' },
-    ink: { type: 'color', label: 'Tinta', default: '#1b1c20' },
-    node: { type: 'color', label: 'Cartões', default: '#ffffff' },
-    bg: { type: 'color', label: 'Fundo', default: '#f1eee8' },
-    grid: { type: 'boolean', label: 'Grade de pontos', default: true },
-    pulse: { type: 'boolean', label: 'Pulso nos ramos', default: true },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    center: { type: 'text', label: 'Central topic', default: 'Launch 2027' },
+    branches: { type: 'textarea', label: 'Topics (topic: leaf, leaf)', rows: 6, default: DEFAULT },
+    accent: { type: 'color', label: 'Accent', default: '#ff5b2e' },
+    ink: { type: 'color', label: 'Ink', default: '#1b1c20' },
+    node: { type: 'color', label: 'Cards', default: '#ffffff' },
+    bg: { type: 'color', label: 'Background', default: '#f1eee8' },
+    grid: { type: 'boolean', label: 'Dot grid', default: true },
+    pulse: { type: 'boolean', label: 'Branch pulse', default: true },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {

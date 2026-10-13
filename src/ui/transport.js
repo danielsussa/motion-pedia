@@ -2,7 +2,7 @@ import { el, fmtTime } from './dom.js';
 
 // Play/pause + scrubber + tempo, ligados a um Clock (Player ou CompPlayer).
 export function transport(player) {
-  const playBtn = el('button.btn.play', { onclick: () => player.toggle(), title: 'Play/Pause (espaço)' }, '▶');
+  const playBtn = el('button.btn.play', { onclick: () => player.toggle(), title: 'Play/Pause (space)' }, '▶');
   const time = el('span.time');
   const scrub = el('input.scrub', {
     type: 'range',

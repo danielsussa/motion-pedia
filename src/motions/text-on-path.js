@@ -44,21 +44,21 @@ function unitOf(ctx, text, sep, track) {
 export default {
   id: 'text-on-path',
   title: 'Text on Path',
-  description: 'Texto correndo sobre um círculo, como um selo giratório, ou sobre fitas em S que se cruzam.',
+  description: 'Text running around a circle like a spinning badge, or along crossing S-shaped ribbons.',
   category: 'tipografia',
-  tags: ['tipografia', 'loop', 'alpha', 'overlay'],
+  tags: ['typography', 'loop', 'alpha', 'overlay'],
   duration: 8,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'NOVO' },
-    sep: { type: 'text', label: 'Separador', default: '•' },
-    shape: { type: 'select', label: 'Caminho', options: ['círculo', 'curva S'], default: 'círculo' },
-    size: { type: 'range', label: 'Tamanho', min: 0.2, max: 0.9, step: 0.01, default: 0.56 },
-    speed: { type: 'range', label: 'Voltas por loop', min: 1, max: 4, step: 1, default: 1 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
-    color: { type: 'color', label: 'Texto', default: '#f4f1ea' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0d10' },
+    text: { type: 'text', label: 'Text', default: 'NEW' },
+    sep: { type: 'text', label: 'Separator', default: '•' },
+    shape: { type: 'select', label: 'Path', options: ['círculo', 'curva S'], default: 'círculo' },
+    size: { type: 'range', label: 'Size', min: 0.2, max: 0.9, step: 0.01, default: 0.56 },
+    speed: { type: 'range', label: 'Turns per loop', min: 1, max: 4, step: 1, default: 1 },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
+    color: { type: 'color', label: 'Text', default: '#f4f1ea' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    bg: { type: 'color', label: 'Background', default: '#0d0d10' },
   },
 
   render(ctx, t, { w, h, p, progress }) {

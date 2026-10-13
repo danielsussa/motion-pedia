@@ -49,32 +49,32 @@ function wrap(ctx, text, maxW, max = 2) {
 
 const fmt = new Intl.NumberFormat('pt-BR');
 
-const DEFAULT = `Modo escuro | 412
-Atalhos de teclado | 268
-Exportar em PDF | 187
-Integração com Slack | 133`;
+const DEFAULT = `Dark mode | 412
+Keyboard shortcuts | 268
+PDF export | 187
+Slack integration | 133`;
 
 const T_WIN = 2.9; // revela a vencedora
 
 export default {
   id: 'poll',
   title: 'Poll',
-  description: 'Resultado de enquete: as opções enchem contando a porcentagem e a vencedora ganha cor e um check.',
+  description: 'Poll results: the options fill up as the percentages count, and the winner gets color and a check.',
   category: 'dados',
-  tags: ['dados', 'ui', 'alpha'],
+  tags: ['data', 'ui', 'alpha'],
   duration: 6.5,
   poster: 4,
 
   params: {
-    question: { type: 'text', label: 'Pergunta', default: 'Qual recurso você quer primeiro?' },
-    options: { type: 'textarea', label: 'Opções (texto | votos)', rows: 5, default: DEFAULT },
-    footer: { type: 'text', label: 'Rodapé', default: 'Enquete encerrada' },
-    accent: { type: 'color', label: 'Destaque', default: '#4f7cff' },
+    question: { type: 'text', label: 'Question', default: 'Which feature do you want first?' },
+    options: { type: 'textarea', label: 'Options (text | votes)', rows: 5, default: DEFAULT },
+    footer: { type: 'text', label: 'Footer', default: 'Poll closed' },
+    accent: { type: 'color', label: 'Accent', default: '#4f7cff' },
     panel: { type: 'color', label: 'Card', default: '#16181d' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0b0c0f' },
-    showVotes: { type: 'boolean', label: 'Mostrar votos', default: true },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0b0c0f' },
+    showVotes: { type: 'boolean', label: 'Show votes', default: true },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ p }) {
@@ -176,7 +176,7 @@ export default {
     if (!items.length) {
       ctx.font = INTER(500, ls * 0.9);
       ctx.fillStyle = rgba(p.ink, 0.5);
-      ctx.fillText('Sem opções — use "texto | votos" por linha', pad, y0 + rh * 0.6);
+      ctx.fillText('No options — use "text | votes" per line', pad, y0 + rh * 0.6);
     }
     for (let i = 0; i < items.length; i++) {
       const it = items[i];
@@ -288,13 +288,13 @@ export default {
       ctx.font = INTER(500, 26 * u);
       ctx.fillStyle = rgba(p.ink, 0.5);
       const totalNow = Math.round(total * ease.outExpo(seg(t, 1.15, 2.9)));
-      const parts = [`${fmt.format(totalNow)} votos`];
+      const parts = [`${fmt.format(totalNow)} votes`];
       if (p.footer) parts.push(p.footer);
       ctx.fillText(parts.join('  ·  '), pad, fy);
       // ponto "ao vivo" que vira encerrado na revelação
       const dotR = 7 * u;
       ctx.textAlign = 'right';
-      const tag = winK > 0.5 ? 'RESULTADO' : 'AO VIVO';
+      const tag = winK > 0.5 ? 'RESULTS' : 'LIVE';
       ctx.font = INTER(700, 21 * u);
       ctx.letterSpacing = `${21 * u * 0.12}px`;
       const tw = ctx.measureText(tag).width;

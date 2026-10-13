@@ -40,26 +40,26 @@ const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 export default {
   id: 'chat',
   title: 'Chat Bubbles',
-  description: 'Conversa de mensageiro que se monta sozinha: "digitando…", balões que saltam e mensagens próprias digitadas no campo de texto.',
+  description: 'A messenger conversation that builds itself: "typing…" indicators, bubbles that pop in and your own messages typed into the text field.',
   category: 'dados',
-  tags: ['ui', 'dados', 'tipografia'],
+  tags: ['ui', 'data', 'typography'],
   duration: 12,
   poster: 7.5,
 
   params: {
     script: {
       type: 'textarea',
-      label: 'Conversa (nome: mensagem)',
+      label: 'Conversation (name: message)',
       rows: 6,
       default:
-        'ana: oi! viu o vídeo novo?\neu: vi agora, ficou incrível 🔥\nana: levou 3 dias pra animar tudo\neu: valeu cada frame\nana: bora fazer o próximo juntos?\neu: bora!',
+        'ana: hey! saw the new video?\nme: just did, it looks amazing 🔥\nana: took 3 days to animate it all\nme: worth every frame\nana: wanna make the next one together?\nme: let\'s go!',
     },
-    me: { type: 'text', label: 'Quem sou eu', default: 'eu' },
-    accent: { type: 'color', label: 'Meus balões', default: '#2f6bff' },
-    panel: { type: 'color', label: 'Painel', default: '#f3f3f6' },
-    bg: { type: 'color', label: 'Fundo', default: '#14161b' },
-    speed: { type: 'range', label: 'Ritmo', min: 0.6, max: 1.6, step: 0.05, default: 1 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    me: { type: 'text', label: 'Me (your name)', default: 'me' },
+    accent: { type: 'color', label: 'My bubbles', default: '#2f6bff' },
+    panel: { type: 'color', label: 'Panel', default: '#f3f3f6' },
+    bg: { type: 'color', label: 'Background', default: '#14161b' },
+    speed: { type: 'range', label: 'Rhythm', min: 0.6, max: 1.6, step: 0.05, default: 1 },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ p, duration }) {
@@ -209,12 +209,12 @@ export default {
       ctx.globalAlpha = alpha * clamp(typingK * 2 - 1);
       ctx.fillStyle = p.accent;
       const n = Math.floor(t * 3) % 4;
-      ctx.fillText(`${group ? cap(typingWho) + ' está ' : ''}digitando${'.'.repeat(n)}`, sx, sy);
+      ctx.fillText(`${group ? cap(typingWho) + ' is ' : ''}typing${'.'.repeat(n)}`, sx, sy);
     }
     if (typingK < 0.99) {
       ctx.globalAlpha = alpha * clamp(1 - typingK * 2);
       ctx.fillStyle = MUTED;
-      ctx.fillText(group ? `${others.length + 1} participantes` : 'online', sx, sy);
+      ctx.fillText(group ? `${others.length + 1} participants` : 'online', sx, sy);
     }
     ctx.globalAlpha = alpha;
 
@@ -247,7 +247,7 @@ export default {
       }
     } else {
       ctx.fillStyle = '#a3a5ad';
-      ctx.fillText('Mensagem', fx + 24 * u, fy + fh / 2 + 1 * u);
+      ctx.fillText('Message', fx + 24 * u, fy + fh / 2 + 1 * u);
     }
     ctx.restore();
     // botão enviar

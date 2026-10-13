@@ -58,19 +58,19 @@ void main() {
 export default {
   id: 'plasma',
   title: 'Plasma',
-  description: 'Plasma retrô de demoscene: ondas de seno fundidas, com uma paleta cíclica de três cores girando em loop.',
+  description: 'Retro demoscene plasma: blended sine waves with a cycling three-color palette, in a loop.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'gradiente', 'shader'],
+  tags: ['background', 'loop', 'gradient', 'shader'],
   duration: 10,
 
   params: {
-    colorA: { type: 'color', label: 'Cor A', default: '#120c2e' },
-    colorB: { type: 'color', label: 'Cor B', default: '#ff4f7b' },
-    colorC: { type: 'color', label: 'Cor C', default: '#ffc46b' },
-    scale: { type: 'range', label: 'Escala', min: 0.4, max: 4, step: 0.05, default: 2.2 },
-    cycles: { type: 'range', label: 'Voltas da paleta', min: 0, max: 4, step: 1, default: 1 },
-    bands: { type: 'range', label: 'Faixas (0 = suave)', min: 0, max: 24, step: 1, default: 0 },
-    pixel: { type: 'range', label: 'Pixels (0 = liso)', min: 0, max: 240, step: 4, default: 0 },
+    colorA: { type: 'color', label: 'Color A', default: '#120c2e' },
+    colorB: { type: 'color', label: 'Color B', default: '#ff4f7b' },
+    colorC: { type: 'color', label: 'Color C', default: '#ffc46b' },
+    scale: { type: 'range', label: 'Scale', min: 0.4, max: 4, step: 0.05, default: 2.2 },
+    cycles: { type: 'range', label: 'Palette cycles', min: 0, max: 4, step: 1, default: 1 },
+    bands: { type: 'range', label: 'Bands (0 = smooth)', min: 0, max: 24, step: 1, default: 0 },
+    pixel: { type: 'range', label: 'Pixels (0 = smooth)', min: 0, max: 240, step: 4, default: 0 },
     scanlines: { type: 'range', label: 'Scanlines', min: 0, max: 1, step: 0.01, default: 0.25 },
   },
 

@@ -15,7 +15,7 @@ const MIMES = ['video/mp4;codecs=avc1.640033', 'video/mp4', 'video/webm;codecs=v
 // Grava uma passada completa do motion em tempo real a partir do canvas do player.
 export async function exportVideo(player, name, { fps = 60, bitrate = 20_000_000 } = {}) {
   const mimeType = MIMES.find((m) => MediaRecorder.isTypeSupported(m));
-  if (!mimeType) throw new Error('Este navegador não suporta MediaRecorder.');
+  if (!mimeType) throw new Error('This browser does not support MediaRecorder.');
   const stream = player.canvas.captureStream(fps);
   const rec = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: bitrate });
   const chunks = [];

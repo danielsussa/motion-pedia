@@ -13,21 +13,21 @@ const REC = 240; // amostras por segundo de simulação
 export default {
   id: 'marble-run',
   title: 'Marble Run',
-  description: 'Bolinhas descendo trilhos em zigue-zague, empurrando portinholas e tocando sinos no caminho.',
+  description: 'Marbles roll down zigzag tracks, pushing flaps and ringing bells along the way.',
   category: 'formas',
-  tags: ['forma', 'loop', 'simulação'],
+  tags: ['shape', 'loop', 'simulation'],
   duration: 10,
   poster: 4.1,
 
   params: {
-    bg: { type: 'color', label: 'Fundo', default: '#ece6db' },
-    ink: { type: 'color', label: 'Trilhos', default: '#1d1c22' },
-    accent: { type: 'color', label: 'Bolinhas', default: '#ff5a36' },
-    count: { type: 'range', label: 'Bolinhas', min: 1, max: 5, step: 1, default: 3 },
-    rails: { type: 'range', label: 'Densidade de trilhos', min: 0.6, max: 1.5, step: 0.05, default: 1 },
-    size: { type: 'range', label: 'Tamanho da bolinha', min: 0.6, max: 1.5, step: 0.05, default: 1 },
-    flaps: { type: 'boolean', label: 'Portinholas', default: true },
-    pegboard: { type: 'boolean', label: 'Painel de pinos', default: true },
+    bg: { type: 'color', label: 'Background', default: '#ece6db' },
+    ink: { type: 'color', label: 'Tracks', default: '#1d1c22' },
+    accent: { type: 'color', label: 'Marble color', default: '#ff5a36' },
+    count: { type: 'range', label: 'Marbles', min: 1, max: 5, step: 1, default: 3 },
+    rails: { type: 'range', label: 'Track density', min: 0.6, max: 1.5, step: 0.05, default: 1 },
+    size: { type: 'range', label: 'Marble size', min: 0.6, max: 1.5, step: 0.05, default: 1 },
+    flaps: { type: 'boolean', label: 'Flaps', default: true },
+    pegboard: { type: 'boolean', label: 'Pegboard', default: true },
   },
 
   setup({ w, h, p }) {

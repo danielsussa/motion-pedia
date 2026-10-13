@@ -95,20 +95,20 @@ function fitFont(ctx, text, maxW, size, font) {
 export default {
   id: 'pix-checkout',
   title: 'Pix Checkout',
-  description: 'Fluxo de pagamento Pix num celular: valor, QR Code com linha de leitura, "Pagamento aprovado" com check e comprovante.',
+  description: 'A Pix payment flow on a phone: amount, QR code with a scan line, "Payment approved" with a check, and the receipt.',
   category: 'dados',
-  tags: ['ui', 'dados'],
+  tags: ['ui', 'data'],
   duration: 9,
   poster: 6.6,
 
   params: {
-    headline: { type: 'text', label: 'Título', default: 'Pagamento em segundos' },
-    merchant: { type: 'text', label: 'Recebedor', default: 'Café Aurora' },
-    amount: { type: 'text', label: 'Valor (R$)', default: '128,90' },
-    date: { type: 'text', label: 'Data do comprovante', default: '12/10/2026 · 14:32' },
-    accent: { type: 'color', label: 'Destaque', default: '#0fa08c' },
-    ink: { type: 'color', label: 'Texto', default: '#14181c' },
-    bg: { type: 'color', label: 'Fundo', default: '#eceeed' },
+    headline: { type: 'text', label: 'Title', default: 'Payment in seconds' },
+    merchant: { type: 'text', label: 'Payee', default: 'Café Aurora' },
+    amount: { type: 'text', label: 'Amount (R$)', default: '128,90' },
+    date: { type: 'text', label: 'Receipt date', default: '12/10/2026 · 14:32' },
+    accent: { type: 'color', label: 'Accent', default: '#0fa08c' },
+    ink: { type: 'color', label: 'Text', default: '#14181c' },
+    bg: { type: 'color', label: 'Background', default: '#eceeed' },
     seed: { type: 'range', label: 'Seed (QR/ID)', min: 1, max: 99, step: 1, default: 12 },
   },
 
@@ -212,7 +212,7 @@ export default {
         ctx.fillText(last, head.x, y + (1 - t2) * fs * 1.2);
         ctx.restore();
         // passos
-        const steps = ['Escaneie o QR Code', 'Confirme no app do banco', 'Receba o comprovante'];
+        const steps = ['Scan the QR code', 'Confirm in your bank app', 'Get the receipt'];
         const ss = fs * 0.32;
         let sy = y + fs * 0.95;
         for (let i = 0; i < 3; i++) {
@@ -349,7 +349,7 @@ export default {
       ctx.font = INTER(650, 17);
       ctx.fillStyle = ink;
       ctx.textAlign = 'center';
-      ctx.fillText('Pagar com Pix', SW / 2 + 10, 84);
+      ctx.fillText('Pay with Pix', SW / 2 + 10, 84);
       diamond(ctx, SW / 2 - 64, 84, 15, p.accent, '#ffffff');
       // recebedor
       const ry = 128 + (1 - e(0.55)) * 16;
@@ -373,7 +373,7 @@ export default {
       const vy = 236 + (1 - e(0.65)) * 16;
       ctx.font = INTER(500, 14);
       ctx.fillStyle = gray;
-      ctx.fillText('Valor a pagar', SW / 2, vy);
+      ctx.fillText('Amount due', SW / 2, vy);
       const cnt = ease.outExpo(seg(t, 0.7, 2.0));
       ctx.font = INTER(800, 40);
       ctx.letterSpacing = '-1.2px';
@@ -499,13 +499,13 @@ export default {
       ctx.textAlign = 'right';
       ctx.font = INTER(650, 14);
       ctx.fillStyle = p.accent;
-      ctx.fillText('Copiar código', SW - 58, cy2 + 25);
+      ctx.fillText('Copy code', SW - 58, cy2 + 25);
       ctx.textAlign = 'center';
       ctx.globalAlpha = pa * (1 - s1Out) * o(1.45);
       const left = Math.max(0, 600 - Math.floor(t));
       ctx.font = INTER(500, 13);
       ctx.fillStyle = gray;
-      ctx.fillText(`Expira em ${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`, SW / 2, cy2 + 84);
+      ctx.fillText(`Expires in ${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`, SW / 2, cy2 + 84);
       ctx.restore();
     }
 
@@ -534,7 +534,7 @@ export default {
         ctx.font = INTER(550, 16);
         ctx.fillStyle = gray;
         ctx.textAlign = 'center';
-        ctx.fillText('Processando pagamento…', SW / 2, ccy + R + 44);
+        ctx.fillText('Processing payment…', SW / 2, ccy + R + 44);
       }
       // aprovado
       const ck = spring(seg(t, 4.0, 4.7), 0.3);
@@ -589,7 +589,7 @@ export default {
         const ty = ccy + lerp(98, 66, mv) + (1 - tA) * 18;
         ctx.font = INTER(750, lerp(25, 21, mv));
         ctx.fillStyle = ink;
-        ctx.fillText('Pagamento aprovado', SW / 2, ty);
+        ctx.fillText('Payment approved', SW / 2, ty);
         const aA = ease.outExpo(seg(t, 4.42, 5.3));
         ctx.globalAlpha = pa * clamp(seg(t, 4.42, 4.72));
         ctx.font = INTER(800, lerp(36, 30, mv));
@@ -599,7 +599,7 @@ export default {
         ctx.globalAlpha = pa * clamp(seg(t, 4.55, 4.85)) * (1 - mv);
         ctx.font = INTER(500, 15);
         ctx.fillStyle = gray;
-        ctx.fillText(`para ${p.merchant}`, SW / 2, ty + 82);
+        ctx.fillText(`to ${p.merchant}`, SW / 2, ty + 82);
       }
 
       // comprovante
@@ -616,15 +616,15 @@ export default {
         ctx.font = INTER(700, 13);
         ctx.fillStyle = gray;
         ctx.letterSpacing = '1.2px';
-        ctx.fillText('COMPROVANTE', 44, top + 30);
+        ctx.fillText('RECEIPT', 44, top + 30);
         ctx.letterSpacing = '0px';
         diamond(ctx, SW - 52, top + 30, 15, p.accent, '#f4f6f5');
         const rows = [
-          ['Valor', money(value)],
-          ['Para', p.merchant],
-          ['Instituição', 'Banco Exemplo S.A.'],
-          ['Data', p.date],
-          ['ID da transação', state.id],
+          ['Amount', money(value)],
+          ['To', p.merchant],
+          ['Institution', 'Example Bank S.A.'],
+          ['Date', p.date],
+          ['Transaction ID', state.id],
         ];
         for (let i = 0; i < rows.length; i++) {
           const a = 5.75 + i * 0.09;
@@ -668,7 +668,7 @@ export default {
           ctx.fillStyle = '#ffffff';
           ctx.textAlign = 'center';
           ctx.font = INTER(650, 16);
-          ctx.fillText('Compartilhar comprovante', SW / 2, by + 27);
+          ctx.fillText('Share receipt', SW / 2, by + 27);
         }
       }
     }

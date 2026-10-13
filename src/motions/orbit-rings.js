@@ -3,20 +3,20 @@ import { TAU, mixHex } from '../lib/anim.js';
 export default {
   id: 'orbit-rings',
   title: 'Orbit Rings',
-  description: 'Arcos concêntricos girando em velocidades diferentes, respirando de tamanho. Loop perfeito.',
+  description: 'Concentric arcs spinning at different speeds and breathing in size. Seamless loop.',
   category: 'formas',
-  tags: ['forma', 'loop', 'loader'],
+  tags: ['shape', 'loop', 'loader'],
   duration: 6,
 
   params: {
-    rings: { type: 'range', label: 'Anéis', min: 3, max: 18, step: 1, default: 9 },
-    thickness: { type: 'range', label: 'Espessura', min: 2, max: 40, step: 1, default: 12 },
-    gap: { type: 'range', label: 'Distância', min: 4, max: 60, step: 1, default: 22 },
-    colorA: { type: 'color', label: 'Cor interna', default: '#ffd166' },
-    colorB: { type: 'color', label: 'Cor externa', default: '#ef476f' },
-    bg: { type: 'color', label: 'Fundo', default: '#101014' },
-    track: { type: 'boolean', label: 'Trilho', default: true },
-    glow: { type: 'boolean', label: 'Brilho', default: true },
+    rings: { type: 'range', label: 'Rings', min: 3, max: 18, step: 1, default: 9 },
+    thickness: { type: 'range', label: 'Thickness', min: 2, max: 40, step: 1, default: 12 },
+    gap: { type: 'range', label: 'Gap', min: 4, max: 60, step: 1, default: 22 },
+    colorA: { type: 'color', label: 'Inner color', default: '#ffd166' },
+    colorB: { type: 'color', label: 'Outer color', default: '#ef476f' },
+    bg: { type: 'color', label: 'Background', default: '#101014' },
+    track: { type: 'boolean', label: 'Track', default: true },
+    glow: { type: 'boolean', label: 'Glow', default: true },
   },
 
   render(ctx, t, { w, h, p, px, progress: u }) {

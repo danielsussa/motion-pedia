@@ -1,22 +1,26 @@
 # motion·pedia
 
-Biblioteca de motion graphics em JavaScript puro (Canvas 2D + WebGL compartilhado), com galeria, editor de parâmetros
-e renderizador frame a frame para MP4/ProRes com alpha.
+**209 motion graphics in pure JavaScript** (Canvas 2D + a shared WebGL context), with a gallery, a live parameter
+editor and a frame-by-frame renderer to MP4 or ProRes with alpha.
 
-- **209 motions** em 7 categorias: tipografia, fundos & loops, formas & geometria, partículas & simulação,
-  transições & overlays, UI/dados/broadcast e imagem & foto. Todos funcionam em 16:9, 9:16, 1:1 e 4:5.
-- **Composições**: filmes com cenas, câmera 2.5D e UI em DOM/CSS, que usam os motions como camadas.
-- **Renderizador** (`scripts/render.mjs`): Chrome headless + ffmpeg, com motion blur por sub-amostras e saída com alpha.
+**Try it in the browser: https://dekah.tech/motion-pedia/**
+
+- **209 motions** in 7 categories: typography, backgrounds & loops, shapes & geometry, particles & simulation,
+  transitions & overlays, UI/data/broadcast and image & photo. Every one works in 16:9, 9:16, 1:1 and 4:5.
+- **Compositions**: short films with scenes, a 2.5D camera and DOM/CSS UI, using the motions as layers.
+- **Renderer** (`scripts/render.mjs`): headless Chrome + ffmpeg, motion blur by sub-sampling, alpha output. Every
+  `render` is a pure function of time, so frames are exact no matter how slow the machine is.
 
 ```bash
 npm install
-npm run dev                                   # galeria em http://127.0.0.1:5179
-npm run render -- --motion aurora --fps 30    # vídeo em renders/
+npm run dev                                   # gallery at http://127.0.0.1:5179 (with the Render button)
+npm run render -- --motion aurora --fps 30    # video in renders/
 ```
 
-Requer Google Chrome e ffmpeg instalados para o renderizador.
+The renderer needs Google Chrome and ffmpeg installed. The online gallery is a static build: you can play with every
+parameter and record a quick video in the browser; the frame-by-frame render runs locally.
 
-Como criar um motion, as regras do contrato (`render` é função pura do tempo) e as armadilhas conhecidas estão em
-[CLAUDE.md](CLAUDE.md). Planejamento e estudos em [docs/](docs/).
+How to write a motion, the contract rules and known pitfalls are in [CLAUDE.md](CLAUDE.md) (Portuguese), plans and
+studies in [docs/](docs/).
 
-Fotos de exemplo: Unsplash (ver [public/samples/CREDITS.md](public/samples/CREDITS.md)).
+Sample photos: Unsplash (see [public/samples/CREDITS.md](public/samples/CREDITS.md)).

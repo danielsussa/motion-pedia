@@ -17,22 +17,22 @@ const MORPHS = [[1.6, 3.0], [4.6, 6.0], [7.6, 9.0]];
 export default {
   id: 'font-morph',
   title: 'Font Morph',
-  description: 'Uma palavra passa de serifada itálica a grotesca e a mono, letra por letra, por uma cortina inclinada com fio de destaque.',
+  description: 'A word shifts from italic serif to grotesque to mono, letter by letter, behind a slanted curtain with an accent line.',
   category: 'tipografia',
-  tags: ['tipografia', 'loop', 'transição'],
+  tags: ['typography', 'loop', 'transition'],
   duration: 9,
   poster: 2.35,
 
   params: {
-    text: { type: 'text', label: 'Palavra', default: 'Tipografia' },
-    size: { type: 'range', label: 'Tamanho', min: 0.1, max: 0.4, step: 0.005, default: 0.22 },
+    text: { type: 'text', label: 'Word', default: 'Typography' },
+    size: { type: 'range', label: 'Size', min: 0.1, max: 0.4, step: 0.005, default: 0.22 },
     spread: { type: 'range', label: 'Stagger (s)', min: 0, max: 1, step: 0.05, default: 0.5 },
-    slant: { type: 'range', label: 'Inclinação da cortina', min: -0.6, max: 0.6, step: 0.05, default: 0.25 },
-    labels: { type: 'boolean', label: 'Nome da fonte', default: true },
-    color: { type: 'color', label: 'Texto', default: '#16151a' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#f1ece4' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    slant: { type: 'range', label: 'Curtain slant', min: -0.6, max: 0.6, step: 0.05, default: 0.25 },
+    labels: { type: 'boolean', label: 'Font name', default: true },
+    color: { type: 'color', label: 'Text', default: '#16151a' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    bg: { type: 'color', label: 'Background', default: '#f1ece4' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p }) {

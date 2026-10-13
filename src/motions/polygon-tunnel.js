@@ -6,21 +6,21 @@ import { TAU, fract, mixHex, rgba } from '../lib/anim.js';
 export default {
   id: 'polygon-tunnel',
   title: 'Polygon Tunnel',
-  description: 'Túnel infinito de polígonos girando em espiral em direção à câmera, com curvas suaves. Loop perfeito.',
+  description: 'An endless tunnel of polygons spiraling toward the camera along smooth curves. Seamless loop.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'forma', '3d'],
+  tags: ['background', 'loop', 'shape', '3d'],
   duration: 8,
 
   params: {
-    sides: { type: 'range', label: 'Lados', min: 3, max: 10, step: 1, default: 6 },
-    style: { type: 'select', label: 'Estilo', options: ['linhas', 'sólido'], default: 'linhas' },
-    colorA: { type: 'color', label: 'Cor perto', default: '#ff4d6d' },
-    colorB: { type: 'color', label: 'Cor longe', default: '#5b6cff' },
-    bg: { type: 'color', label: 'Fundo', default: '#07060c' },
-    rings: { type: 'range', label: 'Anéis', min: 8, max: 40, step: 1, default: 24 },
-    speed: { type: 'range', label: 'Velocidade', min: 1, max: 6, step: 1, default: 2 },
-    twist: { type: 'range', label: 'Torção', min: 0, max: 2, step: 0.01, default: 0.8 },
-    bend: { type: 'range', label: 'Curva', min: 0, max: 1, step: 0.01, default: 0.4 },
+    sides: { type: 'range', label: 'Sides', min: 3, max: 10, step: 1, default: 6 },
+    style: { type: 'select', label: 'Style', options: ['linhas', 'sólido'], default: 'linhas' },
+    colorA: { type: 'color', label: 'Near color', default: '#ff4d6d' },
+    colorB: { type: 'color', label: 'Far color', default: '#5b6cff' },
+    bg: { type: 'color', label: 'Background', default: '#07060c' },
+    rings: { type: 'range', label: 'Rings', min: 8, max: 40, step: 1, default: 24 },
+    speed: { type: 'range', label: 'Speed', min: 1, max: 6, step: 1, default: 2 },
+    twist: { type: 'range', label: 'Twist', min: 0, max: 2, step: 0.01, default: 0.8 },
+    bend: { type: 'range', label: 'Curve', min: 0, max: 1, step: 0.01, default: 0.4 },
   },
 
   render(ctx, t, { w, h, p, progress: u }) {

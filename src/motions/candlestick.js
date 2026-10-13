@@ -142,26 +142,26 @@ function makeSeries(n, start, vol, trend, seed) {
 export default {
   id: 'candlestick',
   title: 'Candlestick',
-  description: 'Gráfico de candles de bolsa em que os candles entram um a um com escala se ajustando, média móvel, volume e etiqueta do preço ao vivo.',
+  description: 'A stock candlestick chart: candles enter one by one as the scale adjusts, with moving average, volume and a live price tag.',
   category: 'dados',
-  tags: ['dados', 'ui', 'broadcast'],
+  tags: ['data', 'ui', 'broadcast'],
   duration: 9,
   poster: 6.2,
 
   params: {
     title: { type: 'text', label: 'Ticker', default: 'MPDA3' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Motion Pédia ON · intradiário, 5 min' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'Motion Pedia · intraday, 5 min' },
     count: { type: 'range', label: 'Candles', min: 16, max: 90, step: 1, default: 44 },
-    start: { type: 'range', label: 'Preço inicial', min: 1, max: 500, step: 0.01, default: 32.4 },
-    volatility: { type: 'range', label: 'Volatilidade (%)', min: 0.2, max: 4, step: 0.1, default: 1.1 },
-    trend: { type: 'range', label: 'Tendência (%/candle)', min: -0.6, max: 0.6, step: 0.01, default: 0.12 },
+    start: { type: 'range', label: 'Starting price', min: 1, max: 500, step: 0.01, default: 32.4 },
+    volatility: { type: 'range', label: 'Volatility (%)', min: 0.2, max: 4, step: 0.1, default: 1.1 },
+    trend: { type: 'range', label: 'Trend (%/candle)', min: -0.6, max: 0.6, step: 0.01, default: 0.12 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 999, step: 1, default: 7 },
-    prefix: { type: 'text', label: 'Prefixo do preço', default: 'R$ ' },
-    ma: { type: 'boolean', label: 'Média móvel (9)', default: true },
-    up: { type: 'color', label: 'Alta', default: '#2fd38c' },
-    down: { type: 'color', label: 'Baixa', default: '#ff5d5d' },
-    ink: { type: 'color', label: 'Texto', default: '#eef0f2' },
-    bg: { type: 'color', label: 'Fundo', default: '#0b0e12' },
+    prefix: { type: 'text', label: 'Price prefix', default: 'R$ ' },
+    ma: { type: 'boolean', label: 'Moving average (9)', default: true },
+    up: { type: 'color', label: 'Up', default: '#2fd38c' },
+    down: { type: 'color', label: 'Down', default: '#ff5d5d' },
+    ink: { type: 'color', label: 'Text', default: '#eef0f2' },
+    bg: { type: 'color', label: 'Background', default: '#0b0e12' },
   },
 
   setup({ w, h, px, p }) {
@@ -360,7 +360,7 @@ export default {
         ctx.textAlign = 'left';
         ctx.textBaseline = 'alphabetic';
         ctx.fillStyle = rgba(p.ink, 0.45 * e);
-        ctx.fillText('MM 9', x0, top - ts * 0.9);
+        ctx.fillText('MA 9', x0, top - ts * 0.9);
       }
     }
 

@@ -13,6 +13,7 @@ public/labirinto/
 
 # trajetória (dekah.tech, outra sessão): fora do repositório público
 src/compositions/_devlife.js
+src/compositions/_devlife-en.js
 src/compositions/devlife-*.js
 public/devlife/
 

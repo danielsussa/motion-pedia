@@ -12,25 +12,25 @@ const W = 1920;
 const H = 1080;
 const BOARD = { x: 160, y: 90 }; // posição do app no plano da câmera
 
-const DAYS = [['Seg', 12], ['Ter', 13], ['Qua', 14], ['Qui', 15], ['Sex', 16]];
+const DAYS = [['Mon', 12], ['Tue', 13], ['Wed', 14], ['Thu', 15], ['Fri', 16]];
 const TASKS = [
-  ...[0, 1, 2, 3, 4].map((d) => ({ id: `focus${d}`, day: d, start: 8.5, dur: 1.5, title: 'Foco profundo', time: '08:30 – 10:00', variant: 'dark' })),
+  ...[0, 1, 2, 3, 4].map((d) => ({ id: `focus${d}`, day: d, start: 8.5, dur: 1.5, title: 'Deep focus', time: '08:30 – 10:00', variant: 'dark' })),
   { id: 'daily', day: 0, start: 10.5, dur: 1, title: 'Daily', time: '10:30' },
-  { id: 'design', day: 1, start: 11, dur: 1, title: 'Review de design', time: '11:00', variant: 'accent' },
-  { id: 'sync', day: 2, start: 11, dur: 1, title: 'Sync de produto', time: '11:00' },
-  { id: 'client', day: 3, start: 11, dur: 1, title: 'Call com cliente', time: '11:00' },
+  { id: 'design', day: 1, start: 11, dur: 1, title: 'Design review', time: '11:00', variant: 'accent' },
+  { id: 'sync', day: 2, start: 11, dur: 1, title: 'Product sync', time: '11:00' },
+  { id: 'client', day: 3, start: 11, dur: 1, title: 'Client call', time: '11:00' },
   { id: 'retro', day: 4, start: 10.5, dur: 1.5, title: 'Retro', time: '10:30' },
-  ...[0, 1, 2, 3, 4].map((d) => ({ id: `lunch${d}`, day: d, start: 12, dur: 1, title: 'Almoço', variant: 'hatch' })),
-  { id: 'plan', day: 0, start: 14, dur: 1.5, title: 'Planejamento', time: '14:00' },
-  { id: 'hire', day: 1, start: 13.5, dur: 1, title: 'Entrevista', time: '13:30' },
+  ...[0, 1, 2, 3, 4].map((d) => ({ id: `lunch${d}`, day: d, start: 12, dur: 1, title: 'Lunch', variant: 'hatch' })),
+  { id: 'plan', day: 0, start: 14, dur: 1.5, title: 'Planning', time: '14:00' },
+  { id: 'hire', day: 1, start: 13.5, dur: 1, title: 'Interview', time: '13:30' },
   { id: 'kickoff', day: 1, start: 9.5, dur: 1, title: 'Kickoff', time: '15:30 – 16:30', variant: 'outline' },
   { id: 'one', day: 2, start: 13.5, dur: 1, title: '1:1 · Marina', time: '13:30' },
   { id: 'road', day: 2, start: 15, dur: 1.5, title: 'Roadmap Q4', time: '15:00' },
-  { id: 'metrics', day: 3, start: 13.5, dur: 1, title: 'Métricas', time: '13:30' },
-  { id: 'pr', day: 3, start: 15, dur: 1, title: 'Revisão de PR', time: '15:00' },
-  { id: 'deck', day: 4, start: 14, dur: 2, title: 'Deck pronto', time: '14:00 – 16:00', variant: 'accent' },
-  { id: 'gym1', day: 1, start: 17, dur: 1, title: 'Academia', time: '17:00', variant: 'outline' },
-  { id: 'gym2', day: 3, start: 17, dur: 1, title: 'Academia', time: '17:00', variant: 'outline' },
+  { id: 'metrics', day: 3, start: 13.5, dur: 1, title: 'Metrics', time: '13:30' },
+  { id: 'pr', day: 3, start: 15, dur: 1, title: 'PR review', time: '15:00' },
+  { id: 'deck', day: 4, start: 14, dur: 2, title: 'Deck ready', time: '14:00 – 16:00', variant: 'accent' },
+  { id: 'gym1', day: 1, start: 17, dur: 1, title: 'Gym', time: '17:00', variant: 'outline' },
+  { id: 'gym2', day: 3, start: 17, dur: 1, title: 'Gym', time: '17:00', variant: 'outline' },
 ];
 
 const parseBold = (s) => s.split(/(\*[^*]+\*)/).filter(Boolean).map((t) => (t.startsWith('*') ? { t: t.slice(1, -1), b: true } : { t }));
@@ -71,25 +71,25 @@ function words(text, style) {
 export default {
   id: 'pauta-launch',
   title: 'Launch Film — Pauta',
-  description: 'Filme de lançamento de app (26 s): parallax, match-cut pelo ponto, prompt digitado, UI em 3D e pull-back infinito.',
-  tags: ['launch', 'ui', 'câmera'],
+  description: 'App launch film (26 s): parallax, a match-cut on the dot, a typed prompt, 3D UI and an infinite pull-back.',
+  tags: ['launch', 'ui', 'camera'],
   duration: 26,
   size: { w: W, h: H },
   poster: 12.9,
 
   params: {
-    brand: { type: 'text', label: 'Marca', default: 'pauta' },
-    accent: { type: 'color', label: 'Cor da marca', default: '#ff4f1f' },
-    ink: { type: 'color', label: 'Tinta', default: '#151515' },
-    paper: { type: 'color', label: 'Papel', default: '#f3f2ee' },
-    line1: { type: 'text', label: 'Gancho (linha 1)', default: 'Tarefas demais.' },
-    line2: { type: 'text', label: 'Gancho (linha 2)', default: 'Tempo de menos.' },
-    tagline: { type: 'text', label: 'Tagline', default: 'Sua semana, no lugar.' },
-    prompt: { type: 'text', label: 'Prompt (*negrito*)', default: 'Planeja minha semana: *academia ter e qui*, *deck até sexta*.' },
-    featA: { type: 'text', label: 'Feature 1', default: 'Reuniões | se ajeitam.' },
-    featB: { type: 'text', label: 'Feature 2', default: 'Manhãs | ficam suas.' },
-    featC: { type: 'text', label: 'Feature 3', default: 'Imprevistos | também cabem.' },
-    closing: { type: 'text', label: 'Fechamento', default: 'Tudo cabe' },
+    brand: { type: 'text', label: 'Brand', default: 'pauta' },
+    accent: { type: 'color', label: 'Brand color', default: '#ff4f1f' },
+    ink: { type: 'color', label: 'Ink', default: '#151515' },
+    paper: { type: 'color', label: 'Paper', default: '#f3f2ee' },
+    line1: { type: 'text', label: 'Hook (line 1)', default: 'Too many tasks.' },
+    line2: { type: 'text', label: 'Hook (line 2)', default: 'Too little time.' },
+    tagline: { type: 'text', label: 'Tagline', default: 'Your week, in place.' },
+    prompt: { type: 'text', label: 'Prompt (*bold*)', default: 'Plan my week: *gym Tue and Thu*, *deck by Friday*.' },
+    featA: { type: 'text', label: 'Feature 1', default: 'Meetings | sort themselves.' },
+    featB: { type: 'text', label: 'Feature 2', default: 'Mornings | stay yours.' },
+    featC: { type: 'text', label: 'Feature 3', default: 'Surprises | fit in too.' },
+    closing: { type: 'text', label: 'Closing', default: 'It all fits' },
     url: { type: 'text', label: 'URL', default: 'pauta.app' },
   },
 
@@ -120,7 +120,7 @@ export default {
     const taskList = [...board.taskEls.values()];
     const kickoff = board.taskEls.get('kickoff');
     const pr = board.taskEls.get('pr');
-    const urgent = taskCard({ title: 'Bug urgente', time: '15:00', variant: 'accent', w: board.colW - 14, h: board.hourH - 8 });
+    const urgent = taskCard({ title: 'Urgent bug', time: '15:00', variant: 'accent', w: board.colW - 14, h: board.hourH - 8 });
     set(urgent, { left: `${board.x(3) + 7}px`, top: `${board.y(15) + 4}px` });
     board.el.append(urgent);
 
@@ -128,7 +128,7 @@ export default {
     const s1wrap = el('div', { style: abs({ perspective: '1600px' }) });
     const s1 = el('div', { style: abs({ transformOrigin: '960px 540px' }) });
     s1wrap.append(s1);
-    const CARD_NAMES = ['Sync', 'Roadmap', 'Demo', 'Offsite', 'Design crit', 'Kickoff', '1:1', 'Pricing', 'QBR prep', 'Vendor call', 'Hiring panel', 'Board prep', 'Métricas', 'Launch sync', 'Quick chat', 'All-hands', 'Interview', 'Retro', 'Deep work', 'Budget', 'Onboarding', 'Standup'];
+    const CARD_NAMES = ['Sync', 'Roadmap', 'Demo', 'Offsite', 'Design crit', 'Kickoff', '1:1', 'Pricing', 'QBR prep', 'Vendor call', 'Hiring panel', 'Board prep', 'Metrics', 'Launch sync', 'Quick chat', 'All-hands', 'Interview', 'Retro', 'Deep work', 'Budget', 'Onboarding', 'Standup'];
     const cards = CARD_NAMES.map((name, i) => {
       const depth = i % 3;
       const variant = R() < 0.22 ? 'dark' : R() < 0.3 ? 'outline' : '';

@@ -7,19 +7,19 @@ const BUCKETS = 10;
 export default {
   id: 'starfield',
   title: 'Starfield Warp',
-  description: 'Estrelas esticadas em velocidade de dobra, vindo do centro em direção à câmera. Loop perfeito.',
+  description: 'Stars stretched at warp speed, streaming from the center toward the camera. Seamless loop.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'partículas', '3d'],
+  tags: ['background', 'loop', 'particles', '3d'],
   duration: 6,
 
   params: {
-    color: { type: 'color', label: 'Estrelas', default: '#eaf2ff' },
-    accent: { type: 'color', label: 'Destaque', default: '#7aa8ff' },
-    bg: { type: 'color', label: 'Fundo', default: '#05060d' },
-    count: { type: 'range', label: 'Quantidade', min: 100, max: 1500, step: 10, default: 700 },
-    speed: { type: 'range', label: 'Velocidade', min: 1, max: 6, step: 1, default: 2 },
-    trail: { type: 'range', label: 'Rastro', min: 0, max: 1, step: 0.01, default: 0.55 },
-    glow: { type: 'range', label: 'Brilho central', min: 0, max: 1, step: 0.01, default: 0.5 },
+    color: { type: 'color', label: 'Stars', default: '#eaf2ff' },
+    accent: { type: 'color', label: 'Accent', default: '#7aa8ff' },
+    bg: { type: 'color', label: 'Background', default: '#05060d' },
+    count: { type: 'range', label: 'Count', min: 100, max: 1500, step: 10, default: 700 },
+    speed: { type: 'range', label: 'Speed', min: 1, max: 6, step: 1, default: 2 },
+    trail: { type: 'range', label: 'Trail', min: 0, max: 1, step: 0.01, default: 0.55 },
+    glow: { type: 'range', label: 'Center glow', min: 0, max: 1, step: 0.01, default: 0.5 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 3 },
   },
 

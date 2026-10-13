@@ -7,19 +7,19 @@ const T_WORD = N * STEP; // 3 s: flash + palavra final
 export default {
   id: 'countdown',
   title: 'Countdown',
-  description: 'Contagem 3-2-1 com anel que se esvazia a cada segundo, pulsos e flash na palavra final.',
+  description: 'A 3-2-1 countdown with a ring that drains every second, pulses and a flash on the final word.',
   category: 'dados',
-  tags: ['tipografia', 'intro', 'ui'],
+  tags: ['typography', 'intro', 'ui'],
   duration: 4.6,
   poster: 1.45,
 
   params: {
-    word: { type: 'text', label: 'Palavra final', default: 'JÁ!' },
-    style: { type: 'select', label: 'Estilo', options: ['anel', 'filme'], default: 'anel' },
-    flash: { type: 'boolean', label: 'Flash no final', default: true },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    ink: { type: 'color', label: 'Texto', default: '#f4f1ea' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0d10' },
+    word: { type: 'text', label: 'Final word', default: 'GO!' },
+    style: { type: 'select', label: 'Style', options: ['anel', 'filme'], default: 'anel' },
+    flash: { type: 'boolean', label: 'Flash at the end', default: true },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    ink: { type: 'color', label: 'Text', default: '#f4f1ea' },
+    bg: { type: 'color', label: 'Background', default: '#0d0d10' },
   },
 
   render(ctx, t, { w, h, p, px }) {

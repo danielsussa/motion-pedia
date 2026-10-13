@@ -15,21 +15,21 @@ function star(ctx, x, y, r) {
 export default {
   id: 'marquee',
   title: 'Marquee',
-  description: 'Faixas inclinadas de texto correndo em loop infinito, em direções alternadas, cobrindo a tela.',
+  description: 'Tilted bands of text scrolling in an endless loop, in alternating directions, covering the screen.',
   category: 'tipografia',
-  tags: ['tipografia', 'loop', 'fundo'],
+  tags: ['typography', 'loop', 'background'],
   duration: 8,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'MOTION PEDIA' },
-    text2: { type: 'text', label: 'Texto alternado', default: 'LOOP INFINITO' },
-    bands: { type: 'range', label: 'Faixas', min: 2, max: 10, step: 1, default: 5 },
-    angle: { type: 'range', label: 'Inclinação (°)', min: -30, max: 30, step: 0.5, default: -9 },
-    speed: { type: 'range', label: 'Velocidade (voltas/loop)', min: 1, max: 4, step: 1, default: 1 },
-    outline: { type: 'boolean', label: 'Faixas vazadas', default: true },
-    color: { type: 'color', label: 'Texto', default: '#f4f1ea' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0d10' },
+    text: { type: 'text', label: 'Text', default: 'MOTION PEDIA' },
+    text2: { type: 'text', label: 'Alternate text', default: 'ENDLESS LOOP' },
+    bands: { type: 'range', label: 'Bands', min: 2, max: 10, step: 1, default: 5 },
+    angle: { type: 'range', label: 'Tilt (°)', min: -30, max: 30, step: 0.5, default: -9 },
+    speed: { type: 'range', label: 'Speed (laps/loop)', min: 1, max: 4, step: 1, default: 1 },
+    outline: { type: 'boolean', label: 'Outlined bands', default: true },
+    color: { type: 'color', label: 'Text', default: '#f4f1ea' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    bg: { type: 'color', label: 'Background', default: '#0d0d10' },
   },
 
   render(ctx, t, { w, h, p, progress }) {

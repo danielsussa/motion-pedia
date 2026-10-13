@@ -69,32 +69,32 @@ function ellipsize(ctx, text, maxW) {
 const INTER = (wt) => (s) => `${wt} ${s}px Inter, system-ui, sans-serif`;
 const MONO = (s) => `500 ${s}px 'JetBrains Mono', ui-monospace, monospace`;
 
-const DEFAULT_DATA = `Orgânico, 48,2
-Pago, 27,1
-Indicação, 16,4
+const DEFAULT_DATA = `Organic, 48,2
+Paid, 27,1
+Referral, 16,4
 Social, 12,6
-E-mail, 9,8`;
+Email, 9,8`;
 
 export default {
   id: 'donut-chart',
   title: 'Donut Chart',
-  description: 'Rosca que se desenha fatia a fatia com percentuais no anel, legenda e a fatia de destaque saltando para fora.',
+  description: 'A donut that draws itself slice by slice, with percentages on the ring, a legend and the highlighted slice popping out.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 7,
   poster: 4.2,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Origem do tráfego' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Participação nas visitas · 2025' },
-    data: { type: 'textarea', label: 'Dados (Rótulo, valor)', rows: 7, default: DEFAULT_DATA },
-    center: { type: 'text', label: 'Rótulo do centro', default: 'Visitas (mil)' },
-    show: { type: 'select', label: 'No anel', options: ['percentual', 'valor', 'nada'], default: 'percentual' },
-    highlight: { type: 'select', label: 'Destaque', options: ['maior', 'menor', 'primeira', 'última', 'nenhuma'], default: 'maior' },
-    thickness: { type: 'range', label: 'Espessura', min: 0.15, max: 0.6, step: 0.01, default: 0.36 },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
+    title: { type: 'text', label: 'Title', default: 'Traffic sources' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'Share of visits · 2025' },
+    data: { type: 'textarea', label: 'Data (label, value)', rows: 7, default: DEFAULT_DATA },
+    center: { type: 'text', label: 'Center label', default: 'Visits (k)' },
+    show: { type: 'select', label: 'On ring', options: ['percentual', 'valor', 'nada'], default: 'percentual' },
+    highlight: { type: 'select', label: 'Highlight', options: ['maior', 'menor', 'primeira', 'última', 'nenhuma'], default: 'maior' },
+    thickness: { type: 'range', label: 'Thickness', min: 0.15, max: 0.6, step: 0.01, default: 0.36 },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
   },
 
   setup({ p }) {
@@ -167,7 +167,7 @@ export default {
       ctx.font = INTER(500)(subSize * 1.3);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Sem dados — use uma linha "Rótulo, valor" por fatia', w / 2, h / 2);
+      ctx.fillText('No data — use one "Label, value" line per slice', w / 2, h / 2);
       return;
     }
 

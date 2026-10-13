@@ -43,22 +43,22 @@ for (let axis = 0; axis < 3; axis++) {
 export default {
   id: 'impossible-shapes',
   title: 'Impossible Shapes',
-  description: 'Triângulo de Penrose em 3D: a câmera gira, revela que as barras não se fecham e trava de novo no ponto de ilusão.',
+  description: 'A 3D Penrose triangle: the camera swings around, reveals the bars never meet, and locks back onto the illusion.',
   category: 'formas',
-  tags: ['3d', 'forma', 'loop'],
+  tags: ['3d', 'shape', 'loop'],
   duration: 10,
   poster: 0.6,
 
   params: {
-    length: { type: 'range', label: 'Comprimento', min: 4, max: 10, step: 1, default: 6 },
-    light: { type: 'color', label: 'Face clara', default: '#f1ede6' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff6a3d' },
-    bg: { type: 'color', label: 'Fundo', default: '#101116' },
-    swing: { type: 'range', label: 'Giro', min: 0.15, max: 1, step: 0.05, default: 1 },
-    hold: { type: 'range', label: 'Pausa na ilusão', min: 0.1, max: 0.6, step: 0.01, default: 0.32 },
-    size: { type: 'range', label: 'Tamanho', min: 0.4, max: 1.4, step: 0.01, default: 1 },
-    roll: { type: 'range', label: 'Rotação', min: -180, max: 180, step: 1, default: -30 },
-    outline: { type: 'boolean', label: 'Contorno', default: true },
+    length: { type: 'range', label: 'Length', min: 4, max: 10, step: 1, default: 6 },
+    light: { type: 'color', label: 'Light face', default: '#f1ede6' },
+    accent: { type: 'color', label: 'Accent', default: '#ff6a3d' },
+    bg: { type: 'color', label: 'Background', default: '#101116' },
+    swing: { type: 'range', label: 'Swing', min: 0.15, max: 1, step: 0.05, default: 1 },
+    hold: { type: 'range', label: 'Hold on illusion', min: 0.1, max: 0.6, step: 0.01, default: 0.32 },
+    size: { type: 'range', label: 'Size', min: 0.4, max: 1.4, step: 0.01, default: 1 },
+    roll: { type: 'range', label: 'Roll', min: -180, max: 180, step: 1, default: -30 },
+    outline: { type: 'boolean', label: 'Outline', default: true },
   },
 
   setup({ w, h, p, px }) {

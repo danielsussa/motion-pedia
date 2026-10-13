@@ -3,21 +3,21 @@ import { seg, ease } from '../lib/anim.js';
 export default {
   id: 'lower-third',
   title: 'Lower Third',
-  description: 'Tarja de nome e cargo para vídeo: entra com wipes, segura e sai. Suporta fundo transparente.',
+  description: 'Name and title lower third for video: wipes in, holds and wipes out. Supports a transparent background.',
   category: 'dados',
-  tags: ['tipografia', 'broadcast'],
+  tags: ['typography', 'broadcast'],
   duration: 5,
 
   params: {
-    name: { type: 'text', label: 'Nome', default: 'Ana Ribeiro' },
-    role: { type: 'text', label: 'Cargo', default: 'DIRETORA DE CRIAÇÃO' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    panel: { type: 'color', label: 'Painel', default: '#ffffff' },
-    nameColor: { type: 'color', label: 'Cor do nome', default: '#111114' },
-    roleColor: { type: 'color', label: 'Cor do cargo', default: '#ffffff' },
-    bg: { type: 'color', label: 'Fundo', default: '#2b3440' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
-    scale: { type: 'range', label: 'Escala', min: 0.5, max: 1.6, step: 0.01, default: 1 },
+    name: { type: 'text', label: 'Name', default: 'Ana Ribeiro' },
+    role: { type: 'text', label: 'Role', default: 'CREATIVE DIRECTOR' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    panel: { type: 'color', label: 'Panel', default: '#ffffff' },
+    nameColor: { type: 'color', label: 'Name color', default: '#111114' },
+    roleColor: { type: 'color', label: 'Role color', default: '#ffffff' },
+    bg: { type: 'color', label: 'Background', default: '#2b3440' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
+    scale: { type: 'range', label: 'Scale', min: 0.5, max: 1.6, step: 0.01, default: 1 },
   },
 
   render(ctx, t, { w, h, p }) {

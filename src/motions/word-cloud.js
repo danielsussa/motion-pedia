@@ -41,28 +41,28 @@ function fontFor(it, idx, style, size) {
 export default {
   id: 'word-cloud',
   title: 'Word Cloud',
-  description: 'Nuvem de palavras que se organiza em espiral a partir do centro, onde a palavra principal cresce primeiro.',
+  description: 'A word cloud that arranges itself in a spiral out from the center, where the main word grows first.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro', 'dados'],
+  tags: ['typography', 'intro', 'data'],
   duration: 6,
   poster: 5,
 
   params: {
     words: {
       type: 'textarea',
-      label: 'Palavras (uma por linha, "palavra: peso" opcional)',
+      label: 'Words (one per line, optional "word: weight")',
       rows: 6,
       default:
-        'motion\nritmo\ntipografia\neasing\ncâmera\ncor\ntiming\ncena\nloop\ncontraste\nstagger\ntextura\npausa\nescala\nforma\nluz\ncurva\nmola\ngrid\nsom\ncamada\nquadro\nfluxo\ngesto\nnarrativa\npeso\nespaço\ncadência\nkeyframe\nblur\nórbita\nbrilho\nsombra\nmáscara\nvetor\npixel\nonda\nfoco',
+        'motion\nrhythm\ntypography\neasing\ncamera\ncolor\ntiming\nscene\nloop\ncontrast\nstagger\ntexture\npause\nscale\nshape\nlight\ncurve\nspring\ngrid\nsound\nlayer\nframe\nflow\ngesture\nnarrative\nweight\nspace\ncadence\nkeyframe\nblur\norbit\nglow\nshadow\nmask\nvector\npixel\nwave\nfocus',
     },
-    style: { type: 'select', label: 'Fontes', options: ['misto', 'sans', 'serif'], default: 'misto' },
-    rotate: { type: 'select', label: 'Orientação', options: ['horizontal', 'misto'], default: 'horizontal' },
-    density: { type: 'range', label: 'Espaçamento', min: 0, max: 1, step: 0.01, default: 0.35 },
+    style: { type: 'select', label: 'Fonts', options: ['misto', 'sans', 'serif'], default: 'misto' },
+    rotate: { type: 'select', label: 'Orientation', options: ['horizontal', 'misto'], default: 'horizontal' },
+    density: { type: 'range', label: 'Spacing', min: 0, max: 1, step: 0.01, default: 0.35 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
-    color: { type: 'color', label: 'Texto', default: '#efebe3' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    bg: { type: 'color', label: 'Fundo', default: '#111013' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    color: { type: 'color', label: 'Text', default: '#efebe3' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    bg: { type: 'color', label: 'Background', default: '#111013' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p }) {

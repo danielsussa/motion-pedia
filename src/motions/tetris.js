@@ -169,20 +169,20 @@ const spawnOf = (type) => {
 export default {
   id: 'tetris',
   title: 'Tetris',
-  description: 'Partida de Tetris jogando sozinha: peças girando, encaixando e linhas completas piscando e sumindo.',
+  description: 'A self-playing game of Tetris: pieces rotate and lock in, and full lines flash and clear.',
   category: 'formas',
-  tags: ['forma', 'loop', 'simulação', 'ui'],
+  tags: ['shape', 'loop', 'simulation', 'ui'],
   duration: 18,
   poster: 9.4,
 
   params: {
-    bg: { type: 'color', label: 'Fundo', default: '#101114' },
-    ink: { type: 'color', label: 'Blocos', default: '#e9e4da' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    palette: { type: 'select', label: 'Cores das peças', options: ['tons', 'clássico'], default: 'tons' },
-    speed: { type: 'range', label: 'Velocidade', min: 0.6, max: 2, step: 0.05, default: 1 },
-    ghost: { type: 'boolean', label: 'Peça-fantasma', default: true },
-    panel: { type: 'boolean', label: 'Painel (próxima / linhas)', default: true },
+    bg: { type: 'color', label: 'Background', default: '#101114' },
+    ink: { type: 'color', label: 'Blocks', default: '#e9e4da' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    palette: { type: 'select', label: 'Piece colors', options: ['tons', 'clássico'], default: 'tons' },
+    speed: { type: 'range', label: 'Speed', min: 0.6, max: 2, step: 0.05, default: 1 },
+    ghost: { type: 'boolean', label: 'Ghost piece', default: true },
+    panel: { type: 'boolean', label: 'Panel (next / lines)', default: true },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 3 },
   },
 
@@ -489,14 +489,14 @@ export default {
       const bump = pc && !outro && pc.rows.length ? Math.sin(Math.PI * seg(t, pc.tLand + LOCK + CLEAR * 0.4, pc.tLand + LOCK + CLEAR * 0.9)) : 0;
       if (pnl.mode === 'side') {
         const X = pnl.x;
-        label('PRÓXIMA', X, pnl.y + c * 0.4);
+        label('NEXT', X, pnl.y + c * 0.4);
         ctx.fillStyle = rgba(p.ink, 0.05);
         ctx.beginPath();
         ctx.roundRect(X, pnl.y + c * 0.9, c * 4.4, c * 3.4, c * 0.3);
         ctx.fill();
         ctx.fillStyle = mixHex(p.bg, p.ink, 0.86);
         if (sw > 0) drawMini(nextType, X + c * 2.2, pnl.y + c * 2.6, c * 0.82 * sw);
-        label('LINHAS', X, pnl.y + c * 5.6);
+        label('LINES', X, pnl.y + c * 5.6);
         ctx.globalAlpha = countA;
         ctx.fillStyle = bump > 0 ? mixHex(p.ink, p.accent, bump) : p.ink;
         ctx.font = `500 ${Math.round(c * 1.9 * (1 + 0.12 * bump))}px "JetBrains Mono"`;
@@ -506,13 +506,13 @@ export default {
       } else {
         const X = pnl.x;
         const Y = pnl.y;
-        label('PRÓXIMA', X, Y + c * 0.4);
+        label('NEXT', X, Y + c * 0.4);
         ctx.fillStyle = mixHex(p.bg, p.ink, 0.86);
         if (sw > 0) drawMini(nextType, X + c * 1.6, Y + c * 1.85, c * 0.62 * sw);
         ctx.textAlign = 'right';
         ctx.fillStyle = rgba(p.ink, 0.5);
         ctx.font = `600 ${Math.round(c * 0.4)}px Inter`;
-        ctx.fillText('LINHAS', X + pnl.wd, Y + c * 0.4);
+        ctx.fillText('LINES', X + pnl.wd, Y + c * 0.4);
         ctx.globalAlpha = countA;
         ctx.fillStyle = bump > 0 ? mixHex(p.ink, p.accent, bump) : p.ink;
         ctx.font = `500 ${Math.round(c * 1.6 * (1 + 0.12 * bump))}px "JetBrains Mono"`;

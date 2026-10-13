@@ -4,22 +4,22 @@ import { sampleText } from '../lib/text-points.js';
 export default {
   id: 'particle-text',
   title: 'Particle Text',
-  description: 'Milhares de partículas espiralam até formar o texto, seguram cintilando e explodem para fora.',
+  description: 'Thousands of particles spiral in to form the text, hold it shimmering, then burst outward.',
   category: 'particulas',
-  tags: ['partículas', 'tipografia', 'intro'],
+  tags: ['particles', 'typography', 'intro'],
   duration: 6,
   poster: 3,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'IGNITE' },
-    density: { type: 'range', label: 'Densidade', min: 0.4, max: 2, step: 0.05, default: 1 },
-    swirl: { type: 'range', label: 'Redemoinho', min: 0, max: 2, step: 0.05, default: 1 },
-    blast: { type: 'range', label: 'Força da explosão', min: 0.2, max: 2, step: 0.05, default: 1 },
+    text: { type: 'text', label: 'Text', default: 'IGNITE' },
+    density: { type: 'range', label: 'Density', min: 0.4, max: 2, step: 0.05, default: 1 },
+    swirl: { type: 'range', label: 'Swirl', min: 0, max: 2, step: 0.05, default: 1 },
+    blast: { type: 'range', label: 'Blast strength', min: 0.2, max: 2, step: 0.05, default: 1 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 4 },
-    color: { type: 'color', label: 'Partículas', default: '#f4f1ea' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff6a2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#0a0a0d' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    color: { type: 'color', label: 'Particles', default: '#f4f1ea' },
+    accent: { type: 'color', label: 'Accent', default: '#ff6a2e' },
+    bg: { type: 'color', label: 'Background', default: '#0a0a0d' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p }) {

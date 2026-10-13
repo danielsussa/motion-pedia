@@ -173,24 +173,24 @@ function depthMap(img) {
 
 export default {
   id: 'parallax-photo',
-  title: 'Foto em Parallax',
-  description: 'A foto ganha profundidade 2.5D falsa e a câmera flutua devagar, com o primeiro plano se movendo mais que o fundo.',
+  title: 'Parallax Photo',
+  description: 'The photo gains fake 2.5D depth as the camera drifts slowly, the foreground moving more than the background.',
   category: 'imagem',
-  tags: ['loop', '3d', 'shader', 'fundo'],
+  tags: ['loop', '3d', 'shader', 'background'],
   duration: 10,
   poster: 2.5,
 
   params: {
-    image: { type: 'image', label: 'Foto', default: '/samples/landscape.jpg' },
-    strength: { type: 'range', label: 'Profundidade', min: 0, max: 0.08, step: 0.002, default: 0.035 },
-    dolly: { type: 'range', label: 'Dolly (respiração)', min: 0, max: 0.2, step: 0.005, default: 0.07 },
-    focus: { type: 'range', label: 'Plano parado', min: 0, max: 1, step: 0.05, default: 0.35 },
-    orbit: { type: 'select', label: 'Movimento', options: ['flutuar', 'lateral', 'vertical'], default: 'flutuar' },
-    haze: { type: 'range', label: 'Névoa no fundo', min: 0, max: 0.4, step: 0.01, default: 0.08 },
-    vignette: { type: 'range', label: 'Vinheta', min: 0, max: 0.8, step: 0.05, default: 0.3 },
-    grain: { type: 'range', label: 'Grão', min: 0, max: 0.15, step: 0.005, default: 0.03 },
-    focusY: { type: 'range', label: 'Foco vertical', min: 0, max: 1, step: 0.01, default: 0.45 },
-    showDepth: { type: 'boolean', label: 'Mostrar mapa de profundidade', default: false },
+    image: { type: 'image', label: 'Photo', default: '/samples/landscape.jpg' },
+    strength: { type: 'range', label: 'Depth', min: 0, max: 0.08, step: 0.002, default: 0.035 },
+    dolly: { type: 'range', label: 'Dolly (breathing)', min: 0, max: 0.2, step: 0.005, default: 0.07 },
+    focus: { type: 'range', label: 'Still plane', min: 0, max: 1, step: 0.05, default: 0.35 },
+    orbit: { type: 'select', label: 'Motion', options: ['flutuar', 'lateral', 'vertical'], default: 'flutuar' },
+    haze: { type: 'range', label: 'Background haze', min: 0, max: 0.4, step: 0.01, default: 0.08 },
+    vignette: { type: 'range', label: 'Vignette', min: 0, max: 0.8, step: 0.05, default: 0.3 },
+    grain: { type: 'range', label: 'Grain', min: 0, max: 0.15, step: 0.005, default: 0.03 },
+    focusY: { type: 'range', label: 'Vertical focus', min: 0, max: 1, step: 0.01, default: 0.45 },
+    showDepth: { type: 'boolean', label: 'Show depth map', default: false },
   },
 
   setup({ p }) {

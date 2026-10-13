@@ -14,22 +14,22 @@ function roundRect(ctx, x, y, w, h, r) {
 export default {
   id: 'rotating-words',
   title: 'Rotating Words',
-  description: 'Uma frase fixa com a última palavra trocando no mesmo lugar: desliza para cima e o bloco ajusta a largura com mola.',
+  description: 'A fixed phrase whose last word keeps swapping in place: it slides up and the block springs to the new width.',
   category: 'tipografia',
-  tags: ['tipografia', 'loop'],
+  tags: ['typography', 'loop'],
   duration: 8,
   poster: 1.0,
 
   params: {
-    prefix: { type: 'text', label: 'Frase fixa', default: 'A gente faz' },
-    words: { type: 'text', label: 'Palavras (separadas por vírgula)', default: 'vídeos, marcas, apps, barulho' },
-    style: { type: 'select', label: 'Estilo da palavra', options: ['Pílula', 'Serif itálico'], default: 'Pílula' },
-    size: { type: 'range', label: 'Tamanho', min: 0.04, max: 0.2, step: 0.001, default: 0.12 },
-    bounce: { type: 'range', label: 'Mola', min: 0, max: 0.6, step: 0.01, default: 0.22 },
-    color: { type: 'color', label: 'Texto', default: '#f4f1ea' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    wordColor: { type: 'color', label: 'Texto da pílula', default: '#ffffff' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0d10' },
+    prefix: { type: 'text', label: 'Fixed phrase', default: 'We make' },
+    words: { type: 'text', label: 'Words (comma-separated)', default: 'videos, brands, apps, noise' },
+    style: { type: 'select', label: 'Word style', options: ['Pílula', 'Serif itálico'], default: 'Pílula' },
+    size: { type: 'range', label: 'Size', min: 0.04, max: 0.2, step: 0.001, default: 0.12 },
+    bounce: { type: 'range', label: 'Spring', min: 0, max: 0.6, step: 0.01, default: 0.22 },
+    color: { type: 'color', label: 'Text', default: '#f4f1ea' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    wordColor: { type: 'color', label: 'Pill text', default: '#ffffff' },
+    bg: { type: 'color', label: 'Background', default: '#0d0d10' },
   },
 
   render(ctx, t, { w, h, p, duration }) {

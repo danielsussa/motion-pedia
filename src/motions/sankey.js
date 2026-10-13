@@ -32,7 +32,7 @@ function parseNum(raw) {
 
 const fmtCache = new Map();
 function fmt(v, dec = 0) {
-  if (!fmtCache.has(dec)) fmtCache.set(dec, new Intl.NumberFormat('pt-BR', { minimumFractionDigits: dec, maximumFractionDigits: dec }));
+  if (!fmtCache.has(dec)) fmtCache.set(dec, new Intl.NumberFormat('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }));
   return fmtCache.get(dec).format(v);
 }
 
@@ -136,34 +136,34 @@ function splitBez(p0, p1, p2, p3, u) {
   return [p0, a, d, l(d, e)];
 }
 
-const DEFAULT_DATA = `Produtos > Receita, 620
-Serviços > Receita, 280
-Licenças > Receita, 140
-Receita > Custos, 430
-Receita > Lucro bruto, 610
-Lucro bruto > Operação, 260
-Lucro bruto > Impostos, 110
-Lucro bruto > Lucro líquido, 240`;
+const DEFAULT_DATA = `Products > Revenue, 620
+Services > Revenue, 280
+Licenses > Revenue, 140
+Revenue > Costs, 430
+Revenue > Gross profit, 610
+Gross profit > Operations, 260
+Gross profit > Taxes, 110
+Gross profit > Net profit, 240`;
 
 export default {
   id: 'sankey',
   title: 'Sankey',
-  description: 'Diagrama de Sankey em que os fluxos escorrem coluna a coluna, se dividindo entre os nós, e o caminho até o destaque acende.',
+  description: 'A Sankey diagram where flows pour column by column, splitting between nodes, and the path to the highlight lights up.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 8,
   poster: 5.4,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Da receita ao lucro' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Demonstrativo anual · em milhões de reais' },
-    data: { type: 'textarea', label: 'Fluxos (Origem > Destino, valor)', rows: 9, default: DEFAULT_DATA },
-    highlight: { type: 'text', label: 'Nó em destaque', default: 'Lucro líquido' },
-    prefix: { type: 'text', label: 'Prefixo do valor', default: 'R$ ' },
-    suffix: { type: 'text', label: 'Sufixo do valor', default: ' mi' },
-    accent: { type: 'color', label: 'Destaque', default: '#3ddc97' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d1012' },
+    title: { type: 'text', label: 'Title', default: 'From revenue to profit' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'Annual statement · in millions of dollars' },
+    data: { type: 'textarea', label: 'Flows (Source > Target, value)', rows: 9, default: DEFAULT_DATA },
+    highlight: { type: 'text', label: 'Highlighted node', default: 'Net profit' },
+    prefix: { type: 'text', label: 'Value prefix', default: '$' },
+    suffix: { type: 'text', label: 'Value suffix', default: 'M' },
+    accent: { type: 'color', label: 'Accent', default: '#3ddc97' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0d1012' },
   },
 
   setup({ w, h, px, p }) {
@@ -223,7 +223,7 @@ export default {
       ctx.font = INTER(500)(H.subSize * 1.3);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Use linhas "Origem > Destino, valor"', w / 2, h / 2);
+      ctx.fillText('Use lines "Source > Target, value"', w / 2, h / 2);
       return;
     }
 
@@ -389,7 +389,7 @@ export default {
     if (target && hiK > 0.01) {
       const total = cols[0].reduce((s, n) => s + n.v, 0);
       const pct = (target.v / total) * 100;
-      const txt = `${fmt(pct, pct < 10 ? 1 : 0)}% do total`;
+      const txt = `${fmt(pct, pct < 10 ? 1 : 0)}% of total`;
       ctx.font = INTER(700)(vs);
       const tw = ctx.measureText(txt).width;
       const c = target.col;

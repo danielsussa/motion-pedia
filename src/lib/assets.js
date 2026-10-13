@@ -4,12 +4,15 @@ const cache = new Map();
 
 export const asset = (url) => (url ? (cache.get(url)?.value ?? null) : null);
 
+// caminhos absolutos ('/samples/…') seguem o base do build (a galeria publicada fica em dekah.tech/motion-pedia/)
+const at = (url) => (url.startsWith('/') && !url.startsWith('//') ? import.meta.env.BASE_URL + url.slice(1) : url);
+
 function loadImage(url) {
   return new Promise((res, rej) => {
     const img = new Image();
     img.onload = () => res(img);
-    img.onerror = () => rej(new Error(`imagem não carregou: ${url}`));
-    img.src = url;
+    img.onerror = () => rej(new Error(`image failed to load: ${url}`));
+    img.src = at(url);
   });
 }
 
@@ -51,7 +54,7 @@ const N = 2048;
 
 // Decodifica e analisa o áudio inteiro offline: por frame (60/s) → 32 bandas log (0..1) + rms.
 async function loadAudio(url) {
-  const buf = await (await fetch(url)).arrayBuffer();
+  const buf = await (await fetch(at(url))).arrayBuffer();
   const audio = await new OfflineAudioContext(1, 44100, 44100).decodeAudioData(buf);
   const sr = audio.sampleRate;
   const ch = audio.numberOfChannels;

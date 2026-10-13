@@ -97,18 +97,18 @@ const MODES = {
 export default {
   id: 'clouds',
   title: 'Clouds',
-  description: 'Céu com nuvens volumosas passando em perspectiva, em loop, nos modos dia, pôr do sol e noite.',
+  description: 'A sky of billowing clouds drifting by in perspective, looping, in day, sunset and night modes.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'shader'],
+  tags: ['background', 'loop', 'shader'],
   duration: 30,
 
   params: {
-    mode: { type: 'select', label: 'Céu', options: ['dia', 'pôr do sol', 'noite'], default: 'pôr do sol' },
-    cover: { type: 'range', label: 'Cobertura', min: 0, max: 1, step: 0.01, default: 0.5 },
-    soft: { type: 'range', label: 'Maciez', min: 0.05, max: 0.8, step: 0.01, default: 0.24 },
-    scale: { type: 'range', label: 'Escala', min: 0.3, max: 3, step: 0.05, default: 1.6 },
-    wind: { type: 'range', label: 'Vento', min: 1, max: 6, step: 0.1, default: 2.5 },
-    grain: { type: 'range', label: 'Granulado', min: 0, max: 0.12, step: 0.005, default: 0.02 },
+    mode: { type: 'select', label: 'Sky', options: ['dia', 'pôr do sol', 'noite'], default: 'pôr do sol' },
+    cover: { type: 'range', label: 'Coverage', min: 0, max: 1, step: 0.01, default: 0.5 },
+    soft: { type: 'range', label: 'Softness', min: 0.05, max: 0.8, step: 0.01, default: 0.24 },
+    scale: { type: 'range', label: 'Scale', min: 0.3, max: 3, step: 0.05, default: 1.6 },
+    wind: { type: 'range', label: 'Wind', min: 1, max: 6, step: 0.1, default: 2.5 },
+    grain: { type: 'range', label: 'Grain', min: 0, max: 0.12, step: 0.005, default: 0.02 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 2 },
   },
 

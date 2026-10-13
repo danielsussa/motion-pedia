@@ -147,20 +147,20 @@ const PALETTES = ['arco-íris', 'perolado', 'dourado'];
 export default {
   id: 'holo-foil',
   title: 'Holo Foil',
-  description: 'Papel holográfico de cartão metalizado mudando de cor com a inclinação, com um reflexo de luz atravessando.',
+  description: 'Holographic foil card stock shifting color as it tilts, with a glint of light sweeping across.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'gradiente', 'shader'],
+  tags: ['background', 'loop', 'gradient', 'shader'],
   duration: 10,
 
   params: {
     base: { type: 'color', label: 'Metal', default: '#c9ccd6' },
-    palette: { type: 'select', label: 'Paleta', options: PALETTES, default: 'perolado' },
-    pattern: { type: 'select', label: 'Padrão', options: PATTERNS, default: 'facetas' },
-    saturation: { type: 'range', label: 'Saturação', min: 0, max: 1.5, step: 0.01, default: 0.85 },
-    sheen: { type: 'range', label: 'Reflexo', min: 0, max: 2, step: 0.01, default: 1 },
-    crinkle: { type: 'range', label: 'Amassado', min: 0, max: 2, step: 0.01, default: 1 },
-    scale: { type: 'range', label: 'Escala', min: 0.5, max: 3, step: 0.01, default: 1 },
-    seed: { type: 'range', label: 'Semente', min: 1, max: 99, step: 1, default: 3 },
+    palette: { type: 'select', label: 'Palette', options: PALETTES, default: 'perolado' },
+    pattern: { type: 'select', label: 'Pattern', options: PATTERNS, default: 'facetas' },
+    saturation: { type: 'range', label: 'Saturation', min: 0, max: 1.5, step: 0.01, default: 0.85 },
+    sheen: { type: 'range', label: 'Sheen', min: 0, max: 2, step: 0.01, default: 1 },
+    crinkle: { type: 'range', label: 'Crinkle', min: 0, max: 2, step: 0.01, default: 1 },
+    scale: { type: 'range', label: 'Scale', min: 0.5, max: 3, step: 0.01, default: 1 },
+    seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 3 },
   },
 
   render(ctx, t, env) {

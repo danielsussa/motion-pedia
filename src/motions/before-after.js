@@ -98,23 +98,23 @@ function pill(ctx, text, x, y, align, size, alpha) {
 
 export default {
   id: 'before-after',
-  title: 'Antes / Depois',
-  description: 'Uma alça desliza sobre a foto e vai e volta mostrando a versão original de um lado e a tratada do outro.',
+  title: 'Before / After',
+  description: 'A handle slides back and forth over the photo, showing the original on one side and the graded version on the other.',
   category: 'imagem',
   tags: ['loop', 'ui', 'shader', 'overlay'],
   duration: 8,
   poster: 2.0,
 
   params: {
-    image: { type: 'image', label: 'Foto', default: '/samples/landscape.jpg' },
-    look: { type: 'select', label: 'Tratamento', options: Object.keys(LOOKS), default: 'cinema' },
-    direction: { type: 'select', label: 'Corte', options: ['vertical', 'horizontal'], default: 'vertical' },
-    labelA: { type: 'text', label: 'Rótulo antes', default: 'Antes' },
-    labelB: { type: 'text', label: 'Rótulo depois', default: 'Depois' },
-    accent: { type: 'color', label: 'Destaque da alça', default: '#ff8a4c' },
-    amplitude: { type: 'range', label: 'Amplitude do vai e vem', min: 0.3, max: 1.2, step: 0.01, default: 1 },
-    zoom: { type: 'range', label: 'Zoom lento', min: 0, max: 0.15, step: 0.01, default: 0.05 },
-    focusY: { type: 'range', label: 'Foco vertical', min: 0, max: 1, step: 0.01, default: 0.45 },
+    image: { type: 'image', label: 'Photo', default: '/samples/landscape.jpg' },
+    look: { type: 'select', label: 'Look', options: Object.keys(LOOKS), default: 'cinema' },
+    direction: { type: 'select', label: 'Split', options: ['vertical', 'horizontal'], default: 'vertical' },
+    labelA: { type: 'text', label: 'Before label', default: 'Before' },
+    labelB: { type: 'text', label: 'After label', default: 'After' },
+    accent: { type: 'color', label: 'Handle accent', default: '#ff8a4c' },
+    amplitude: { type: 'range', label: 'Sweep amplitude', min: 0.3, max: 1.2, step: 0.01, default: 1 },
+    zoom: { type: 'range', label: 'Slow zoom', min: 0, max: 0.15, step: 0.01, default: 0.05 },
+    focusY: { type: 'range', label: 'Vertical focus', min: 0, max: 1, step: 0.01, default: 0.45 },
   },
 
   render(ctx, t, env) {

@@ -3,19 +3,19 @@ import { seg, ease } from '../lib/anim.js';
 export default {
   id: 'kinetic-type',
   title: 'Kinetic Type',
-  description: 'Letras sobem em cascata por uma máscara, com uma barra de destaque que entra e sai.',
+  description: 'Letters rise in a cascade through a mask, with an accent bar sliding in and out.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro'],
+  tags: ['typography', 'intro'],
   duration: 4,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'MOTION PEDIA' },
-    size: { type: 'range', label: 'Tamanho', min: 60, max: 320, step: 1, default: 190 },
+    text: { type: 'text', label: 'Text', default: 'MOTION PEDIA' },
+    size: { type: 'range', label: 'Size', min: 60, max: 320, step: 1, default: 190 },
     stagger: { type: 'range', label: 'Stagger (s)', min: 0, max: 0.15, step: 0.005, default: 0.045 },
-    weight: { type: 'select', label: 'Peso', options: ['500', '700', '800', '900'], default: '800' },
-    color: { type: 'color', label: 'Texto', default: '#f4f1ea' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0d10' },
+    weight: { type: 'select', label: 'Weight', options: ['500', '700', '800', '900'], default: '800' },
+    color: { type: 'color', label: 'Text', default: '#f4f1ea' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    bg: { type: 'color', label: 'Background', default: '#0d0d10' },
   },
 
   render(ctx, t, { w, h, p }) {

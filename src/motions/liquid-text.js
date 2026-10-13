@@ -58,22 +58,22 @@ const Q = 0.5; // resolução do campo em relação ao canvas real
 export default {
   id: 'liquid-text',
   title: 'Liquid Text',
-  description: 'As letras amolecem e escorrem em gotas que pingam para fora da tela; as línguas voltam com mola e a palavra se refaz.',
+  description: 'Letters soften and melt into drips that fall off screen; the drips spring back and the word reforms.',
   category: 'tipografia',
-  tags: ['tipografia', 'loop', 'simulação', 'shader'],
+  tags: ['typography', 'loop', 'simulation', 'shader'],
   duration: 7,
   poster: 3.4,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'DERRETE' },
-    size: { type: 'range', label: 'Tamanho', min: 0.1, max: 0.4, step: 0.005, default: 0.24 },
-    drips: { type: 'range', label: 'Quantidade de gotas', min: 0.2, max: 2, step: 0.05, default: 1 },
-    length: { type: 'range', label: 'Comprimento', min: 0.3, max: 2, step: 0.05, default: 1 },
-    gloss: { type: 'range', label: 'Brilho', min: 0, max: 1.5, step: 0.05, default: 0.8 },
-    color: { type: 'color', label: 'Líquido', default: '#ff5a36' },
-    bg: { type: 'color', label: 'Fundo', default: '#f1ece4' },
+    text: { type: 'text', label: 'Text', default: 'MELT' },
+    size: { type: 'range', label: 'Size', min: 0.1, max: 0.4, step: 0.005, default: 0.24 },
+    drips: { type: 'range', label: 'Drip amount', min: 0.2, max: 2, step: 0.05, default: 1 },
+    length: { type: 'range', label: 'Length', min: 0.3, max: 2, step: 0.05, default: 1 },
+    gloss: { type: 'range', label: 'Glow', min: 0, max: 1.5, step: 0.05, default: 0.8 },
+    color: { type: 'color', label: 'Liquid', default: '#ff5a36' },
+    bg: { type: 'color', label: 'Background', default: '#f1ece4' },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {

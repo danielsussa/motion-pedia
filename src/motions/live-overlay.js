@@ -13,18 +13,18 @@ const brl = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFr
 
 const NAME_COLORS = ['#8fb3ff', '#f5c46b', '#8fdcb8', '#c3a6ff', '#ff9f8c', '#7fd3e6'];
 
-const CHAT = `marina.rx: boa noite chat!!
-pedro_dev: chegueiii
-julia.motion: esse efeito ficou insano
-caio_b: como fez essa transição?
-lu.design: salvando pra estudar depois
+const CHAT = `marina.rx: good evening chat!!
+pedro_dev: made it
+julia.motion: this effect is insane
+caio_b: how did you do that transition?
+lu.design: saving this to study later
 rafa: 🔥🔥🔥
-bia_codes: manda o link do projeto
-theo.m: primeira vez aqui, curti demais
-nanda: easing perfeito
-gui.ramos: dá pra exportar com alpha?
+bia_codes: drop the project link
+theo.m: first time here, loving it
+nanda: perfect easing
+gui.ramos: can you export with alpha?
 leo: GG
-carol.ui: tutorial quando?`;
+carol.ui: tutorial when?`;
 
 function parseChat(text) {
   const out = [];
@@ -32,7 +32,7 @@ function parseChat(text) {
     const l = line.trim();
     if (!l) continue;
     const i = l.indexOf(':');
-    out.push(i > 0 ? { user: l.slice(0, i).trim(), msg: l.slice(i + 1).trim() } : { user: 'anônimo', msg: l });
+    out.push(i > 0 ? { user: l.slice(0, i).trim(), msg: l.slice(i + 1).trim() } : { user: 'anonymous', msg: l });
     if (out.length === 16) break;
   }
   return out;
@@ -99,23 +99,23 @@ const ALERT_LEN = 3.1;
 export default {
   id: 'live-overlay',
   title: 'Live Overlay',
-  description: 'Overlay de live: selo ao vivo com espectadores, chat lateral rolando, alertas de inscrito e doação e barra de meta.',
+  description: 'Livestream overlay: live badge with viewer count, scrolling side chat, subscriber and donation alerts, and a goal bar.',
   category: 'dados',
   tags: ['overlay', 'alpha', 'ui', 'broadcast'],
   duration: 10,
   poster: 6.6,
 
   params: {
-    subName: { type: 'text', label: 'Novo inscrito', default: 'ana.dev' },
-    donor: { type: 'text', label: 'Quem doou', default: 'lucas_m' },
-    amount: { type: 'range', label: 'Valor da doação (R$)', min: 1, max: 500, step: 1, default: 25 },
-    donMsg: { type: 'text', label: 'Mensagem da doação', default: 'Que motion lindo, continua!' },
-    chat: { type: 'textarea', label: 'Chat (nome: mensagem)', rows: 6, default: CHAT },
-    goal: { type: 'text', label: 'Meta', default: 'Meta de inscritos' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4f5e' },
-    viewers: { type: 'range', label: 'Espectadores', min: 0, max: 50000, step: 1, default: 1284 },
-    scale: { type: 'range', label: 'Escala', min: 0.6, max: 1.4, step: 0.01, default: 1 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: true },
+    subName: { type: 'text', label: 'New subscriber', default: 'ana.dev' },
+    donor: { type: 'text', label: 'Donor', default: 'lucas_m' },
+    amount: { type: 'range', label: 'Donation amount (R$)', min: 1, max: 500, step: 1, default: 25 },
+    donMsg: { type: 'text', label: 'Donation message', default: 'Beautiful motion, keep going!' },
+    chat: { type: 'textarea', label: 'Chat (name: message)', rows: 6, default: CHAT },
+    goal: { type: 'text', label: 'Goal', default: 'Subscriber goal' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4f5e' },
+    viewers: { type: 'range', label: 'Viewers', min: 0, max: 50000, step: 1, default: 1284 },
+    scale: { type: 'range', label: 'Scale', min: 0.6, max: 1.4, step: 0.01, default: 1 },
+    transparent: { type: 'boolean', label: 'Transparent background', default: true },
   },
 
   setup({ w, h, p, px }) {
@@ -134,7 +134,7 @@ export default {
     });
     // mensagem de sistema quando chega a doação
     mc.font = F(600, fs);
-    const sysText = `${p.donor} doou R$ ${brl.format(p.amount)}`;
+    const sysText = `${p.donor} donated R$ ${brl.format(p.amount)}`;
 
     let scene = null;
     if (!p.transparent) {
@@ -192,7 +192,7 @@ export default {
       // pílula AO VIVO
       ctx.font = F(800, 21 * u);
       ctx.letterSpacing = `${21 * u * 0.12}px`;
-      const lw = ctx.measureText('AO VIVO').width;
+      const lw = ctx.measureText('LIVE').width;
       const w1 = lw + 66 * u;
       ctx.fillStyle = p.accent;
       ctx.beginPath();
@@ -204,7 +204,7 @@ export default {
       ctx.arc(pad + 26 * u, y + ph / 2, 7 * u, 0, TAU);
       ctx.fill();
       ctx.fillStyle = '#ffffff';
-      ctx.fillText('AO VIVO', pad + 44 * u, y + ph / 2 + u);
+      ctx.fillText('LIVE', pad + 44 * u, y + ph / 2 + u);
       ctx.letterSpacing = '0px';
       // espectadores
       const vNow = Math.round(p.viewers + Math.floor(t * 2.3) + (t > T_SUB ? 3 : 0));
@@ -268,7 +268,7 @@ export default {
       ctx.font = F(700, 17 * u);
       ctx.letterSpacing = `${17 * u * 0.14}px`;
       ctx.fillStyle = rgba(ink, 0.6);
-      ctx.fillText('CHAT AO VIVO', chat.x + 22 * u, chat.y + hh / 2 + u);
+      ctx.fillText('LIVE CHAT', chat.x + 22 * u, chat.y + hh / 2 + u);
       ctx.letterSpacing = '0px';
       ctx.fillStyle = p.accent;
       ctx.beginPath();
@@ -387,11 +387,11 @@ export default {
       const s = (0.7 + 0.3 * inK) * (1 - 0.25 * outK);
       const op = clamp(seg(lt, 0, 0.18)) * (1 - clamp(outK * 1.2));
       if (op <= 0.001) return;
-      const label = kind === 'sub' ? 'NOVO INSCRITO' : 'DOAÇÃO';
+      const label = kind === 'sub' ? 'NEW SUBSCRIBER' : 'DONATION';
       const amtNow = p.amount * ease.outExpo(seg(lt, 0.3, 1.4));
       const main = kind === 'sub' ? p.subName : `R$ ${brl.format(amtNow)}`;
       const mainFull = kind === 'sub' ? p.subName : `R$ ${brl.format(p.amount)}`;
-      const sub = kind === 'sub' ? 'acabou de se inscrever!' : `${p.donor}: “${p.donMsg}”`;
+      const sub = kind === 'sub' ? 'just subscribed!' : `${p.donor}: “${p.donMsg}”`;
       const ms = 46 * u;
       ctx.font = F(800, ms);
       const mw = ctx.measureText(mainFull).width;

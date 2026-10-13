@@ -2,14 +2,14 @@ import { TAU, clamp, lerp, seg, ease, spring, rgba, mixHex, rng } from '../lib/a
 
 const F = 'Inter, system-ui, sans-serif';
 
-const DEF_SUG = `motion graphics em javascript
-motion graphics para iniciantes
-motion graphics com canvas 2d
-motion graphics no after effects`;
+const DEF_SUG = `motion graphics in javascript
+motion graphics for beginners
+motion graphics with canvas 2d
+motion graphics in after effects`;
 
-const DEF_RES = `motion·pedia — biblioteca de motion graphics | motionpedia.dev | Mais de 150 efeitos em Canvas 2D, prontos para exportar em vídeo, com parâmetros ao vivo.
-Animando com Canvas 2D: o guia completo | developer.mozilla.org › canvas | Do primeiro retângulo a animações com requestAnimationFrame, gradientes e composição de camadas.
-Easing na prática: curvas que dão vida | easings.net | Compare outExpo, molas e overshoot e entenda quando usar cada curva em interfaces e vídeos.`;
+const DEF_RES = `motion·pedia — motion graphics library | motionpedia.dev | Over 150 Canvas 2D effects, ready to export as video, with live parameters.
+Animating with Canvas 2D: the complete guide | developer.mozilla.org › canvas | From your first rectangle to animations with requestAnimationFrame, gradients and layer compositing.
+Easing in practice: curves that bring things to life | easings.net | Compare outExpo, springs and overshoot, and learn when to use each curve in UIs and videos.`;
 
 function wrap(ctx, text, maxW, maxLines) {
   const words = String(text).split(/\s+/).filter(Boolean);
@@ -63,21 +63,21 @@ const T_RES = 4.25;
 export default {
   id: 'search-bar',
   title: 'Search Bar',
-  description: 'Barra de busca que se abre, recebe a digitação com sugestões, escolhe uma e deixa os resultados caírem em cascata.',
+  description: 'A search bar opens, gets typed into with suggestions, picks one and lets the results cascade in.',
   category: 'dados',
-  tags: ['ui', 'dados', 'alpha'],
+  tags: ['ui', 'data', 'alpha'],
   duration: 8,
   poster: 5.6,
 
   params: {
-    query: { type: 'text', label: 'Busca digitada', default: 'motion graphics' },
-    suggestions: { type: 'textarea', label: 'Sugestões (uma por linha)', rows: 4, default: DEF_SUG },
-    pick: { type: 'range', label: 'Sugestão escolhida', min: 1, max: 6, step: 1, default: 1 },
-    results: { type: 'textarea', label: 'Resultados (título | site | descrição)', rows: 5, default: DEF_RES },
-    theme: { type: 'select', label: 'Tema', options: ['claro', 'escuro'], default: 'claro' },
-    accent: { type: 'color', label: 'Destaque', default: '#3b6cff' },
-    bg: { type: 'color', label: 'Fundo', default: '#14161b' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    query: { type: 'text', label: 'Typed query', default: 'motion graphics' },
+    suggestions: { type: 'textarea', label: 'Suggestions (one per line)', rows: 4, default: DEF_SUG },
+    pick: { type: 'range', label: 'Picked suggestion', min: 1, max: 6, step: 1, default: 1 },
+    results: { type: 'textarea', label: 'Results (title | site | description)', rows: 5, default: DEF_RES },
+    theme: { type: 'select', label: 'Theme', options: ['claro', 'escuro'], default: 'claro' },
+    accent: { type: 'color', label: 'Accent', default: '#3b6cff' },
+    bg: { type: 'color', label: 'Background', default: '#14161b' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {
@@ -209,7 +209,7 @@ export default {
       ctx.textAlign = 'left';
       ctx.fillStyle = p.transparent ? MUTED : '#8d919c';
       const total = Math.round(1240 * ease.outCubic(seg(t, T_RES, T_RES + 1.2)));
-      ctx.fillText(`Cerca de ${total.toLocaleString('pt-BR')} resultados (0,42 s)`, bx + 8 * u, cy + statsH * 0.4);
+      ctx.fillText(`About ${total.toLocaleString('en-US')} results (0.42 s)`, bx + 8 * u, cy + statsH * 0.4);
       ctx.globalAlpha = ga;
       cy += statsH;
       cards.forEach((c, i) => {
@@ -363,7 +363,7 @@ export default {
       if (swapK > 0.5 && pick >= 0) shown = chosen;
       if (!typed) {
         ctx.fillStyle = MUTED;
-        ctx.fillText('Pesquisar', tx, ty);
+        ctx.fillText('Search', tx, ty);
       } else {
         ctx.fillStyle = INK;
         ctx.fillText(shown, tx, ty);

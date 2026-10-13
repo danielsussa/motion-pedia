@@ -286,20 +286,20 @@ const toData = (cv) => cv.getContext('2d', { willReadFrequently: true }).getImag
 export default {
   id: 'rain-on-glass',
   title: 'Rain on Glass',
-  description: 'Gotas escorrendo numa janela embaçada à noite, cada uma refratando de ponta-cabeça a cidade desfocada atrás.',
+  description: 'Raindrops trickling down a fogged window at night, each one refracting the blurred city behind it upside down.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'shader', 'simulação'],
+  tags: ['background', 'loop', 'shader', 'simulation'],
   duration: 16,
 
   params: {
-    sky: { type: 'color', label: 'Noite', default: '#16202e' },
-    warm: { type: 'color', label: 'Luz quente', default: '#ffb35c' },
-    cool: { type: 'color', label: 'Luz fria', default: '#b9d7ff' },
-    accent: { type: 'color', label: 'Lanternas', default: '#ff4a3d' },
-    amount: { type: 'range', label: 'Quantidade de chuva', min: 0.1, max: 1, step: 0.01, default: 0.6 },
-    size: { type: 'range', label: 'Tamanho das gotas', min: 0.5, max: 2, step: 0.01, default: 1 },
-    fog: { type: 'range', label: 'Embaçado', min: 0, max: 1, step: 0.01, default: 0.55 },
-    seed: { type: 'range', label: 'Semente', min: 1, max: 99, step: 1, default: 7 },
+    sky: { type: 'color', label: 'Night sky', default: '#16202e' },
+    warm: { type: 'color', label: 'Warm light', default: '#ffb35c' },
+    cool: { type: 'color', label: 'Cool light', default: '#b9d7ff' },
+    accent: { type: 'color', label: 'Lanterns', default: '#ff4a3d' },
+    amount: { type: 'range', label: 'Rain amount', min: 0.1, max: 1, step: 0.01, default: 0.6 },
+    size: { type: 'range', label: 'Drop size', min: 0.5, max: 2, step: 0.01, default: 1 },
+    fog: { type: 'range', label: 'Fog', min: 0, max: 1, step: 0.01, default: 0.55 },
+    seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
   },
 
   setup({ w, h, p }) {

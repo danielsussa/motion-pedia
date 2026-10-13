@@ -141,72 +141,72 @@ function logTicks(lo, hi) {
 
 const sineIO = (x) => 0.5 - 0.5 * Math.cos(Math.PI * x);
 
-const DEFAULT_DATA = `# país; ano; PIB per capita (mil US$); expectativa de vida; população (mi)
-Brasil; 1990; 11,0; 66,3; 150
-Brasil; 2000; 12,0; 70,1; 175
-Brasil; 2010; 15,5; 73,6; 196
-Brasil; 2023; 15,8; 75,8; 216
+const DEFAULT_DATA = `# country; year; GDP per capita (k US$); life expectancy; population (M)
+Brazil; 1990; 11,0; 66,3; 150
+Brazil; 2000; 12,0; 70,1; 175
+Brazil; 2010; 15,5; 73,6; 196
+Brazil; 2023; 15,8; 75,8; 216
 China; 1990; 1,4; 69,1; 1135
 China; 2000; 3,5; 71,4; 1263
 China; 2010; 9,0; 75,6; 1338
 China; 2023; 19,5; 78,6; 1410
-Índia; 1990; 1,9; 58,6; 870
-Índia; 2000; 2,6; 62,7; 1057
-Índia; 2010; 4,4; 66,7; 1234
-Índia; 2023; 7,9; 71,0; 1430
-EUA; 1990; 41; 75,4; 250
-EUA; 2000; 52; 76,8; 282
-EUA; 2010; 56; 78,6; 309
-EUA; 2023; 65; 77,5; 335
-Japão; 1990; 35; 79,0; 124
-Japão; 2000; 37,5; 81,2; 127
-Japão; 2010; 39; 82,9; 128
-Japão; 2023; 42; 84,7; 124
-Alemanha; 1990; 41; 75,3; 79
-Alemanha; 2000; 46; 77,9; 82
-Alemanha; 2010; 50; 79,9; 81
-Alemanha; 2023; 56; 81,0; 84
-México; 1990; 15; 70,8; 84
-México; 2000; 18; 74,4; 98
-México; 2010; 18,5; 74,1; 112
-México; 2023; 20,5; 75,0; 128
-Indonésia; 1990; 4,8; 63,3; 182
-Indonésia; 2000; 5,5; 66,3; 214
-Indonésia; 2010; 8,0; 69,0; 244
-Indonésia; 2023; 13; 71,0; 277
-Nigéria; 1990; 3,6; 45,9; 95
-Nigéria; 2000; 3,3; 46,3; 122
-Nigéria; 2010; 5,1; 50,9; 160
-Nigéria; 2023; 5,0; 53,6; 224
-Etiópia; 1990; 0,7; 47,0; 48
-Etiópia; 2000; 0,7; 51,5; 67
-Etiópia; 2010; 1,3; 61,7; 89
-Etiópia; 2023; 2,4; 66,5; 127
-África do Sul; 1990; 12; 63,4; 39
-África do Sul; 2000; 11,5; 56,8; 46
-África do Sul; 2010; 12,5; 56,6; 52
-África do Sul; 2023; 13,5; 61,5; 61`;
+India; 1990; 1,9; 58,6; 870
+India; 2000; 2,6; 62,7; 1057
+India; 2010; 4,4; 66,7; 1234
+India; 2023; 7,9; 71,0; 1430
+USA; 1990; 41; 75,4; 250
+USA; 2000; 52; 76,8; 282
+USA; 2010; 56; 78,6; 309
+USA; 2023; 65; 77,5; 335
+Japan; 1990; 35; 79,0; 124
+Japan; 2000; 37,5; 81,2; 127
+Japan; 2010; 39; 82,9; 128
+Japan; 2023; 42; 84,7; 124
+Germany; 1990; 41; 75,3; 79
+Germany; 2000; 46; 77,9; 82
+Germany; 2010; 50; 79,9; 81
+Germany; 2023; 56; 81,0; 84
+Mexico; 1990; 15; 70,8; 84
+Mexico; 2000; 18; 74,4; 98
+Mexico; 2010; 18,5; 74,1; 112
+Mexico; 2023; 20,5; 75,0; 128
+Indonesia; 1990; 4,8; 63,3; 182
+Indonesia; 2000; 5,5; 66,3; 214
+Indonesia; 2010; 8,0; 69,0; 244
+Indonesia; 2023; 13; 71,0; 277
+Nigeria; 1990; 3,6; 45,9; 95
+Nigeria; 2000; 3,3; 46,3; 122
+Nigeria; 2010; 5,1; 50,9; 160
+Nigeria; 2023; 5,0; 53,6; 224
+Ethiopia; 1990; 0,7; 47,0; 48
+Ethiopia; 2000; 0,7; 51,5; 67
+Ethiopia; 2010; 1,3; 61,7; 89
+Ethiopia; 2023; 2,4; 66,5; 127
+South Africa; 1990; 12; 63,4; 39
+South Africa; 2000; 11,5; 56,8; 46
+South Africa; 2010; 12,5; 56,6; 52
+South Africa; 2023; 13,5; 61,5; 61`;
 
 export default {
   id: 'bubble-chart',
   title: 'Bubble Chart',
-  description: 'Gráfico de bolhas ao estilo Gapminder: os anos passam e as bolhas (tamanho = população) andam pelo gráfico, com o rastro do destaque.',
+  description: 'A Gapminder-style bubble chart: years tick by and bubbles (size = population) travel across the chart, with a trail on the highlight.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 12,
   poster: 7.5,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Renda e expectativa de vida' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Tamanho da bolha = população · dados aproximados' },
-    data: { type: 'textarea', label: 'Dados (Rótulo; ano; x; y; tamanho)', rows: 10, default: DEFAULT_DATA },
-    xLabel: { type: 'text', label: 'Eixo X', default: 'PIB per capita (mil US$ PPC)' },
-    yLabel: { type: 'text', label: 'Eixo Y', default: 'Expectativa de vida (anos)' },
-    xLog: { type: 'boolean', label: 'X em escala log', default: true },
-    highlight: { type: 'text', label: 'Destaque (rótulo)', default: 'Brasil' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
+    title: { type: 'text', label: 'Title', default: 'Income and life expectancy' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'Bubble size = population · approximate data' },
+    data: { type: 'textarea', label: 'Data (label; year; x; y; size)', rows: 10, default: DEFAULT_DATA },
+    xLabel: { type: 'text', label: 'X axis', default: 'GDP per capita (k US$ PPP)' },
+    yLabel: { type: 'text', label: 'Y axis', default: 'Life expectancy (years)' },
+    xLog: { type: 'boolean', label: 'Log scale on X', default: true },
+    highlight: { type: 'text', label: 'Highlight (label)', default: 'Brazil' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
   },
 
   setup({ w, h, px, p }) {
@@ -280,7 +280,7 @@ export default {
       ctx.font = INTER(500)(subSize * 1.3);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Sem dados — use "Rótulo; ano; x; y; tamanho" por linha', w / 2, h / 2);
+      ctx.fillText('No data — use "Label; year; x; y; size" per line', w / 2, h / 2);
       return;
     }
 

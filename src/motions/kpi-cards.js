@@ -84,31 +84,31 @@ function ellipsize(ctx, text, maxW) {
 
 const INTER = (wt) => (s) => `${wt} ${s}px Inter, system-ui, sans-serif`;
 
-const DEFAULT = `Receita | R$ 1.284.500 | +12,4%
-Usuários ativos | 48.920 | +8,1%
+const DEFAULT = `Revenue | R$ 1.284.500 | +12,4%
+Active users | 48.920 | +8,1%
 Churn | 2,3% | -0,6 p.p.!
-Ticket médio | R$ 186,40 | -3,2%`;
+Avg. ticket | R$ 186,40 | -3,2%`;
 
 const SPARK = 28; // pontos da sparkline
 
 export default {
   id: 'kpi-cards',
   title: 'KPI Cards',
-  description: 'Cards de métrica com o número contando, seta de variação verde/vermelha e sparkline se desenhando.',
+  description: 'Metric cards with counting numbers, a green/red change arrow and a sparkline drawing itself.',
   category: 'dados',
-  tags: ['dados', 'ui', 'alpha'],
+  tags: ['data', 'ui', 'alpha'],
   duration: 6,
   poster: 3.4,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Resultados do trimestre' },
-    data: { type: 'textarea', label: 'Métricas (rótulo | valor | variação; "!" inverte cor)', rows: 5, default: DEFAULT },
-    up: { type: 'color', label: 'Alta', default: '#2fd27a' },
-    down: { type: 'color', label: 'Queda', default: '#ff5a5f' },
+    title: { type: 'text', label: 'Title', default: 'Quarterly results' },
+    data: { type: 'textarea', label: 'Metrics (label | value | change; "!" flips color)', rows: 5, default: DEFAULT },
+    up: { type: 'color', label: 'Up', default: '#2fd27a' },
+    down: { type: 'color', label: 'Down', default: '#ff5a5f' },
     panel: { type: 'color', label: 'Card', default: '#17191e' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0b0c0f' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0b0c0f' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
     seed: { type: 'range', label: 'Seed (sparklines)', min: 1, max: 99, step: 1, default: 7 },
   },
 
@@ -185,7 +185,7 @@ export default {
       ctx.font = INTER(500)(m * 0.028);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Sem métricas — use "rótulo | valor | variação" por linha', w / 2, h / 2);
+      ctx.fillText('No metrics — use "label | value | change" per line', w / 2, h / 2);
       return;
     }
 

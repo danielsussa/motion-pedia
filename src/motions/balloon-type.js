@@ -59,22 +59,22 @@ const Q = 0.5;
 export default {
   id: 'balloon-type',
   title: 'Balloon Type',
-  description: 'Letras infladas como balões de papel metalizado, com costura na borda e reflexo de estúdio, que sobem, balançam e vão embora.',
+  description: 'Letters inflated like foil balloons, with seamed edges and studio reflections, that rise, sway and float away.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro', '3d', 'shader', 'alpha'],
+  tags: ['typography', 'intro', '3d', 'shader', 'alpha'],
   duration: 7,
   poster: 3.2,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'FESTA' },
-    size: { type: 'range', label: 'Tamanho', min: 0.15, max: 0.6, step: 0.01, default: 0.4 },
-    foil: { type: 'color', label: 'Metal', default: '#e6b85c' },
-    sway: { type: 'range', label: 'Balanço', min: 0, max: 2, step: 0.05, default: 1 },
-    shine: { type: 'range', label: 'Brilho', min: 0, max: 1.5, step: 0.05, default: 0.8 },
-    strings: { type: 'boolean', label: 'Fitas', default: true },
-    bg: { type: 'color', label: 'Fundo', default: '#15141a' },
+    text: { type: 'text', label: 'Text', default: 'PARTY' },
+    size: { type: 'range', label: 'Size', min: 0.15, max: 0.6, step: 0.01, default: 0.4 },
+    foil: { type: 'color', label: 'Foil', default: '#e6b85c' },
+    sway: { type: 'range', label: 'Sway', min: 0, max: 2, step: 0.05, default: 1 },
+    shine: { type: 'range', label: 'Shine', min: 0, max: 1.5, step: 0.05, default: 0.8 },
+    strings: { type: 'boolean', label: 'Strings', default: true },
+    bg: { type: 'color', label: 'Background', default: '#15141a' },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 3 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {

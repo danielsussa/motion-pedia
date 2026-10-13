@@ -103,7 +103,7 @@ function mix3(a, b, k, c, j) {
 const INTER = (wt) => (s) => `${wt} ${s}px Inter, system-ui, sans-serif`;
 const MONO = (s) => `500 ${s}px 'JetBrains Mono', ui-monospace, monospace`;
 
-const DEFAULT_DATA = `Linguagem, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025
+const DEFAULT_DATA = `Language, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025
 JavaScript, 62, 66, 69, 70, 68, 66, 65, 63, 62, 61
 Python, 30, 36, 42, 48, 54, 58, 62, 66, 70, 74
 Java, 58, 55, 52, 49, 45, 41, 38, 35, 33, 31
@@ -121,22 +121,22 @@ const SUB = 24; // amostras por período para a classificação suavizada
 export default {
   id: 'bar-race',
   title: 'Bar Chart Race',
-  description: 'Ranking que evolui no tempo: barras trocam de posição suavemente enquanto valores e período contam.',
+  description: 'A ranking that evolves over time: bars smoothly swap places as values and periods count up.',
   category: 'dados',
-  tags: ['dados', 'ui', 'broadcast'],
+  tags: ['data', 'ui', 'broadcast'],
   duration: 12,
   poster: 7,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Linguagens mais usadas' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: '% dos desenvolvedores · dados ilustrativos' },
-    data: { type: 'textarea', label: 'Dados (CSV: cabeçalho com períodos)', rows: 8, default: DEFAULT_DATA },
-    top: { type: 'range', label: 'Barras visíveis', min: 3, max: 15, step: 1, default: 8 },
-    suffix: { type: 'text', label: 'Sufixo do valor', default: '%' },
-    colors: { type: 'select', label: 'Cores', options: ['líder em destaque', 'todas em destaque', 'neutras'], default: 'líder em destaque' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
+    title: { type: 'text', label: 'Title', default: 'Most used languages' },
+    subtitle: { type: 'text', label: 'Subtitle', default: '% of developers · illustrative data' },
+    data: { type: 'textarea', label: 'Data (CSV: header with periods)', rows: 8, default: DEFAULT_DATA },
+    top: { type: 'range', label: 'Visible bars', min: 3, max: 15, step: 1, default: 8 },
+    suffix: { type: 'text', label: 'Value suffix', default: '%' },
+    colors: { type: 'select', label: 'Colors', options: ['líder em destaque', 'todas em destaque', 'neutras'], default: 'líder em destaque' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
   },
 
   setup({ p }) {
@@ -234,7 +234,7 @@ export default {
       ctx.font = INTER(500)(subSize * 1.2);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Sem dados — CSV com cabeçalho de períodos e uma linha por item', w / 2, h / 2);
+      ctx.fillText('No data — CSV with a header of periods and one line per item', w / 2, h / 2);
       return;
     }
 

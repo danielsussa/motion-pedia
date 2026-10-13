@@ -11,22 +11,22 @@ const OUT = 6.45; // apaga
 export default {
   id: 'handwriting',
   title: 'Handwriting',
-  description: 'Uma frase escrita à mão traço a traço, com a ponta da caneta (ou do giz) seguindo o traço.',
+  description: 'A sentence handwritten stroke by stroke, with the pen (or chalk) tip following the line.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro', 'alpha'],
+  tags: ['typography', 'intro', 'alpha'],
   duration: DUR,
   poster: 4.2,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'obrigado por estar aqui' },
-    tool: { type: 'select', label: 'Instrumento', options: ['caneta', 'caneta tinteiro', 'giz'], default: 'caneta' },
-    size: { type: 'range', label: 'Tamanho', min: 0.06, max: 0.3, step: 0.005, default: 0.15 },
-    weight: { type: 'range', label: 'Espessura', min: 0.4, max: 2, step: 0.05, default: 1 },
-    showPen: { type: 'boolean', label: 'Mostrar a caneta', default: true },
-    ink: { type: 'color', label: 'Tinta', default: '#1d2433' },
-    accent: { type: 'color', label: 'Caneta', default: '#ff5a36' },
-    bg: { type: 'color', label: 'Fundo', default: '#f3eee4' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    text: { type: 'text', label: 'Text', default: 'thank you for being here' },
+    tool: { type: 'select', label: 'Tool', options: ['caneta', 'caneta tinteiro', 'giz'], default: 'caneta' },
+    size: { type: 'range', label: 'Size', min: 0.06, max: 0.3, step: 0.005, default: 0.15 },
+    weight: { type: 'range', label: 'Thickness', min: 0.4, max: 2, step: 0.05, default: 1 },
+    showPen: { type: 'boolean', label: 'Show pen', default: true },
+    ink: { type: 'color', label: 'Ink', default: '#1d2433' },
+    accent: { type: 'color', label: 'Pen', default: '#ff5a36' },
+    bg: { type: 'color', label: 'Background', default: '#f3eee4' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {

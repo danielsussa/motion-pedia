@@ -31,7 +31,7 @@ function parseNum(raw) {
 
 const fmtCache = new Map();
 function fmt(v, dec = 0) {
-  if (!fmtCache.has(dec)) fmtCache.set(dec, new Intl.NumberFormat('pt-BR', { minimumFractionDigits: dec, maximumFractionDigits: dec }));
+  if (!fmtCache.has(dec)) fmtCache.set(dec, new Intl.NumberFormat('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }));
   return fmtCache.get(dec).format(v);
 }
 const pct = (f) => `${fmt(f * 100, f < 0.1 ? 1 : 0)}%`;
@@ -106,33 +106,33 @@ function parseData(text) {
   return out;
 }
 
-const DEFAULT_DATA = `Posse de bola; 58%; 42%
-Finalizações; 16; 9
-Chutes no gol; 7; 3
-Passes certos; 512; 388
-Escanteios; 4; 6
-Desarmes; 14; 19
-Faltas cometidas; 11; 15; menor`;
+const DEFAULT_DATA = `Possession; 58%; 42%
+Shots; 16; 9
+Shots on target; 7; 3
+Accurate passes; 512; 388
+Corners; 4; 6
+Tackles; 14; 19
+Fouls committed; 11; 15; lower`;
 
 export default {
   id: 'versus',
   title: 'Versus',
-  description: 'Comparação A × B: barras opostas crescem do centro, o vencedor de cada linha acende e o placar de linhas vencidas fecha o quadro.',
+  description: 'An A × B comparison: opposing bars grow from the center, each row\'s winner lights up and a tally of rows won closes the frame.',
   category: 'dados',
-  tags: ['dados', 'ui', 'broadcast'],
+  tags: ['data', 'ui', 'broadcast'],
   duration: 8,
   poster: 5.6,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Estatísticas da partida' },
-    nameA: { type: 'text', label: 'Lado A', default: 'Brasil' },
-    nameB: { type: 'text', label: 'Lado B', default: 'Argentina' },
-    data: { type: 'textarea', label: 'Dados (Rótulo; A; B[; menor])', rows: 8, default: DEFAULT_DATA },
-    tally: { type: 'boolean', label: 'Placar de linhas vencidas', default: true },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    title: { type: 'text', label: 'Title', default: 'Match stats' },
+    nameA: { type: 'text', label: 'Side A', default: 'Brazil' },
+    nameB: { type: 'text', label: 'Side B', default: 'Argentina' },
+    data: { type: 'textarea', label: 'Data (Label; A; B[; lower])', rows: 8, default: DEFAULT_DATA },
+    tally: { type: 'boolean', label: 'Rows-won tally', default: true },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, px, p }) {
@@ -242,7 +242,7 @@ export default {
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText('Sem dados — use "Rótulo; valor A; valor B" por linha', w / 2, h / 2);
+      ctx.fillText('No data — use "Label; value A; value B" per line', w / 2, h / 2);
       return;
     }
 

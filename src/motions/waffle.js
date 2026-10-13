@@ -31,7 +31,7 @@ function parseNum(raw) {
 
 const fmtCache = new Map();
 function fmt(v, dec = 0) {
-  if (!fmtCache.has(dec)) fmtCache.set(dec, new Intl.NumberFormat('pt-BR', { minimumFractionDigits: dec, maximumFractionDigits: dec }));
+  if (!fmtCache.has(dec)) fmtCache.set(dec, new Intl.NumberFormat('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }));
   return fmtCache.get(dec).format(v);
 }
 const pct = (f) => `${fmt(f * 100, f < 0.1 ? 1 : 0)}%`;
@@ -133,30 +133,30 @@ function shape(ctx, kind, x, y, s) {
   } else ctx.roundRect(x - s * 0.42, y - s * 0.42, s * 0.84, s * 0.84, s * 0.12);
 }
 
-const DEFAULT_DATA = `Toda semana, 72
-De vez em quando, 19
-Nunca usaram, 9`;
+const DEFAULT_DATA = `Every week, 72
+Now and then, 19
+Never used it, 9`;
 
 export default {
   id: 'waffle',
   title: 'Waffle',
-  description: 'Waffle de pictogramas ("7 em cada 10…"): a grade de ícones acende em stagger, categoria por categoria, com o número grande contando.',
+  description: 'A pictogram waffle chart ("7 in 10…"): the icon grid lights up in a stagger, category by category, as the big number counts up.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 8,
   poster: 5.2,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Pix no dia a dia' },
-    statement: { type: 'text', label: 'Frase', default: 'dos brasileiros usam Pix toda semana' },
-    data: { type: 'textarea', label: 'Dados (Rótulo, valor)', rows: 6, default: DEFAULT_DATA },
-    grid: { type: 'select', label: 'Ícones', options: ['10', '20', '50', '100'], default: '100' },
-    icon: { type: 'select', label: 'Ícone', options: ['pessoa', 'círculo', 'quadrado'], default: 'pessoa' },
-    headline: { type: 'select', label: 'Número', options: ['em cada N', 'percentual'], default: 'percentual' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    title: { type: 'text', label: 'Title', default: 'Pix in daily life' },
+    statement: { type: 'text', label: 'Statement', default: 'of Brazilians use Pix every week' },
+    data: { type: 'textarea', label: 'Data (Label, value)', rows: 6, default: DEFAULT_DATA },
+    grid: { type: 'select', label: 'Icons', options: ['10', '20', '50', '100'], default: '100' },
+    icon: { type: 'select', label: 'Icon', options: ['pessoa', 'círculo', 'quadrado'], default: 'pessoa' },
+    headline: { type: 'select', label: 'Number', options: ['em cada N', 'percentual'], default: 'percentual' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, px, p }) {
@@ -203,7 +203,7 @@ export default {
     const first = items[0];
     const num = first ? (em ? Math.round(first.share * den) : first.share * 100) : 0;
     const numFull = em ? fmt(num) : fmt(num, 0);
-    const tailTxt = em ? ` em cada ${fmt(den)}` : '%';
+    const tailTxt = em ? ` in ${fmt(den)}` : '%';
     const bigS0 = m * (side ? 0.2 : portrait ? 0.2 : 0.15);
     const tailFont = (s) => (em ? SERIF_IT(s * 0.42) : INTER(800)(s * 0.55));
     ctx.font = INTER(800)(bigS0);
@@ -337,7 +337,7 @@ export default {
     if (!n) {
       ctx.font = INTER(500)(titleS);
       ctx.fillStyle = rgba(p.ink, 0.5);
-      ctx.fillText('Sem dados — use "Rótulo, valor" por linha', tx, ty + titleS * 5);
+      ctx.fillText('No data — use "Label, value" per line', tx, ty + titleS * 5);
       ctx.globalAlpha = 1;
       return;
     }

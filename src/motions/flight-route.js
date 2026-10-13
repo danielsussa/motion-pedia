@@ -75,43 +75,43 @@ const CITIES = [
   ['Santiago', 'SCL', -33.45, -70.67, ''],
   ['Lima', 'LIM', -12.05, -77.04, ''],
   ['Bogotá', 'BOG', 4.71, -74.07, ''],
-  ['Cidade do México', 'MEX', 19.43, -99.13, 'mexico city,mexico'],
-  ['Nova York', 'JFK', 40.71, -74.0, 'new york,nyc'],
+  ['Mexico City', 'MEX', 19.43, -99.13, 'cidade do mexico,mexico'],
+  ['New York', 'JFK', 40.71, -74.0, 'nova york,nyc'],
   ['Miami', 'MIA', 25.76, -80.19, ''],
   ['Orlando', 'MCO', 28.54, -81.38, ''],
   ['Los Angeles', 'LAX', 34.05, -118.24, 'la'],
   ['San Francisco', 'SFO', 37.77, -122.42, 'são francisco'],
   ['Chicago', 'ORD', 41.88, -87.63, ''],
   ['Toronto', 'YYZ', 43.65, -79.38, ''],
-  ['Lisboa', 'LIS', 38.72, -9.14, 'lisbon'],
+  ['Lisbon', 'LIS', 38.72, -9.14, 'lisboa'],
   ['Porto', 'OPO', 41.15, -8.61, 'oporto'],
-  ['Madri', 'MAD', 40.42, -3.7, 'madrid'],
+  ['Madrid', 'MAD', 40.42, -3.7, 'madri'],
   ['Barcelona', 'BCN', 41.39, 2.17, ''],
   ['Paris', 'CDG', 48.86, 2.35, ''],
-  ['Londres', 'LHR', 51.51, -0.13, 'london'],
-  ['Roma', 'FCO', 41.9, 12.5, 'rome'],
-  ['Milão', 'MXP', 45.46, 9.19, 'milan'],
+  ['London', 'LHR', 51.51, -0.13, 'londres'],
+  ['Rome', 'FCO', 41.9, 12.5, 'roma'],
+  ['Milan', 'MXP', 45.46, 9.19, 'milao'],
   ['Frankfurt', 'FRA', 50.11, 8.68, ''],
-  ['Amsterdã', 'AMS', 52.37, 4.9, 'amsterdam'],
-  ['Berlim', 'BER', 52.52, 13.4, 'berlin'],
-  ['Istambul', 'IST', 41.01, 28.98, 'istanbul'],
-  ['Moscou', 'SVO', 55.76, 37.62, 'moscow'],
+  ['Amsterdam', 'AMS', 52.37, 4.9, 'amsterda'],
+  ['Berlin', 'BER', 52.52, 13.4, 'berlim'],
+  ['Istanbul', 'IST', 41.01, 28.98, 'istambul'],
+  ['Moscow', 'SVO', 55.76, 37.62, 'moscou'],
   ['Dubai', 'DXB', 25.2, 55.27, ''],
   ['Cairo', 'CAI', 30.04, 31.24, ''],
   ['Lagos', 'LOS', 6.52, 3.38, ''],
   ['Luanda', 'LAD', -8.84, 13.23, ''],
-  ['Nairóbi', 'NBO', -1.29, 36.82, 'nairobi'],
-  ['Joanesburgo', 'JNB', -26.2, 28.05, 'johannesburg'],
-  ['Cidade do Cabo', 'CPT', -33.92, 18.42, 'cape town'],
+  ['Nairobi', 'NBO', -1.29, 36.82, ''],
+  ['Johannesburg', 'JNB', -26.2, 28.05, 'joanesburgo'],
+  ['Cape Town', 'CPT', -33.92, 18.42, 'cidade do cabo'],
   ['Mumbai', 'BOM', 19.08, 72.88, ''],
-  ['Délhi', 'DEL', 28.61, 77.21, 'delhi,nova delhi'],
+  ['Delhi', 'DEL', 28.61, 77.21, 'new delhi,nova delhi'],
   ['Bangkok', 'BKK', 13.76, 100.5, 'banguecoque'],
-  ['Singapura', 'SIN', 1.35, 103.82, 'singapore'],
+  ['Singapore', 'SIN', 1.35, 103.82, 'singapura'],
   ['Hong Kong', 'HKG', 22.32, 114.17, ''],
-  ['Pequim', 'PEK', 39.9, 116.4, 'beijing'],
-  ['Xangai', 'PVG', 31.23, 121.47, 'shanghai'],
-  ['Seul', 'ICN', 37.57, 126.98, 'seoul'],
-  ['Tóquio', 'HND', 35.68, 139.69, 'tokyo'],
+  ['Beijing', 'PEK', 39.9, 116.4, 'pequim'],
+  ['Shanghai', 'PVG', 31.23, 121.47, 'xangai'],
+  ['Seoul', 'ICN', 37.57, 126.98, 'seul'],
+  ['Tokyo', 'HND', 35.68, 139.69, 'toquio'],
   ['Sydney', 'SYD', -33.87, 151.21, ''],
   ['Auckland', 'AKL', -36.85, 174.76, ''],
 ];
@@ -130,7 +130,7 @@ function parseRoute(text) {
     if (!s) continue;
     const m = s.match(/^(.*?)\s*@\s*(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)\s*$/);
     if (m) {
-      const name = m[1].trim() || 'Ponto';
+      const name = m[1].trim() || 'Point';
       out.push({ name, code: norm(name).replace(/[^a-z]/g, '').slice(0, 3).toUpperCase(), lat: clamp(+m[2], -80, 80), lon: +m[3] });
     } else if (LOOKUP.has(norm(s))) out.push(LOOKUP.get(norm(s)));
     if (out.length === 4) break;
@@ -190,20 +190,20 @@ const dotCache = new Map();
 export default {
   id: 'flight-route',
   title: 'Flight Route',
-  description: 'Avião percorrendo uma rota em arco sobre um mapa-múndi pontilhado, com pins nas cidades e a distância contando.',
+  description: 'A plane flying an arced route over a dotted world map, with city pins and a running distance count.',
   category: 'dados',
-  tags: ['dados', 'ui', 'broadcast'],
+  tags: ['data', 'ui', 'broadcast'],
   duration: 9,
   poster: 4.6,
 
   params: {
-    route: { type: 'textarea', label: 'Rota (cidade → cidade; ou "Nome @ lat, lon")', rows: 3, default: 'São Paulo → Lisboa' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff8a3d' },
-    dots: { type: 'color', label: 'Pontos do mapa', default: '#c3cedc' },
-    ink: { type: 'color', label: 'Texto', default: '#f3f1ec' },
-    bg: { type: 'color', label: 'Fundo', default: '#0a0d12' },
-    density: { type: 'range', label: 'Densidade do mapa', min: 0.6, max: 1.6, step: 0.05, default: 1 },
-    card: { type: 'boolean', label: 'Cartão com distância', default: true },
+    route: { type: 'textarea', label: 'Route (city → city; or "Name @ lat, lon")', rows: 3, default: 'São Paulo → Lisbon' },
+    accent: { type: 'color', label: 'Accent', default: '#ff8a3d' },
+    dots: { type: 'color', label: 'Map dots', default: '#c3cedc' },
+    ink: { type: 'color', label: 'Text', default: '#f3f1ec' },
+    bg: { type: 'color', label: 'Background', default: '#0a0d12' },
+    density: { type: 'range', label: 'Map density', min: 0.6, max: 1.6, step: 0.05, default: 1 },
+    card: { type: 'boolean', label: 'Distance card', default: true },
   },
 
   setup({ w, h, p, px }) {
@@ -366,7 +366,7 @@ export default {
       ctx.fillStyle = rgba(p.ink, 0.55);
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText('Rota precisa de 2+ cidades conhecidas (ou "Nome @ lat, lon")', w / 2, h / 2);
+      ctx.fillText('Route needs 2+ known cities (or "Name @ lat, lon")', w / 2, h / 2);
       return;
     }
 
@@ -589,7 +589,7 @@ export default {
         ctx.letterSpacing = `${fsC * 0.02}px`;
         const codesW = ctx.measureText(codes).width;
         ctx.letterSpacing = '0px';
-        const sub = `${first.name} — ${last.name}${cities.length > 2 ? ` · ${cities.length - 2} escala${cities.length > 3 ? 's' : ''}` : ''}`;
+        const sub = `${first.name} — ${last.name}${cities.length > 2 ? ` · ${cities.length - 2} stop${cities.length > 3 ? 's' : ''}` : ''}`;
         ctx.font = INTER(500, fsS);
         const subW = ctx.measureText(sub).width;
         const kmTxt = `${fmt.format(Math.round(state.kmTotal))} km`;
@@ -633,7 +633,7 @@ export default {
         ctx.font = INTER(600, fsS * 0.85);
         ctx.letterSpacing = `${fsS * 0.12}px`;
         ctx.fillStyle = rgba(p.ink, 0.45);
-        const status = t < T_FLY0 ? 'EMBARQUE' : t < T_FLY1 ? 'EM VOO' : 'POUSOU';
+        const status = t < T_FLY0 ? 'BOARDING' : t < T_FLY1 ? 'IN FLIGHT' : 'LANDED';
         ctx.fillText(status, cx + cw - pad * 1.2, cy + pad + fsC * 1.2 + fsS * 1.2);
         ctx.letterSpacing = '0px';
         // barra de progresso no pé do cartão

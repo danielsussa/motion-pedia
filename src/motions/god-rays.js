@@ -123,19 +123,19 @@ void main() {
 export default {
   id: 'god-rays',
   title: 'God Rays',
-  description: 'Feixes de luz entrando por uma janela num quarto escuro, com nuvens passando e poeira flutuando no facho.',
+  description: 'Light beams pouring through a window into a dark room, with clouds passing and dust floating in the shaft.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'shader', 'partículas'],
+  tags: ['background', 'loop', 'shader', 'particles'],
   duration: 12,
 
   params: {
-    bg: { type: 'color', label: 'Quarto', default: '#1a1512' },
-    light: { type: 'color', label: 'Luz', default: '#ffd9a0' },
-    intensity: { type: 'range', label: 'Intensidade', min: 0, max: 2, step: 0.01, default: 1 },
-    angle: { type: 'range', label: 'Ângulo da luz', min: -60, max: 60, step: 1, default: 28 },
-    panes: { type: 'select', label: 'Vidraças', options: ['2×2', '2×3', '3×3', '1×1'], default: '2×3' },
-    dust: { type: 'range', label: 'Poeira', min: 0, max: 1, step: 0.01, default: 0.6 },
-    clouds: { type: 'range', label: 'Nuvens', min: 0, max: 1, step: 0.01, default: 0.5 },
+    bg: { type: 'color', label: 'Room', default: '#1a1512' },
+    light: { type: 'color', label: 'Light', default: '#ffd9a0' },
+    intensity: { type: 'range', label: 'Intensity', min: 0, max: 2, step: 0.01, default: 1 },
+    angle: { type: 'range', label: 'Light angle', min: -60, max: 60, step: 1, default: 28 },
+    panes: { type: 'select', label: 'Panes', options: ['2×2', '2×3', '3×3', '1×1'], default: '2×3' },
+    dust: { type: 'range', label: 'Dust', min: 0, max: 1, step: 0.01, default: 0.6 },
+    clouds: { type: 'range', label: 'Clouds', min: 0, max: 1, step: 0.01, default: 0.5 },
   },
 
   setup({ w, h, p }) {

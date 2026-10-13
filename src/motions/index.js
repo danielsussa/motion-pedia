@@ -5,13 +5,13 @@ const mods = import.meta.glob(['./*.js', '!./index.js', '!./_*.js'], { eager: tr
 
 // Seções da galeria, na ordem. Todo motion declara `category` com um destes ids.
 export const CATEGORIES = [
-  { id: 'tipografia', label: 'Tipografia' },
-  { id: 'fundos', label: 'Fundos & loops' },
-  { id: 'formas', label: 'Formas & geometria' },
-  { id: 'particulas', label: 'Partículas & simulação' },
-  { id: 'transicoes', label: 'Transições & overlays' },
-  { id: 'dados', label: 'UI, dados & broadcast' },
-  { id: 'imagem', label: 'Imagem & foto' },
+  { id: 'tipografia', label: 'Typography' },
+  { id: 'fundos', label: 'Backgrounds & loops' },
+  { id: 'formas', label: 'Shapes & geometry' },
+  { id: 'particulas', label: 'Particles & simulation' },
+  { id: 'transicoes', label: 'Transitions & overlays' },
+  { id: 'dados', label: 'UI, data & broadcast' },
+  { id: 'imagem', label: 'Image & photo' },
 ];
 
 export const motions = Object.values(mods).sort((a, b) => a.title.localeCompare(b.title));

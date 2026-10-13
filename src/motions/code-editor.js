@@ -3,7 +3,7 @@ import { TAU, clamp, lerp, seg, ease, spring, rgba, mixHex } from '../lib/anim.j
 const MONO = '"JetBrains Mono", ui-monospace, monospace';
 const F = 'Inter, system-ui, sans-serif';
 
-const DEFAULT = `// anima um valor com mola
+const DEFAULT = `// animate a value with a spring
 import { spring } from './anim.js';
 
 const DURATION = 1.2;
@@ -11,7 +11,7 @@ const DURATION = 1.2;
 export function bounce(el, t) {
   const k = spring(t / DURATION, 0.35);
   el.style.transform = \`scale(\${0.8 + 0.2 * k})\`;
-  return k > 0.99 ? 'pronto' : null;
+  return k > 0.99 ? 'done' : null;
 }`;
 
 const KEYWORDS = new Set(
@@ -92,21 +92,21 @@ function tokenize(src) {
 export default {
   id: 'code-editor',
   title: 'Code Editor',
-  description: 'Código sendo digitado num editor escuro com syntax highlight, números de linha, linha atual e cursor piscando.',
+  description: 'Code being typed into a dark editor with syntax highlighting, line numbers, current-line highlight and a blinking cursor.',
   category: 'dados',
-  tags: ['ui', 'dados', 'tipografia'],
+  tags: ['ui', 'data', 'typography'],
   duration: 12,
   poster: 9.5,
 
   params: {
-    code: { type: 'textarea', label: 'Código', rows: 10, default: DEFAULT },
-    file: { type: 'text', label: 'Arquivo', default: 'bounce.js' },
-    accent: { type: 'color', label: 'Destaque (palavras-chave)', default: '#c3a6ff' },
-    window: { type: 'color', label: 'Janela', default: '#15171e' },
-    bg: { type: 'color', label: 'Fundo', default: '#0b0c10' },
-    speed: { type: 'range', label: 'Velocidade de digitação', min: 0.5, max: 2, step: 0.05, default: 1 },
-    lineNumbers: { type: 'boolean', label: 'Números de linha', default: true },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    code: { type: 'textarea', label: 'Code', rows: 10, default: DEFAULT },
+    file: { type: 'text', label: 'File', default: 'bounce.js' },
+    accent: { type: 'color', label: 'Accent (keywords)', default: '#c3a6ff' },
+    window: { type: 'color', label: 'Window', default: '#15171e' },
+    bg: { type: 'color', label: 'Background', default: '#0b0c10' },
+    speed: { type: 'range', label: 'Typing speed', min: 0.5, max: 2, step: 0.05, default: 1 },
+    lineNumbers: { type: 'boolean', label: 'Line numbers', default: true },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px, duration }) {
@@ -390,7 +390,7 @@ export default {
     ctx.fillText(pillTxt, padX * 0.6 + statusH * 0.4, sy + statusH * 0.52);
     ctx.fillStyle = '#7c8090';
     ctx.textAlign = 'right';
-    ctx.fillText(`Ln ${curLine + 1}, Col ${curCol + 1}    Espaços: 2    UTF-8    JavaScript`, WW - padX * 0.6, sy + statusH * 0.52);
+    ctx.fillText(`Ln ${curLine + 1}, Col ${curCol + 1}    Spaces: 2    UTF-8    JavaScript`, WW - padX * 0.6, sy + statusH * 0.52);
 
     ctx.restore(); // clip janela
     ctx.strokeStyle = 'rgba(255,255,255,0.07)';

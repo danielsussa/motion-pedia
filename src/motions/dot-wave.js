@@ -3,20 +3,20 @@ import { TAU, mixHex } from '../lib/anim.js';
 export default {
   id: 'dot-wave',
   title: 'Dot Wave',
-  description: 'Grade de pontos pulsando com uma onda — radial, diagonal ou interferência de duas fontes.',
+  description: 'A grid of dots pulsing with a wave — radial, diagonal or two-source interference.',
   category: 'fundos',
-  tags: ['padrão', 'loop', 'fundo'],
+  tags: ['pattern', 'loop', 'background'],
   duration: 6,
 
   params: {
-    mode: { type: 'select', label: 'Onda', options: ['radial', 'diagonal', 'interferência'], default: 'radial' },
-    spacing: { type: 'range', label: 'Espaçamento', min: 16, max: 90, step: 1, default: 38 },
-    radius: { type: 'range', label: 'Raio máx.', min: 0.1, max: 0.6, step: 0.01, default: 0.42 },
-    freq: { type: 'range', label: 'Frequência', min: 0.002, max: 0.03, step: 0.0005, default: 0.011 },
-    cycles: { type: 'range', label: 'Ciclos/loop', min: 1, max: 4, step: 1, default: 2 },
-    colorA: { type: 'color', label: 'Cor baixa', default: '#1d2a66' },
-    colorB: { type: 'color', label: 'Cor alta', default: '#7cf5ff' },
-    bg: { type: 'color', label: 'Fundo', default: '#05060a' },
+    mode: { type: 'select', label: 'Wave', options: ['radial', 'diagonal', 'interferência'], default: 'radial' },
+    spacing: { type: 'range', label: 'Spacing', min: 16, max: 90, step: 1, default: 38 },
+    radius: { type: 'range', label: 'Max radius', min: 0.1, max: 0.6, step: 0.01, default: 0.42 },
+    freq: { type: 'range', label: 'Frequency', min: 0.002, max: 0.03, step: 0.0005, default: 0.011 },
+    cycles: { type: 'range', label: 'Cycles/loop', min: 1, max: 4, step: 1, default: 2 },
+    colorA: { type: 'color', label: 'Low color', default: '#1d2a66' },
+    colorB: { type: 'color', label: 'High color', default: '#7cf5ff' },
+    bg: { type: 'color', label: 'Background', default: '#05060a' },
   },
 
   render(ctx, t, { w, h, p, progress: u }) {

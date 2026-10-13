@@ -33,7 +33,7 @@ button, input, select { font: inherit; color: inherit; }
   padding: 8px 16px; outline: none;
 }
 .search:focus { border-color: var(--muted); }
-.count { color: var(--muted); font-size: 13px; margin-left: auto; }
+.count { color: var(--muted); font-size: 13px; margin-left: auto; white-space: nowrap; }
 
 .gallery { padding: 24px 28px 64px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -125,7 +125,9 @@ button, input, select { font: inherit; color: inherit; }
 @media (max-width: 900px) {
   .detail { grid-template-columns: 1fr; height: auto; }
   .stage { height: 60vh; flex: none; }
-  .top { padding: 12px 16px; }
+  .top { padding: 12px 16px; gap: 12px; }
+  .count { display: none; }
+  .gh { margin-left: auto; }
   .gallery, .detail { padding-left: 16px; padding-right: 16px; }
 }
 
@@ -158,3 +160,9 @@ button, input, select { font: inherit; color: inherit; }
 .file-row input[type='file'] { display: none; }
 .file-name { flex: 1; font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .btn.mini { padding: 4px 10px; font-size: 12px; }
+
+/* galeria publicada: link do repositório e linha de apresentação */
+.gh { color: var(--muted); text-decoration: none; font-size: 13px; white-space: nowrap; }
+.gh:hover { color: inherit; }
+.intro { color: var(--muted); max-width: 720px; margin: 4px 0 16px; line-height: 1.5; }
+.render-panel code { font-family: 'JetBrains Mono', monospace; font-size: 12px; }

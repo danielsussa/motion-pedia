@@ -13,21 +13,21 @@ const fmt = (s) => {
 export default {
   id: 'audio-viz',
   title: 'Audio Visualizer',
-  description: 'Espectro do áudio enviado em barras espelhadas ou em anel radial que pulsa no grave, com título e barra de progresso.',
+  description: 'The spectrum of your audio as mirrored bars or a radial ring that pulses on the bass, with a title and progress bar.',
   category: 'dados',
-  tags: ['áudio', 'dados', 'loop', 'alpha'],
+  tags: ['audio', 'data', 'loop', 'alpha'],
   duration: 12,
   poster: 4.02,
 
   params: {
-    audio: { type: 'audio', label: 'Áudio', default: '/samples/beat.wav' },
-    style: { type: 'select', label: 'Estilo', options: ['barras', 'círculo'], default: 'barras' },
-    title: { type: 'text', label: 'Título', default: 'Beat Demo — 120 BPM' },
-    bars: { type: 'range', label: 'Barras', min: 16, max: 96, step: 1, default: 56 },
-    gain: { type: 'range', label: 'Sensibilidade', min: 0.5, max: 2, step: 0.05, default: 1 },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0d12' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    audio: { type: 'audio', label: 'Audio', default: '/samples/beat.wav' },
+    style: { type: 'select', label: 'Style', options: ['barras', 'círculo'], default: 'barras' },
+    title: { type: 'text', label: 'Title', default: 'Beat Demo — 120 BPM' },
+    bars: { type: 'range', label: 'Bars', min: 16, max: 96, step: 1, default: 56 },
+    gain: { type: 'range', label: 'Sensitivity', min: 0.5, max: 2, step: 0.05, default: 1 },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    bg: { type: 'color', label: 'Background', default: '#0d0d12' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   // Normalização por banda a partir do áudio inteiro (piso = percentil 20, teto = percentil 99),
@@ -268,6 +268,6 @@ function drawLoading(ctx, w, h, m, t) {
   ctx.textBaseline = 'middle';
   ctx.font = `500 ${m * 0.022}px ${MONO}`;
   ctx.fillStyle = `rgba(255,255,255,${0.35 + 0.2 * Math.sin(t * TAU)})`;
-  ctx.fillText('carregando áudio…', w / 2, h * 0.92);
+  ctx.fillText('loading audio…', w / 2, h * 0.92);
   ctx.restore();
 }

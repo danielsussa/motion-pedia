@@ -99,22 +99,22 @@ const mixRgb = (A, B, t) => `rgb(${Math.round(lerp(A[0], B[0], t))},${Math.round
 export default {
   id: 'string-art',
   title: 'String Art',
-  description: 'Linhas retas esticadas entre pregos, uma a uma, até formar curvas (cardioide, nefroide, parábolas) pelo envelope.',
+  description: 'Straight threads strung between nails, one by one, until their envelope forms curves (cardioid, nephroid, parabolas).',
   category: 'formas',
-  tags: ['forma', 'loop', 'padrão'],
+  tags: ['shape', 'loop', 'pattern'],
   duration: 12,
   poster: 8.4,
 
   params: {
-    preset: { type: 'select', label: 'Figura', options: Object.keys(PRESETS), default: 'cardioide' },
-    nails: { type: 'range', label: 'Pregos', min: 60, max: 300, step: 2, default: 180 },
-    colorA: { type: 'color', label: 'Linha (início)', default: '#f3eee6' },
-    colorB: { type: 'color', label: 'Linha (fim)', default: '#ff6a3d' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0e12' },
-    width: { type: 'range', label: 'Espessura', min: 0.4, max: 3, step: 0.1, default: 1.1 },
-    opacity: { type: 'range', label: 'Opacidade', min: 0.15, max: 1, step: 0.01, default: 0.6 },
-    size: { type: 'range', label: 'Tamanho', min: 0.25, max: 0.48, step: 0.01, default: 0.41 },
-    board: { type: 'boolean', label: 'Placa', default: true },
+    preset: { type: 'select', label: 'Figure', options: Object.keys(PRESETS), default: 'cardioide' },
+    nails: { type: 'range', label: 'Nails', min: 60, max: 300, step: 2, default: 180 },
+    colorA: { type: 'color', label: 'Thread (start)', default: '#f3eee6' },
+    colorB: { type: 'color', label: 'Thread (end)', default: '#ff6a3d' },
+    bg: { type: 'color', label: 'Background', default: '#0d0e12' },
+    width: { type: 'range', label: 'Thickness', min: 0.4, max: 3, step: 0.1, default: 1.1 },
+    opacity: { type: 'range', label: 'Opacity', min: 0.15, max: 1, step: 0.01, default: 0.6 },
+    size: { type: 'range', label: 'Size', min: 0.25, max: 0.48, step: 0.01, default: 0.41 },
+    board: { type: 'boolean', label: 'Board', default: true },
   },
 
   setup({ w, h, p, px }) {

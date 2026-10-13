@@ -87,31 +87,31 @@ function bgBuffer(w, h, px, color) {
 const INTER = (wt) => (s) => `${wt} ${s}px Inter, system-ui, sans-serif`;
 const MONO = (wt) => (s) => `${wt} ${s}px 'JetBrains Mono', ui-monospace, monospace`;
 
-const DEFAULT_DATA = `Visitas ao site, 48.200
-Cadastros, 12.650
-Ativação, 6.380
-Teste grátis, 2.910
-Assinatura, 1.240`;
+const DEFAULT_DATA = `Site visits, 48.200
+Sign-ups, 12.650
+Activation, 6.380
+Free trial, 2.910
+Subscription, 1.240`;
 
 export default {
   id: 'funnel',
   title: 'Funnel',
-  description: 'Funil de conversão: as etapas se enchem de cima para baixo, com valores contando, percentual do topo e a queda entre etapas.',
+  description: 'Conversion funnel: stages fill top to bottom, with counting values, percent of top and the drop-off between stages.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 8,
   poster: 6.2,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Funil de vendas' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Jornada do visitante · últimos 30 dias' },
-    data: { type: 'textarea', label: 'Dados (Etapa, valor)', rows: 7, default: DEFAULT_DATA },
-    scale: { type: 'select', label: 'Largura', options: ['suave', 'proporcional'], default: 'suave' },
-    between: { type: 'select', label: 'Entre etapas', options: ['conversão', 'queda', 'nada'], default: 'conversão' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    title: { type: 'text', label: 'Title', default: 'Sales funnel' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'Visitor journey · last 30 days' },
+    data: { type: 'textarea', label: 'Data (Stage, value)', rows: 7, default: DEFAULT_DATA },
+    scale: { type: 'select', label: 'Width', options: ['suave', 'proporcional'], default: 'suave' },
+    between: { type: 'select', label: 'Between stages', options: ['conversão', 'queda', 'nada'], default: 'conversão' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, px, p }) {
@@ -169,7 +169,7 @@ export default {
       ctx.font = INTER(500)(subSize * 1.3);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Sem dados — use uma linha "Etapa, valor" por etapa', w / 2, h / 2);
+      ctx.fillText('No data — use one "Stage, value" line per stage', w / 2, h / 2);
       return;
     }
 
@@ -256,7 +256,7 @@ export default {
       // valor contando
       const cnt = ease.outExpo(seg(t, at, at + 1.3));
       const vTxt = fmt(d.v * cnt, d.dec);
-      const sTxt = i === 0 ? 'do total' : `${pct(d.ofTop)} do topo`;
+      const sTxt = i === 0 ? 'of total' : `${pct(d.ofTop)} of top`;
       const slide = (1 - ease.outExpo(seg(t, at - 0.05, at + 0.7))) * m * 0.03;
       if (stacked) {
         const ly = y - lsz * 0.55;
@@ -274,12 +274,12 @@ export default {
         // % do topo dentro da barra, quando cabe
         if (i > 0) {
           ctx.font = INTER(600)(lsz * 0.78);
-          const tw = ctx.measureText(`${pct(d.ofTop)} do topo`).width;
+          const tw = ctx.measureText(`${pct(d.ofTop)} of top`).width;
           if (tw < bw - lsz * 1.2 && barH > lsz * 1.2) {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillStyle = last ? rgba('#ffffff', 0.92) : tone(i) > 0.45 ? rgba(p.bg, 0.8) : rgba(p.ink, 0.8);
-            ctx.fillText(`${pct(d.ofTop)} do topo`, fcx, y + barH / 2 + lsz * 0.04);
+            ctx.fillText(`${pct(d.ofTop)} of top`, fcx, y + barH / 2 + lsz * 0.04);
           }
         }
         ctx.globalAlpha = 1;
@@ -316,7 +316,7 @@ export default {
         const pa = 1 - outRow(i + 1);
         if (k <= 0.01 || pa <= 0.01) continue;
         const f = a.v ? b.v / a.v : 0;
-        const txt = p.between === 'queda' ? `↓ ${pct(1 - f)}` : `${pct(f)} avançam`;
+        const txt = p.between === 'queda' ? `↓ ${pct(1 - f)}` : `${pct(f)} advance`;
         const y0 = barY(i) + barH;
         const y1 = barY(i + 1);
         const cy = (y0 + y1) / 2;
@@ -360,7 +360,7 @@ export default {
         ctx.textAlign = 'left';
         ctx.font = INTER(500)(fs);
         ctx.fillStyle = rgba(p.ink, 0.6);
-        const lab = 'Conversão total';
+        const lab = 'Overall conversion';
         ctx.fillText(lab, padX, fy);
         ctx.textAlign = 'right';
         ctx.font = INTER(800)(fs * 1.5);

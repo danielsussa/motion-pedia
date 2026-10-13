@@ -139,32 +139,32 @@ function niceStep(range, target = 10) {
 const A0 = (150 * Math.PI) / 180;
 const SWEEP = (240 * Math.PI) / 180;
 
-const DEFAULT_ZONES = `Crítico, 30
-Atenção, 55
-Bom, 80
-Excelente, 100`;
+const DEFAULT_ZONES = `Critical, 30
+Warning, 55
+Good, 80
+Excellent, 100`;
 
 export default {
   id: 'gauge',
   title: 'Gauge',
-  description: 'Medidor de 240° que se desenha com zonas e escala; o ponteiro testa o fundo de escala e assenta no valor com mola.',
+  description: 'A 240° gauge draws itself with zones and a scale; the needle tests full scale and springs into place on the value.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 8,
   poster: 4.6,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Satisfação do cliente' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'NPS consolidado · 3º trimestre' },
-    value: { type: 'range', label: 'Valor', min: -1000, max: 1000, step: 0.1, default: 74 },
-    min: { type: 'range', label: 'Mínimo', min: -1000, max: 1000, step: 1, default: 0 },
-    max: { type: 'range', label: 'Máximo', min: -1000, max: 1000, step: 1, default: 100 },
-    unit: { type: 'text', label: 'Unidade', default: 'pts' },
-    zones: { type: 'textarea', label: 'Zonas (Nome, até)', rows: 5, default: DEFAULT_ZONES },
-    live: { type: 'boolean', label: 'Ponteiro vivo (oscila)', default: true },
-    accent: { type: 'color', label: 'Destaque', default: '#ffb547' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0f0e0c' },
+    title: { type: 'text', label: 'Title', default: 'Customer satisfaction' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'Overall NPS · Q3' },
+    value: { type: 'range', label: 'Value', min: -1000, max: 1000, step: 0.1, default: 74 },
+    min: { type: 'range', label: 'Minimum', min: -1000, max: 1000, step: 1, default: 0 },
+    max: { type: 'range', label: 'Maximum', min: -1000, max: 1000, step: 1, default: 100 },
+    unit: { type: 'text', label: 'Unit', default: 'pts' },
+    zones: { type: 'textarea', label: 'Zones (Name, up to)', rows: 5, default: DEFAULT_ZONES },
+    live: { type: 'boolean', label: 'Live needle (wobbles)', default: true },
+    accent: { type: 'color', label: 'Accent', default: '#ffb547' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0f0e0c' },
   },
 
   setup({ w, h, px, p }) {

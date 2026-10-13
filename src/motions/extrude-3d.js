@@ -13,22 +13,22 @@ const mixRgb = (A, B, k) =>
 export default {
   id: 'extrude-3d',
   title: 'Extrude 3D',
-  description: 'Texto extrudado em 3D balançando no espaço, com a lateral sombreada em degradê e um brilho correndo pela face.',
+  description: '3D extruded text swinging in space, with gradient-shaded sides and a glint running across the face.',
   category: 'tipografia',
-  tags: ['tipografia', '3d', 'loop'],
+  tags: ['typography', '3d', 'loop'],
   duration: 6,
   poster: 1.1,
 
   params: {
-    text: { type: 'text', label: 'Texto', default: 'VOLUME' },
-    font: { type: 'select', label: 'Fonte', options: ['sans', 'serif', 'serif itálico'], default: 'sans' },
-    depth: { type: 'range', label: 'Profundidade', min: 0.05, max: 0.8, step: 0.01, default: 0.32 },
-    swing: { type: 'range', label: 'Giro', min: 0, max: 1, step: 0.01, default: 0.55 },
-    shine: { type: 'boolean', label: 'Brilho na face', default: true },
+    text: { type: 'text', label: 'Text', default: 'VOLUME' },
+    font: { type: 'select', label: 'Font', options: ['sans', 'serif', 'serif itálico'], default: 'sans' },
+    depth: { type: 'range', label: 'Depth', min: 0.05, max: 0.8, step: 0.01, default: 0.32 },
+    swing: { type: 'range', label: 'Spin', min: 0, max: 1, step: 0.01, default: 0.55 },
+    shine: { type: 'boolean', label: 'Face shine', default: true },
     front: { type: 'color', label: 'Face', default: '#f4f1ea' },
-    side: { type: 'color', label: 'Lateral', default: '#ff5a36' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0e12' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    side: { type: 'color', label: 'Side', default: '#ff5a36' },
+    bg: { type: 'color', label: 'Background', default: '#0e0e12' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {

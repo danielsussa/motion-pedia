@@ -37,22 +37,22 @@ function glowSprite(color, S = 64) {
 
 export default {
   id: 'skyline',
-  title: 'Skyline Noturno',
-  description: 'Silhueta de cidade à noite com janelas acendendo, trânsito na orla, luzes piscando e reflexo na água.',
+  title: 'Night Skyline',
+  description: 'A city silhouette at night with windows lighting up, waterfront traffic, blinking lights and a reflection on the water.',
   category: 'fundos',
-  tags: ['fundo', 'loop'],
+  tags: ['background', 'loop'],
   duration: 24,
   poster: 10,
 
   params: {
-    sky: { type: 'color', label: 'Céu', default: '#0a0d22' },
-    glow: { type: 'color', label: 'Brilho do horizonte', default: '#4a3360' },
-    city: { type: 'color', label: 'Prédios', default: '#0c0e1c' },
-    windows: { type: 'color', label: 'Janelas', default: '#ffc874' },
-    lights: { type: 'range', label: 'Janelas acesas', min: 0.1, max: 1, step: 0.01, default: 0.5 },
-    traffic: { type: 'range', label: 'Trânsito', min: 0, max: 1, step: 0.01, default: 0.6 },
-    water: { type: 'boolean', label: 'Água com reflexo', default: true },
-    stars: { type: 'boolean', label: 'Estrelas', default: true },
+    sky: { type: 'color', label: 'Sky', default: '#0a0d22' },
+    glow: { type: 'color', label: 'Horizon glow', default: '#4a3360' },
+    city: { type: 'color', label: 'Buildings', default: '#0c0e1c' },
+    windows: { type: 'color', label: 'Windows', default: '#ffc874' },
+    lights: { type: 'range', label: 'Lit windows', min: 0.1, max: 1, step: 0.01, default: 0.5 },
+    traffic: { type: 'range', label: 'Traffic', min: 0, max: 1, step: 0.01, default: 0.6 },
+    water: { type: 'boolean', label: 'Reflective water', default: true },
+    stars: { type: 'boolean', label: 'Stars', default: true },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 11 },
   },
 

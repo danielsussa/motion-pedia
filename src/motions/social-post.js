@@ -16,8 +16,8 @@ function parseCount(raw) {
   return Math.max(0, Math.round((n || 0) * mult));
 }
 
-const fmtFull = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
-const fmtComp = new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 });
+const fmtFull = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+const fmtComp = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
 const fmtN = (v) => (v >= 10000 ? fmtComp.format(v) : fmtFull.format(v));
 
 function wrap(ctx, text, maxW, maxLines) {
@@ -95,30 +95,30 @@ const T_REPOST = 2.9;
 export default {
   id: 'social-post',
   title: 'Social Post',
-  description: 'Card de post com avatar, texto e foto; curtidas e reposts contando e o coração pulsando com explosão.',
+  description: 'A social post card with avatar, text and photo; likes and reposts count up and the heart pops with a burst.',
   category: 'dados',
-  tags: ['ui', 'dados', 'alpha'],
+  tags: ['ui', 'data', 'alpha'],
   duration: 7,
   poster: 3.2,
 
   params: {
     avatar: { type: 'image', label: 'Avatar', default: '/samples/portrait.jpg' },
-    name: { type: 'text', label: 'Nome', default: 'Ana Ribeiro' },
+    name: { type: 'text', label: 'Name', default: 'Ana Ribeiro' },
     handle: { type: 'text', label: '@', default: '@anaribeiro' },
     text: {
       type: 'textarea',
-      label: 'Texto',
+      label: 'Text',
       rows: 4,
-      default: 'Três anos animando quadro a quadro e hoje lançamos a biblioteca inteira de graça. Obrigada a todo mundo que acompanhou cada frame.',
+      default: 'Three years animating frame by frame, and today we released the whole library for free. Thank you to everyone who followed every frame.',
     },
-    showMedia: { type: 'boolean', label: 'Mostrar foto', default: true },
-    media: { type: 'image', label: 'Foto do post', default: '/samples/landscape.jpg' },
-    likes: { type: 'text', label: 'Curtidas', default: '12.480' },
+    showMedia: { type: 'boolean', label: 'Show photo', default: true },
+    media: { type: 'image', label: 'Post photo', default: '/samples/landscape.jpg' },
+    likes: { type: 'text', label: 'Likes', default: '12.480' },
     reposts: { type: 'text', label: 'Reposts', default: '1.930' },
-    theme: { type: 'select', label: 'Tema', options: ['escuro', 'claro'], default: 'escuro' },
-    accent: { type: 'color', label: 'Coração', default: '#f91880' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    theme: { type: 'select', label: 'Theme', options: ['escuro', 'claro'], default: 'escuro' },
+    accent: { type: 'color', label: 'Heart', default: '#f91880' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ p }) {

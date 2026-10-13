@@ -7,22 +7,22 @@ const F = 'Inter, system-ui, sans-serif';
 export default {
   id: 'logo-reveal',
   title: 'Logo Reveal',
-  description: 'Partículas com as cores do logo enviado convergem, uma máscara circular revela o logo nítido, um brilho passa e a assinatura entra.',
+  description: 'Particles in the colors of your logo converge, a circular mask reveals the crisp logo, a glint passes and the tagline comes in.',
   category: 'dados',
-  tags: ['intro', 'partículas', 'alpha'],
+  tags: ['intro', 'particles', 'alpha'],
   duration: 5,
   poster: 3.2,
 
   params: {
     image: { type: 'image', label: 'Logo (PNG/SVG)', default: '/samples/logo.svg' },
-    tagline: { type: 'text', label: 'Assinatura', default: 'motion·pedia' },
-    accent: { type: 'color', label: 'Brilho', default: '#ff4d2e' },
-    textColor: { type: 'color', label: 'Cor do texto', default: '#f4f1ea' },
-    bg: { type: 'color', label: 'Fundo', default: '#0c0c10' },
-    size: { type: 'range', label: 'Tamanho', min: 0.2, max: 0.7, step: 0.01, default: 0.4 },
-    density: { type: 'range', label: 'Partículas', min: 30, max: 140, step: 1, default: 90 },
+    tagline: { type: 'text', label: 'Tagline', default: 'motion·pedia' },
+    accent: { type: 'color', label: 'Glow', default: '#ff4d2e' },
+    textColor: { type: 'color', label: 'Text color', default: '#f4f1ea' },
+    bg: { type: 'color', label: 'Background', default: '#0c0c10' },
+    size: { type: 'range', label: 'Size', min: 0.2, max: 0.7, step: 0.01, default: 0.4 },
+    density: { type: 'range', label: 'Particles', min: 30, max: 140, step: 1, default: 90 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px }) {

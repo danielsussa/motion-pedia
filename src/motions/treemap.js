@@ -32,7 +32,7 @@ function parseNum(raw) {
 
 const fmtCache = new Map();
 function fmt(v, dec = 0) {
-  if (!fmtCache.has(dec)) fmtCache.set(dec, new Intl.NumberFormat('pt-BR', { minimumFractionDigits: dec, maximumFractionDigits: dec }));
+  if (!fmtCache.has(dec)) fmtCache.set(dec, new Intl.NumberFormat('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }));
   return fmtCache.get(dec).format(v);
 }
 
@@ -163,34 +163,34 @@ function squarify(items, x, y, w, h) {
   return out;
 }
 
-const DEFAULT_DATA = `Mídia paga, 3.820
-Conteúdo, 2.140
-Eventos, 1.460
+const DEFAULT_DATA = `Paid media, 3820
+Content, 2140
+Events, 1460
 SEO, 940
-Parcerias, 720
+Partnerships, 720
 CRM, 510
-Influenciadores, 380
-Pesquisa, 210`;
+Influencers, 380
+Research, 210`;
 
 export default {
   id: 'treemap',
   title: 'Treemap',
-  description: 'Treemap squarified em que os blocos crescem com mola do maior para o menor, com rótulo, valor contando e participação.',
+  description: 'A squarified treemap whose blocks spring in from largest to smallest, with labels, counting values and share.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 7,
   poster: 4.0,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Orçamento de marketing' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Distribuição por canal · 2025' },
-    data: { type: 'textarea', label: 'Dados (Rótulo, valor)', rows: 9, default: DEFAULT_DATA },
-    prefix: { type: 'text', label: 'Prefixo do valor', default: 'R$ ' },
-    suffix: { type: 'text', label: 'Sufixo do valor', default: ' mil' },
-    gap: { type: 'range', label: 'Espaço entre blocos', min: 0, max: 0.03, step: 0.001, default: 0.008 },
-    accent: { type: 'color', label: 'Destaque', default: '#7c6cff' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0e13' },
+    title: { type: 'text', label: 'Title', default: 'Marketing budget' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'Spend by channel · 2025' },
+    data: { type: 'textarea', label: 'Data (Label, value)', rows: 9, default: DEFAULT_DATA },
+    prefix: { type: 'text', label: 'Value prefix', default: '$' },
+    suffix: { type: 'text', label: 'Value suffix', default: 'K' },
+    gap: { type: 'range', label: 'Block spacing', min: 0, max: 0.03, step: 0.001, default: 0.008 },
+    accent: { type: 'color', label: 'Accent', default: '#7c6cff' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0e13' },
   },
 
   setup({ w, h, px, p }) {
@@ -214,7 +214,7 @@ export default {
       ctx.font = INTER(500)(H.subSize * 1.3);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Sem dados — use uma linha "Rótulo, valor" por bloco', w / 2, h / 2);
+      ctx.fillText('No data — use one "Label, value" line per block', w / 2, h / 2);
       return;
     }
 

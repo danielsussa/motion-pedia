@@ -12,23 +12,23 @@ const SERIF = '"Instrument Serif", Georgia, serif';
 
 export default {
   id: 'polaroid-stack',
-  title: 'Pilha de Polaroids',
-  description: 'Polaroids caem girando e empilham na mesa, e cada foto revela aos poucos no papel até ganhar cor.',
+  title: 'Polaroid Stack',
+  description: 'Polaroids tumble onto the table and stack up, each photo slowly developing until it reaches full color.',
   category: 'imagem',
   tags: ['intro', 'ui'],
   duration: 8,
   poster: 6.6,
 
   params: {
-    photo1: { type: 'image', label: 'Foto 1 (vai por cima)', default: '/samples/portrait.jpg' },
-    photo2: { type: 'image', label: 'Foto 2', default: '/samples/landscape.jpg' },
-    photo3: { type: 'image', label: 'Foto 3', default: '/samples/landscape.jpg' },
+    photo1: { type: 'image', label: 'Photo 1 (on top)', default: '/samples/portrait.jpg' },
+    photo2: { type: 'image', label: 'Photo 2', default: '/samples/landscape.jpg' },
+    photo3: { type: 'image', label: 'Photo 3', default: '/samples/landscape.jpg' },
     count: { type: 'range', label: 'Polaroids', min: 1, max: 7, step: 1, default: 5 },
-    caption: { type: 'text', label: 'Legenda (última)', default: 'verão, 2024' },
-    table: { type: 'color', label: 'Mesa', default: '#e7e1d7' },
-    ink: { type: 'color', label: 'Tinta da legenda', default: '#2b2b33' },
-    spread: { type: 'range', label: 'Espalhamento', min: 0, max: 1, step: 0.05, default: 0.6 },
-    develop: { type: 'range', label: 'Tempo de revelação (s)', min: 0.6, max: 4, step: 0.1, default: 2.4 },
+    caption: { type: 'text', label: 'Caption (last)', default: 'summer, 2024' },
+    table: { type: 'color', label: 'Table', default: '#e7e1d7' },
+    ink: { type: 'color', label: 'Caption ink', default: '#2b2b33' },
+    spread: { type: 'range', label: 'Spread', min: 0, max: 1, step: 0.05, default: 0.6 },
+    develop: { type: 'range', label: 'Develop time (s)', min: 0.6, max: 4, step: 0.1, default: 2.4 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 4 },
   },
 

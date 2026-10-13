@@ -168,27 +168,27 @@ function layoutPhrase(words, kind, w, h, m) {
 export default {
   id: 'lyric-video',
   title: 'Lyric Video',
-  description: 'A letra entra palavra por palavra no ritmo do áudio (cada batida troca a palavra), alternando layouts por frase.',
+  description: 'Lyrics appear word by word to the beat of the audio (each beat swaps the word), switching layouts per phrase.',
   category: 'tipografia',
-  tags: ['tipografia', 'áudio', 'loop'],
+  tags: ['typography', 'audio', 'loop'],
   duration: 12,
   poster: 4.7,
 
   params: {
-    audio: { type: 'audio', label: 'Áudio', default: '/samples/beat.wav' },
+    audio: { type: 'audio', label: 'Audio', default: '/samples/beat.wav' },
     lyrics: {
       type: 'textarea',
-      label: 'Letra (uma frase por linha, *ênfase*)',
+      label: 'Lyrics (one phrase per line, *emphasis*)',
       rows: 5,
-      default: 'sinto o *pulso* da cidade\ncada luz um compasso\nnão para\na noite inteira em *movimento*\ncoração no ritmo',
+      default: 'I feel the city *pulse*\nevery light a beat\nnever stops\nthe whole night in *motion*\nheart on the rhythm',
     },
     layout: { type: 'select', label: 'Layout', options: ['variado', 'solo', 'pilha', 'frase'], default: 'variado' },
-    beatsPerWord: { type: 'range', label: 'Batidas por palavra', min: 1, max: 4, step: 1, default: 1 },
-    sensitivity: { type: 'range', label: 'Sensibilidade', min: 0.5, max: 2, step: 0.05, default: 1 },
-    track: { type: 'text', label: 'Faixa', default: 'Noite Elétrica — Beat Demo' },
-    color: { type: 'color', label: 'Texto', default: '#f3efe8' },
-    accent: { type: 'color', label: 'Destaque', default: '#c6ff3d' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0e10' },
+    beatsPerWord: { type: 'range', label: 'Beats per word', min: 1, max: 4, step: 1, default: 1 },
+    sensitivity: { type: 'range', label: 'Sensitivity', min: 0.5, max: 2, step: 0.05, default: 1 },
+    track: { type: 'text', label: 'Track', default: 'Electric Night — Beat Demo' },
+    color: { type: 'color', label: 'Text', default: '#f3efe8' },
+    accent: { type: 'color', label: 'Accent', default: '#c6ff3d' },
+    bg: { type: 'color', label: 'Background', default: '#0e0e10' },
   },
 
   setup({ w, h, p, px, duration: D }) {
@@ -354,7 +354,7 @@ export default {
     ctx.textBaseline = 'bottom';
     ctx.fillText(`♪ ${p.track}`.toUpperCase(), bx0, by - m * 0.02);
     ctx.textAlign = 'right';
-    if (!state.hasAudio) ctx.fillText('SEM ÁUDIO · 120 BPM', bx1, by - m * 0.02);
+    if (!state.hasAudio) ctx.fillText('NO AUDIO · 120 BPM', bx1, by - m * 0.02);
     ctx.textAlign = 'left';
     ctx.fillStyle = rgba(p.color, 0.12);
     ctx.fillRect(bx0, by, bx1 - bx0, Math.max(1, m * 0.002));

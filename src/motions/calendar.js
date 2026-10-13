@@ -6,7 +6,7 @@ import { TAU, clamp, lerp, seg, ease, spring, rgba } from '../lib/anim.js';
 
 const INTER = (wt, s) => `${wt} ${s}px Inter, system-ui, sans-serif`;
 const MONTHS = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-const WEEK = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
+const WEEK = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 const T_CARD = 1.4; // card do evento aparece
 const T_CUR0 = 1.9; // cursor entra
@@ -41,25 +41,25 @@ function cursorPath(ctx, s) {
 export default {
   id: 'calendar',
   title: 'Calendar',
-  description: 'Calendário mensal: a grade entra, um evento é arrastado até o dia e o contador de dias conta até ele.',
+  description: 'A monthly calendar: the grid builds in, an event is dragged onto its day and a countdown ticks toward it.',
   category: 'dados',
-  tags: ['dados', 'ui', 'alpha'],
+  tags: ['data', 'ui', 'alpha'],
   duration: 8,
   poster: 5.2,
 
   params: {
-    month: { type: 'select', label: 'Mês', options: MONTHS, default: 'Outubro' },
-    year: { type: 'range', label: 'Ano', min: 2020, max: 2035, step: 1, default: 2026 },
-    today: { type: 'range', label: 'Hoje', min: 1, max: 31, step: 1, default: 12 },
-    eventDay: { type: 'range', label: 'Dia do evento', min: 1, max: 31, step: 1, default: 24 },
-    eventTitle: { type: 'text', label: 'Evento', default: 'Lançamento' },
-    eventTime: { type: 'text', label: 'Horário', default: '14:00' },
-    marked: { type: 'text', label: 'Dias marcados', default: '3, 7, 15, 18, 29' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a4e' },
-    panel: { type: 'color', label: 'Painel', default: '#16181d' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0b0c0f' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    month: { type: 'select', label: 'Month', options: MONTHS, default: 'Outubro' },
+    year: { type: 'range', label: 'Year', min: 2020, max: 2035, step: 1, default: 2026 },
+    today: { type: 'range', label: 'Today', min: 1, max: 31, step: 1, default: 12 },
+    eventDay: { type: 'range', label: 'Event day', min: 1, max: 31, step: 1, default: 24 },
+    eventTitle: { type: 'text', label: 'Event', default: 'Launch' },
+    eventTime: { type: 'text', label: 'Time', default: '14:00' },
+    marked: { type: 'text', label: 'Marked days', default: '3, 7, 15, 18, 29' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a4e' },
+    panel: { type: 'color', label: 'Panel', default: '#16181d' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0b0c0f' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ p }) {
@@ -290,7 +290,7 @@ export default {
         ctx.font = INTER(700, cs * 0.12);
         ctx.letterSpacing = `${cs * 0.015}px`;
         ctx.fillStyle = rgba(p.ink, 0.6 * lab);
-        ctx.fillText('HOJE', cx, cy - cs * 0.42 + (1 - lab) * cs * 0.06);
+        ctx.fillText('TODAY', cx, cy - cs * 0.42 + (1 - lab) * cs * 0.06);
         ctx.letterSpacing = '0px';
       }
     }
@@ -313,7 +313,7 @@ export default {
       ctx.font = INTER(700, cs * 0.15);
       ctx.letterSpacing = `${cs * 0.025}px`;
       ctx.fillStyle = rgba(p.ink, 0.45 * la);
-      ctx.fillText('ARRASTE PARA AGENDAR', homeX, homeY - cs * 0.3);
+      ctx.fillText('DRAG TO SCHEDULE', homeX, homeY - cs * 0.3);
       ctx.letterSpacing = '0px';
     }
     // lugar vazio que fica quando o card sai
@@ -427,8 +427,8 @@ export default {
       ctx.letterSpacing = '0px';
       ctx.font = INTER(500, cs * 0.24);
       ctx.fillStyle = rgba(p.ink, 0.55);
-      const word = span === 1 ? 'dia' : 'dias';
-      const rel = ev >= today ? `${word} até ${p.eventTitle ? p.eventTitle.toLowerCase() : 'o evento'}` : `${word} desde ${p.eventTitle ? p.eventTitle.toLowerCase() : 'o evento'}`;
+      const word = span === 1 ? 'day' : 'days';
+      const rel = ev >= today ? `${word} until ${p.eventTitle ? p.eventTitle.toLowerCase() : 'the event'}` : `${word} since ${p.eventTitle ? p.eventTitle.toLowerCase() : 'the event'}`;
       ctx.fillText(ellipsize(ctx, rel, vertical ? pw - cardW - cs * 0.2 : sideWU * cs), ccx, yNum + cs * 0.42);
       ctx.restore();
     }

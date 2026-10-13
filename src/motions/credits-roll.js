@@ -36,28 +36,28 @@ function fit(text, fontFn, size, maxW) {
 export default {
   id: 'credits-roll',
   title: 'Credits Roll',
-  description: 'Créditos de filme subindo em duas colunas (função · nome) que desaceleram até parar no título e no logo.',
+  description: 'Film credits rolling up in two columns (role · name), slowing to rest on the title and logo.',
   category: 'tipografia',
-  tags: ['tipografia', 'broadcast', 'alpha'],
+  tags: ['typography', 'broadcast', 'alpha'],
   duration: 16,
   poster: 7,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Entre Quadros' },
+    title: { type: 'text', label: 'Title', default: 'Between Frames' },
     credits: {
       type: 'textarea',
-      label: 'Créditos (Função | Nome · linha sem | = seção)',
+      label: 'Credits (Role | Name · line without | = section)',
       rows: 8,
       default:
-        'Direção | Helena Duarte\nRoteiro | Helena Duarte\n| Rafael Mendes\nProdução | Camila Ito\nDireção de fotografia | Tomás Albuquerque\nMontagem | Júlia Fontes\nDireção de arte | Pedro Nakamura\nTrilha original | Lia Moreau\n\nElenco\nClara | Marina Saldanha\nOtto | Gabriel Rocha\nVera | Beatriz Lemos\nO maquinista | Caio Venturini\n\nPós-produção\nMotion design | Nina Albers\nColorização | André Kowalski\nMixagem de som | Davi Okafor\nEfeitos visuais | Sofia Brandão\n| Léo Marçal',
+        'Directed by | Helena Duarte\nWritten by | Helena Duarte\n| Rafael Mendes\nProducer | Camila Ito\nDirector of photography | Tomás Albuquerque\nEditor | Júlia Fontes\nArt director | Pedro Nakamura\nOriginal score | Lia Moreau\n\nCast\nClara | Marina Saldanha\nOtto | Gabriel Rocha\nVera | Beatriz Lemos\nThe train driver | Caio Venturini\n\nPost-production\nMotion design | Nina Albers\nColorist | André Kowalski\nSound mixer | Davi Okafor\nVisual effects | Sofia Brandão\n| Léo Marçal',
     },
     logo: { type: 'image', label: 'Logo', default: '/samples/logo.svg' },
-    footer: { type: 'text', label: 'Rodapé', default: '© 2026 · Motion Pedia Filmes' },
-    size: { type: 'range', label: 'Tamanho do texto', min: 0.7, max: 1.4, step: 0.01, default: 1 },
-    color: { type: 'color', label: 'Texto', default: '#ece8e1' },
-    accent: { type: 'color', label: 'Destaque', default: '#d9a45b' },
-    bg: { type: 'color', label: 'Fundo', default: '#0a0a0b' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    footer: { type: 'text', label: 'Footer', default: '© 2026 · Motion Pedia Films' },
+    size: { type: 'range', label: 'Text size', min: 0.7, max: 1.4, step: 0.01, default: 1 },
+    color: { type: 'color', label: 'Text', default: '#ece8e1' },
+    accent: { type: 'color', label: 'Accent', default: '#d9a45b' },
+    bg: { type: 'color', label: 'Background', default: '#0a0a0b' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p }) {

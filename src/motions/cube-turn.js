@@ -38,22 +38,22 @@ function letterTex(ch, color, S, inv, m) {
 export default {
   id: 'cube-turn',
   title: 'Cube Turn',
-  description: 'A tela gira como a face de um cubo 3D: a cena sai pela quina, uma face sólida cobre tudo no corte e a próxima entra pelo outro lado.',
+  description: 'The screen turns like the face of a 3D cube: the scene exits over the edge, a solid face covers the cut and the next one rolls in from the other side.',
   category: 'transicoes',
-  tags: ['transição', '3d', 'forma', 'alpha'],
+  tags: ['transition', '3d', 'shape', 'alpha'],
   duration: 1.4,
   poster: 0.42,
 
   params: {
-    direction: { type: 'select', label: 'Face A sai para', options: Object.keys(DIRS), default: 'esquerda' },
-    face: { type: 'color', label: 'Face do meio', default: '#ff4d2e' },
-    backdrop: { type: 'color', label: 'Fundo', default: '#0e0e11' },
-    depth: { type: 'range', label: 'Perspectiva', min: 0, max: 1, step: 0.01, default: 0.55 },
-    shade: { type: 'range', label: 'Sombreado', min: 0, max: 1, step: 0.01, default: 0.7 },
-    edge: { type: 'range', label: 'Brilho da quina', min: 0, max: 1, step: 0.01, default: 0.5 },
-    colorA: { type: 'color', label: 'Prévia A', default: '#1a1c22' },
-    colorB: { type: 'color', label: 'Prévia B', default: '#e7e2d8' },
-    transparent: { type: 'boolean', label: 'Só as formas (alpha)', default: false },
+    direction: { type: 'select', label: 'Face A exits to', options: Object.keys(DIRS), default: 'esquerda' },
+    face: { type: 'color', label: 'Middle face', default: '#ff4d2e' },
+    backdrop: { type: 'color', label: 'Background', default: '#0e0e11' },
+    depth: { type: 'range', label: 'Perspective', min: 0, max: 1, step: 0.01, default: 0.55 },
+    shade: { type: 'range', label: 'Shading', min: 0, max: 1, step: 0.01, default: 0.7 },
+    edge: { type: 'range', label: 'Edge shine', min: 0, max: 1, step: 0.01, default: 0.5 },
+    colorA: { type: 'color', label: 'Preview A', default: '#1a1c22' },
+    colorB: { type: 'color', label: 'Preview B', default: '#e7e2d8' },
+    transparent: { type: 'boolean', label: 'Shapes only (alpha)', default: false },
   },
 
   setup({ w, h, p, px }) {

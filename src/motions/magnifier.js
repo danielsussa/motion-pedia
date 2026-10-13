@@ -138,24 +138,24 @@ function pathAt(u) {
 
 export default {
   id: 'magnifier',
-  title: 'Lupa',
-  description: 'Uma lupa de aro metálico passeia sobre a foto parando em pontos, ampliando o que está embaixo com vidro abaulado, reflexos e sombra.',
+  title: 'Magnifier',
+  description: 'A metal-rimmed magnifying glass glides over the photo, pausing to enlarge what lies beneath with curved glass, reflections and shadow.',
   category: 'imagem',
-  tags: ['loop', 'shader', 'forma'],
+  tags: ['loop', 'shader', 'shape'],
   duration: 10,
   poster: 0.15,
 
   params: {
-    image: { type: 'image', label: 'Foto', default: '/samples/portrait.jpg' },
-    magnification: { type: 'range', label: 'Ampliação', min: 1.2, max: 5, step: 0.05, default: 2.2 },
-    size: { type: 'range', label: 'Tamanho da lente', min: 0.1, max: 0.45, step: 0.01, default: 0.22 },
-    bulge: { type: 'range', label: 'Abaulamento', min: 0, max: 1.5, step: 0.01, default: 0.45 },
-    aberration: { type: 'range', label: 'Aberração cromática', min: 0, max: 1, step: 0.01, default: 0.4 },
-    dim: { type: 'range', label: 'Escurecer fora', min: 0, max: 0.8, step: 0.01, default: 0.3 },
-    rim: { type: 'color', label: 'Aro', default: '#c9ccd2' },
-    grip: { type: 'color', label: 'Cabo', default: '#1f1a17' },
-    handle: { type: 'boolean', label: 'Mostrar cabo', default: true },
-    focusY: { type: 'range', label: 'Foco vertical', min: 0, max: 1, step: 0.01, default: 0.3 },
+    image: { type: 'image', label: 'Photo', default: '/samples/portrait.jpg' },
+    magnification: { type: 'range', label: 'Magnification', min: 1.2, max: 5, step: 0.05, default: 2.2 },
+    size: { type: 'range', label: 'Lens size', min: 0.1, max: 0.45, step: 0.01, default: 0.22 },
+    bulge: { type: 'range', label: 'Bulge', min: 0, max: 1.5, step: 0.01, default: 0.45 },
+    aberration: { type: 'range', label: 'Chromatic aberration', min: 0, max: 1, step: 0.01, default: 0.4 },
+    dim: { type: 'range', label: 'Dim outside', min: 0, max: 0.8, step: 0.01, default: 0.3 },
+    rim: { type: 'color', label: 'Rim', default: '#c9ccd2' },
+    grip: { type: 'color', label: 'Handle', default: '#1f1a17' },
+    handle: { type: 'boolean', label: 'Show handle', default: true },
+    focusY: { type: 'range', label: 'Vertical focus', min: 0, max: 1, step: 0.01, default: 0.3 },
   },
 
   render(ctx, t, env) {

@@ -147,22 +147,22 @@ function buildAtlas(sources, seed) {
 
 export default {
   id: 'photo-mosaic',
-  title: 'Fotomosaico',
-  description: 'De perto, miniaturas de fotos brotam numa onda; a câmera recua e elas formam a foto inteira, depois somem das bordas para o centro.',
+  title: 'Photo Mosaic',
+  description: 'Up close, photo thumbnails sprout in a wave; the camera pulls back as they form the whole photo, then they vanish from the edges inward.',
   category: 'imagem',
-  tags: ['intro', 'loop', 'shader', 'padrão'],
+  tags: ['intro', 'loop', 'shader', 'pattern'],
   duration: 10,
   poster: 7.2,
 
   params: {
-    image: { type: 'image', label: 'Foto', default: '/samples/portrait.jpg' },
-    tiles: { type: 'image', label: 'Segunda foto (miniaturas)', default: '/samples/landscape.jpg' },
-    source: { type: 'select', label: 'Miniaturas de', options: ['as duas', 'mesma foto', 'segunda foto'], default: 'as duas' },
-    cells: { type: 'range', label: 'Peças (no lado menor)', min: 16, max: 90, step: 1, default: 44 },
-    fidelity: { type: 'range', label: 'Correção de cor', min: 0, max: 1, step: 0.01, default: 0.85 },
-    startZoom: { type: 'range', label: 'Zoom inicial (peças na tela)', min: 2, max: 16, step: 1, default: 5 },
-    paper: { type: 'color', label: 'Fundo', default: '#121315' },
-    focusY: { type: 'range', label: 'Foco vertical', min: 0, max: 1, step: 0.01, default: 0.3 },
+    image: { type: 'image', label: 'Photo', default: '/samples/portrait.jpg' },
+    tiles: { type: 'image', label: 'Second photo (thumbnails)', default: '/samples/landscape.jpg' },
+    source: { type: 'select', label: 'Thumbnails from', options: ['as duas', 'mesma foto', 'segunda foto'], default: 'as duas' },
+    cells: { type: 'range', label: 'Tiles (short side)', min: 16, max: 90, step: 1, default: 44 },
+    fidelity: { type: 'range', label: 'Color correction', min: 0, max: 1, step: 0.01, default: 0.85 },
+    startZoom: { type: 'range', label: 'Starting zoom (pieces on screen)', min: 2, max: 16, step: 1, default: 5 },
+    paper: { type: 'color', label: 'Background', default: '#121315' },
+    focusY: { type: 'range', label: 'Vertical focus', min: 0, max: 1, step: 0.01, default: 0.3 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
   },
 

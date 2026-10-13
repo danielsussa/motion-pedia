@@ -13,7 +13,7 @@ const H1 = 18;
 
 // App de agenda semanal (1600×900). tasks: [{ id, day, start, dur, title, variant }].
 // Retorna helpers de geometria para a câmera mirar em dia/hora.
-export function weekBoard({ brand = 'pauta', month = 'Outubro 2026', week = 'Semana 42', days, tasks, nowHour = 10.5, today = 1, logo }) {
+export function weekBoard({ brand = 'pauta', month = 'October 2026', week = 'Week 42', days, tasks, nowHour = 10.5, today = 1, logo }) {
   const colW = (W - SIDE - GUT) / days.length;
   const hourH = (H - TOP - HEAD) / (H1 - H0);
   const x = (day) => SIDE + GUT + day * colW;
@@ -23,11 +23,11 @@ export function weekBoard({ brand = 'pauta', month = 'Outubro 2026', week = 'Sem
 
   const avatars = ['#f4b183', '#9ec5fe', '#b5e3c4'].map((c) => el('span.av', { style: { background: c } }));
   node.append(
-    el('div.ui-board-top', {}, logo ?? null, brand, el('span.chip', {}, week), el('span.chip', {}, month), el('span.sp'), ...avatars, el('span.btn', {}, 'Hoje')),
+    el('div.ui-board-top', {}, logo ?? null, brand, el('span.chip', {}, week), el('span.chip', {}, month), el('span.sp'), ...avatars, el('span.btn', {}, 'Today')),
   );
 
   const mini = el('div.ui-mini');
-  'STQQSSD'.split('').forEach((d) => mini.append(el('span', { style: { fontWeight: 700, color: '#a3a097' } }, d)));
+  'MTWTFSS'.split('').forEach((d) => mini.append(el('span', { style: { fontWeight: 700, color: '#a3a097' } }, d)));
   // Outubro/2026 começa numa quinta: 3 dias de setembro antes, 1 de novembro depois.
   for (const n of [28, 29, 30]) mini.append(el('span', { style: { opacity: 0.35 } }, String(n)));
   for (let n = 1; n <= 32; n++) {
@@ -36,12 +36,12 @@ export function weekBoard({ brand = 'pauta', month = 'Outubro 2026', week = 'Sem
     mini.append(el(`span${cls}`, { style: n > 31 ? { opacity: 0.35 } : {} }, String(n > 31 ? n - 31 : n)));
   }
   const lists = [
-    ['Trabalho', 'var(--ink)'],
-    ['Foco', 'var(--accent)'],
-    ['Pessoal', '#9ec5fe'],
-    ['Saúde', '#b5e3c4'],
+    ['Work', 'var(--ink)'],
+    ['Focus', 'var(--accent)'],
+    ['Personal', '#9ec5fe'],
+    ['Health', '#b5e3c4'],
   ].map(([n, c]) => el('div.ui-list', {}, el('i', { style: { background: c } }), n));
-  node.append(el('div.ui-board-side', {}, el('h4', {}, month), mini, el('h4', {}, 'Listas'), ...lists));
+  node.append(el('div.ui-board-side', {}, el('h4', {}, month), mini, el('h4', {}, 'Lists'), ...lists));
 
   days.forEach(([name, num], i) => {
     node.append(

@@ -6,22 +6,22 @@ import { clamp, lerp, seg, spring, ease, mixHex, rgba } from '../lib/anim.js';
 export default {
   id: 'stretch-stack',
   title: 'Stretch Stack',
-  description: 'Palavras empilhadas esticam na vertical até preencher a tela e trocam de altura entre si, como num pôster suíço.',
+  description: 'Stacked words stretch vertically to fill the frame and trade heights with each other, like a Swiss poster.',
   category: 'tipografia',
-  tags: ['tipografia', 'loop'],
+  tags: ['typography', 'loop'],
   duration: 8,
   poster: 2.6,
 
   params: {
-    text: { type: 'textarea', label: 'Linhas', rows: 4, default: 'FORMA\nRITMO\nPAUSA' },
-    caption: { type: 'text', label: 'Legenda', default: 'Estudo nº 3 — tipo esticado' },
-    focus: { type: 'range', label: 'Altura da linha em foco', min: 0.4, max: 0.85, step: 0.01, default: 0.66 },
-    minW: { type: 'range', label: 'Peso das linhas achatadas', min: 100, max: 900, step: 10, default: 400 },
-    maxW: { type: 'range', label: 'Peso da linha alta', min: 100, max: 900, step: 10, default: 900 },
-    bounce: { type: 'range', label: 'Mola', min: 0, max: 0.6, step: 0.01, default: 0.22 },
-    color: { type: 'color', label: 'Texto', default: '#141414' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#eeebe3' },
+    text: { type: 'textarea', label: 'Lines', rows: 4, default: 'FORM\nRHYTHM\nPAUSE' },
+    caption: { type: 'text', label: 'Caption', default: 'Study no. 3 — stretched type' },
+    focus: { type: 'range', label: 'Focused line height', min: 0.4, max: 0.85, step: 0.01, default: 0.66 },
+    minW: { type: 'range', label: 'Squashed lines weight', min: 100, max: 900, step: 10, default: 400 },
+    maxW: { type: 'range', label: 'Tall line weight', min: 100, max: 900, step: 10, default: 900 },
+    bounce: { type: 'range', label: 'Spring', min: 0, max: 0.6, step: 0.01, default: 0.22 },
+    color: { type: 'color', label: 'Text', default: '#141414' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d2e' },
+    bg: { type: 'color', label: 'Background', default: '#eeebe3' },
   },
 
   render(ctx, t, { w, h, p, duration }) {

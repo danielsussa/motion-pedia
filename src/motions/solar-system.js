@@ -23,21 +23,21 @@ const lum = ([r, g, b]) => 0.3 * r + 0.59 * g + 0.11 * b;
 export default {
   id: 'solar-system',
   title: 'Solar System',
-  description: 'Planetas em órbitas inclinadas ao redor do Sol, com rastros, sombra de dia e noite e os anéis de Saturno. Loop perfeito.',
+  description: 'Planets on tilted orbits around the Sun, with trails, day-night shading and Saturn\'s rings. Seamless loop.',
   category: 'formas',
-  tags: ['3d', 'loop', 'forma'],
+  tags: ['3d', 'loop', 'shape'],
   duration: 24,
 
   params: {
-    planets: { type: 'range', label: 'Planetas', min: 3, max: 8, step: 1, default: 8 },
-    tilt: { type: 'range', label: 'Inclinação', min: 0.15, max: 1, step: 0.01, default: 0.36 },
-    palette: { type: 'select', label: 'Cores', options: ['realista', 'monocromática'], default: 'realista' },
-    sun: { type: 'color', label: 'Sol', default: '#ffb547' },
-    bg: { type: 'color', label: 'Fundo', default: '#07080d' },
-    trail: { type: 'range', label: 'Rastro', min: 0, max: 1, step: 0.01, default: 0.55 },
-    size: { type: 'range', label: 'Planetas (tamanho)', min: 0.5, max: 2, step: 0.05, default: 1 },
-    labels: { type: 'boolean', label: 'Nomes', default: true },
-    stars: { type: 'boolean', label: 'Estrelas', default: true },
+    planets: { type: 'range', label: 'Planets', min: 3, max: 8, step: 1, default: 8 },
+    tilt: { type: 'range', label: 'Tilt', min: 0.15, max: 1, step: 0.01, default: 0.36 },
+    palette: { type: 'select', label: 'Colors', options: ['realista', 'monocromática'], default: 'realista' },
+    sun: { type: 'color', label: 'Sun', default: '#ffb547' },
+    bg: { type: 'color', label: 'Background', default: '#07080d' },
+    trail: { type: 'range', label: 'Trail', min: 0, max: 1, step: 0.01, default: 0.55 },
+    size: { type: 'range', label: 'Planet size', min: 0.5, max: 2, step: 0.05, default: 1 },
+    labels: { type: 'boolean', label: 'Names', default: true },
+    stars: { type: 'boolean', label: 'Stars', default: true },
   },
 
   setup({ w, h, p, px }) {

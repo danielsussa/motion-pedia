@@ -36,28 +36,28 @@ const T_SWAP = 5.0; // troca de manchete
 export default {
   id: 'breaking-news',
   title: 'Breaking News',
-  description: 'Pacote de plantão: vinheta com faixas e "URGENTE" em tela cheia, tarja com manchete que troca e ticker correndo.',
+  description: 'Breaking news package: a full-screen sting with stripes and "BREAKING", a lower third with rotating headlines and a running ticker.',
   category: 'dados',
-  tags: ['overlay', 'alpha', 'broadcast', 'tipografia'],
+  tags: ['overlay', 'alpha', 'broadcast', 'typography'],
   duration: 9,
   poster: 3.4,
 
   params: {
-    tag: { type: 'text', label: 'Selo', default: 'URGENTE' },
-    headline: { type: 'text', label: 'Manchete', default: 'Chuva forte alaga avenidas e interdita três linhas de metrô na capital' },
-    headline2: { type: 'text', label: 'Segunda manchete (opcional)', default: 'Defesa Civil emite alerta e pede que moradores evitem áreas de risco' },
-    place: { type: 'text', label: 'Local · hora', default: 'AO VIVO · SÃO PAULO · 18:42' },
+    tag: { type: 'text', label: 'Tag', default: 'BREAKING' },
+    headline: { type: 'text', label: 'Headline', default: 'Heavy rain floods avenues and shuts down three subway lines downtown' },
+    headline2: { type: 'text', label: 'Second headline (optional)', default: 'Emergency services issue alert and urge residents to avoid risk areas' },
+    place: { type: 'text', label: 'Place · time', default: 'LIVE · SÃO PAULO · 18:42' },
     ticker: {
       type: 'textarea',
-      label: 'Ticker (uma por linha)',
+      label: 'Ticker (one per line)',
       rows: 4,
-      default: 'Aeroporto opera com atrasos de até 40 minutos\nBolsa fecha em alta de 1,2%\nPrefeitura amplia horário dos ônibus noturnos\nPrevisão indica tempo firme a partir de sexta',
+      default: 'Airport running with delays of up to 40 minutes\nStocks close up 1.2%\nCity extends night bus hours\nForecast calls for clear skies from Friday',
     },
-    accent: { type: 'color', label: 'Destaque', default: '#e3122d' },
-    dark: { type: 'color', label: 'Escuro', default: '#101218' },
-    panel: { type: 'color', label: 'Tarja', default: '#ffffff' },
-    sting: { type: 'boolean', label: 'Vinheta de abertura', default: true },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: true },
+    accent: { type: 'color', label: 'Accent', default: '#e3122d' },
+    dark: { type: 'color', label: 'Dark', default: '#101218' },
+    panel: { type: 'color', label: 'Lower third', default: '#ffffff' },
+    sting: { type: 'boolean', label: 'Opening sting', default: true },
+    transparent: { type: 'boolean', label: 'Transparent background', default: true },
   },
 
   setup({ w, h, p, px }) {
@@ -166,7 +166,7 @@ export default {
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#ffffff';
         ctx.globalAlpha = clamp(tIn * 1.5);
-        const txt = (p.tag || 'URGENTE').toUpperCase();
+        const txt = (p.tag || 'BREAKING').toUpperCase();
         const tw = ctx.measureText(txt).width;
         // letterSpacing com center desloca meio espaçamento: compensa
         ctx.fillText(txt, w / 2 + (fs * (0.12 - 0.12 * tIn)) / 2, h / 2 + fs * 0.04);
@@ -178,7 +178,7 @@ export default {
         ctx.font = F(700, fs * 0.16);
         ctx.letterSpacing = `${fs * 0.16 * 0.4}px`;
         ctx.globalAlpha = clamp(seg(t, 0.6, 0.9));
-        ctx.fillText('PLANTÃO', w / 2 + fs * 0.16 * 0.2, h / 2 - fs * 0.94);
+        ctx.fillText('NEWS ALERT', w / 2 + fs * 0.16 * 0.2, h / 2 - fs * 0.94);
         ctx.letterSpacing = '0px';
         ctx.restore();
       }
@@ -200,7 +200,7 @@ export default {
       // rótulo
       ctx.font = F(800, 22 * u);
       ctx.letterSpacing = `${22 * u * 0.14}px`;
-      const lab = 'ÚLTIMAS';
+      const lab = 'LATEST';
       const labW = ctx.measureText(lab).width + 56 * u;
       const lx = S.portrait ? 0 : pad - 28 * u;
       // texto correndo (clip à direita do rótulo)
@@ -307,7 +307,7 @@ export default {
       ctx.save();
       ctx.font = F(900, 28 * u);
       ctx.letterSpacing = `${28 * u * 0.1}px`;
-      const tag = (p.tag || 'URGENTE').toUpperCase();
+      const tag = (p.tag || 'BREAKING').toUpperCase();
       const tw = ctx.measureText(tag).width + 76 * u;
       const x0 = pad;
       ctx.beginPath();

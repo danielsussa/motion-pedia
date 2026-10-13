@@ -51,7 +51,7 @@ function buildShapes(starPoints) {
   return { circle, square, tri, star, hex };
 }
 
-const LABELS = { circle: 'CÍRCULO', square: 'QUADRADO', tri: 'TRIÂNGULO', star: 'ESTRELA', hex: 'HEXÁGONO' };
+const LABELS = { circle: 'CIRCLE', square: 'SQUARE', tri: 'TRIANGLE', star: 'STAR', hex: 'HEXAGON' };
 const SEQ = ['circle', 'square', 'tri', 'star', 'hex'];
 // Rotação acumulada no início de cada forma (graus): 0, 90 (quadrado: sim. 90), 240 (triângulo: 120),
 // 360 (estrela: 72), 420 (hexágono: 60), 540 (círculo).
@@ -60,22 +60,22 @@ const ROT = [0, 90, 240, 360, 420, 540].map((d) => (d * Math.PI) / 180);
 export default {
   id: 'shape-morph',
   title: 'Shape Morph',
-  description: 'Uma forma central vira círculo, quadrado, triângulo, estrela e hexágono com mola, cercada por ecos e satélites em stagger.',
+  description: 'A central shape springs from circle to square, triangle, star and hexagon, ringed by staggered echoes and satellites.',
   category: 'formas',
-  tags: ['forma', 'loop'],
+  tags: ['shape', 'loop'],
   duration: 10,
   poster: 3.1,
 
   params: {
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Traço', default: '#f1ede4' },
-    bg: { type: 'color', label: 'Fundo', default: '#0f0f13' },
-    size: { type: 'range', label: 'Tamanho', min: 0.12, max: 0.34, step: 0.01, default: 0.22 },
-    satellites: { type: 'range', label: 'Satélites', min: 0, max: 16, step: 1, default: 10 },
-    echoes: { type: 'range', label: 'Ecos', min: 0, max: 5, step: 1, default: 3 },
-    starPoints: { type: 'range', label: 'Pontas da estrela', min: 4, max: 8, step: 1, default: 5 },
-    bounce: { type: 'range', label: 'Mola', min: 0, max: 0.6, step: 0.01, default: 0.22 },
-    label: { type: 'boolean', label: 'Legenda', default: true },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Stroke', default: '#f1ede4' },
+    bg: { type: 'color', label: 'Background', default: '#0f0f13' },
+    size: { type: 'range', label: 'Size', min: 0.12, max: 0.34, step: 0.01, default: 0.22 },
+    satellites: { type: 'range', label: 'Satellites', min: 0, max: 16, step: 1, default: 10 },
+    echoes: { type: 'range', label: 'Echoes', min: 0, max: 5, step: 1, default: 3 },
+    starPoints: { type: 'range', label: 'Star points', min: 4, max: 8, step: 1, default: 5 },
+    bounce: { type: 'range', label: 'Spring', min: 0, max: 0.6, step: 0.01, default: 0.22 },
+    label: { type: 'boolean', label: 'Caption', default: true },
   },
 
   setup({ p }) {

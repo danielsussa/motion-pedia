@@ -114,20 +114,20 @@ function previewScene(w, h, px) {
 export default {
   id: 'vhs',
   title: 'VHS',
-  description: 'Overlay de fita VHS: scanlines, chuvisco, faixa de tracking, ruído de cabeça, sangramento de cor e data no canto.',
+  description: 'A VHS tape overlay: scanlines, static, a tracking band, head-switching noise, color bleed and a date in the corner.',
   category: 'transicoes',
   tags: ['overlay', 'alpha', 'loop'],
   duration: 6,
 
   params: {
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: true },
+    transparent: { type: 'boolean', label: 'Transparent background', default: true },
     tracking: { type: 'range', label: 'Tracking', min: 0, max: 1, step: 0.01, default: 0.6 },
-    noise: { type: 'range', label: 'Chuvisco', min: 0, max: 1, step: 0.01, default: 0.45 },
-    bleed: { type: 'range', label: 'Sangramento de cor', min: 0, max: 1, step: 0.01, default: 0.5 },
+    noise: { type: 'range', label: 'Static', min: 0, max: 1, step: 0.01, default: 0.45 },
+    bleed: { type: 'range', label: 'Color bleed', min: 0, max: 1, step: 0.01, default: 0.5 },
     scanlines: { type: 'range', label: 'Scanlines', min: 0, max: 1, step: 0.01, default: 0.5 },
-    osd: { type: 'boolean', label: 'OSD (data e PLAY)', default: true },
-    date: { type: 'text', label: 'Data', default: 'OUT. 12 1996' },
-    time: { type: 'text', label: 'Hora', default: 'PM 3:47' },
+    osd: { type: 'boolean', label: 'OSD (date and PLAY)', default: true },
+    date: { type: 'text', label: 'Date', default: 'OCT. 12 1996' },
+    time: { type: 'text', label: 'Time', default: 'PM 3:47' },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 4 },
   },
 

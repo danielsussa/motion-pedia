@@ -135,22 +135,22 @@ function makeCanvas(W, H) {
 
 export default {
   id: 'paint-strokes',
-  title: 'Pinceladas',
-  description: 'A foto se pinta sozinha em pinceladas impressionistas que seguem as formas, do pincel grosso ao fino.',
+  title: 'Brushstrokes',
+  description: 'The photo paints itself in impressionist brushstrokes that follow its shapes, from broad brush to fine.',
   category: 'imagem',
-  tags: ['intro', 'simulação'],
+  tags: ['intro', 'simulation'],
   duration: 10,
   poster: 9.2,
 
   params: {
-    image: { type: 'image', label: 'Foto', default: '/samples/portrait.jpg' },
-    brush: { type: 'range', label: 'Tamanho do pincel', min: 0.6, max: 1.8, step: 0.05, default: 1 },
-    detail: { type: 'range', label: 'Camadas de detalhe', min: 1, max: 4, step: 1, default: 4 },
-    vivid: { type: 'range', label: 'Saturação', min: 0.6, max: 1.8, step: 0.05, default: 1.1 },
-    canvasColor: { type: 'color', label: 'Tela crua', default: '#ebe4d6' },
-    sketch: { type: 'boolean', label: 'Esboço a carvão', default: true },
-    texture: { type: 'range', label: 'Trama da tela', min: 0, max: 1, step: 0.05, default: 0.5 },
-    focusY: { type: 'range', label: 'Foco vertical', min: 0, max: 1, step: 0.01, default: 0.32 },
+    image: { type: 'image', label: 'Photo', default: '/samples/portrait.jpg' },
+    brush: { type: 'range', label: 'Brush size', min: 0.6, max: 1.8, step: 0.05, default: 1 },
+    detail: { type: 'range', label: 'Detail layers', min: 1, max: 4, step: 1, default: 4 },
+    vivid: { type: 'range', label: 'Saturation', min: 0.6, max: 1.8, step: 0.05, default: 1.1 },
+    canvasColor: { type: 'color', label: 'Raw canvas', default: '#ebe4d6' },
+    sketch: { type: 'boolean', label: 'Charcoal sketch', default: true },
+    texture: { type: 'range', label: 'Canvas weave', min: 0, max: 1, step: 0.05, default: 0.5 },
+    focusY: { type: 'range', label: 'Vertical focus', min: 0, max: 1, step: 0.01, default: 0.32 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 3 },
   },
 

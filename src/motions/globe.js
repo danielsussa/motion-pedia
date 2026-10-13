@@ -104,22 +104,22 @@ function slerp(a, b, k) {
 export default {
   id: 'globe',
   title: 'Dot Globe',
-  description: 'Globo pontilhado girando, com arcos de conexão entre cidades que se desenham e pulsam nas pontas.',
+  description: 'A spinning dotted globe, with connection arcs between cities that draw themselves and pulse at the ends.',
   category: 'formas',
-  tags: ['3d', 'dados', 'loop'],
+  tags: ['3d', 'data', 'loop'],
   duration: 16,
   poster: 6,
 
   params: {
-    dots: { type: 'color', label: 'Pontos', default: '#dce4f0' },
-    accent: { type: 'color', label: 'Arcos', default: '#4f9dff' },
-    bg: { type: 'color', label: 'Fundo', default: '#06080d' },
-    density: { type: 'range', label: 'Densidade', min: 1, max: 4, step: 0.1, default: 1.8 },
-    size: { type: 'range', label: 'Tamanho', min: 0.5, max: 1.4, step: 0.01, default: 1 },
-    arcs: { type: 'range', label: 'Arcos', min: 0, max: 16, step: 1, default: 12 },
-    tilt: { type: 'range', label: 'Inclinação', min: -0.8, max: 0.8, step: 0.01, default: 0.38 },
-    back: { type: 'select', label: 'Lado de trás', options: ['atenuar', 'esconder'], default: 'atenuar' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    dots: { type: 'color', label: 'Dots', default: '#dce4f0' },
+    accent: { type: 'color', label: 'Arcs', default: '#4f9dff' },
+    bg: { type: 'color', label: 'Background', default: '#06080d' },
+    density: { type: 'range', label: 'Density', min: 1, max: 4, step: 0.1, default: 1.8 },
+    size: { type: 'range', label: 'Size', min: 0.5, max: 1.4, step: 0.01, default: 1 },
+    arcs: { type: 'range', label: 'Arcs', min: 0, max: 16, step: 1, default: 12 },
+    tilt: { type: 'range', label: 'Tilt', min: -0.8, max: 0.8, step: 0.01, default: 0.38 },
+    back: { type: 'select', label: 'Back side', options: ['atenuar', 'esconder'], default: 'atenuar' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ p }) {

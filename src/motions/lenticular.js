@@ -120,23 +120,23 @@ function placeholder() {
 
 export default {
   id: 'lenticular',
-  title: 'Cartão lenticular',
-  description: 'Um cartão lenticular em perspectiva inclina de um lado para o outro e troca entre duas fotos, com listras e brilho das lentes.',
+  title: 'Lenticular Card',
+  description: 'A lenticular card in perspective tilts side to side and flips between two photos, with lens stripes and sheen.',
   category: 'imagem',
   tags: ['3d', 'loop', 'shader'],
   duration: 6,
   poster: 1.5,
 
   params: {
-    imageA: { type: 'image', label: 'Foto A', default: '/samples/portrait.jpg' },
-    imageB: { type: 'image', label: 'Foto B', default: '/samples/landscape.jpg' },
-    focusA: { type: 'range', label: 'Foco vertical A', min: 0, max: 1, step: 0.01, default: 0.3 },
-    focusB: { type: 'range', label: 'Foco vertical B', min: 0, max: 1, step: 0.01, default: 0.5 },
-    tilt: { type: 'range', label: 'Inclinação (graus)', min: 8, max: 35, step: 1, default: 24 },
-    lenses: { type: 'range', label: 'Lentes', min: 30, max: 160, step: 1, default: 80 },
-    ridge: { type: 'range', label: 'Relevo das lentes', min: 0, max: 1.5, step: 0.05, default: 1 },
-    gloss: { type: 'range', label: 'Brilho', min: 0, max: 1.5, step: 0.05, default: 1 },
-    bg: { type: 'color', label: 'Fundo', default: '#1b1c20' },
+    imageA: { type: 'image', label: 'Photo A', default: '/samples/portrait.jpg' },
+    imageB: { type: 'image', label: 'Photo B', default: '/samples/landscape.jpg' },
+    focusA: { type: 'range', label: 'Vertical focus A', min: 0, max: 1, step: 0.01, default: 0.3 },
+    focusB: { type: 'range', label: 'Vertical focus B', min: 0, max: 1, step: 0.01, default: 0.5 },
+    tilt: { type: 'range', label: 'Tilt (degrees)', min: 8, max: 35, step: 1, default: 24 },
+    lenses: { type: 'range', label: 'Lenses', min: 30, max: 160, step: 1, default: 80 },
+    ridge: { type: 'range', label: 'Lens ridge', min: 0, max: 1.5, step: 0.05, default: 1 },
+    gloss: { type: 'range', label: 'Glow', min: 0, max: 1.5, step: 0.05, default: 1 },
+    bg: { type: 'color', label: 'Background', default: '#1b1c20' },
   },
 
   setup({ w, h, p, px }) {

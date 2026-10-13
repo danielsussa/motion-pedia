@@ -40,13 +40,13 @@ export function renderDetail(root, motion) {
   const videoBtn = el(
     'button.btn',
     {
-      title: 'Grava no próprio navegador, em tempo real (pode perder frames)',
+      title: 'Records in your browser, in real time (may drop frames)',
       onclick: async () => {
         videoBtn.disabled = true;
-        status.textContent = `Gravando ${motion.duration}s…`;
+        status.textContent = `Recording ${motion.duration}s…`;
         try {
           await exportVideo(player, fileName());
-          status.textContent = 'Vídeo exportado.';
+          status.textContent = 'Video exported.';
         } catch (err) {
           status.textContent = err.message;
         }
@@ -54,7 +54,7 @@ export function renderDetail(root, motion) {
         player.play();
       },
     },
-    'Gravar rápido',
+    'Quick record',
   );
 
   const onChange = (key, value) => {
@@ -68,7 +68,7 @@ export function renderDetail(root, motion) {
   mountControls();
 
   root.append(
-    el('header.top', {}, el('a.brand', { href: '#/' }, 'motion', el('span', {}, '·'), 'pedia'), el('a.back', { href: '#/' }, '← galeria')),
+    el('header.top', {}, el('a.brand', { href: '#/' }, 'motion', el('span', {}, '·'), 'pedia'), el('a.back', { href: '#/' }, '← gallery')),
     el(
       'main.detail',
       {},
@@ -83,7 +83,7 @@ export function renderDetail(root, motion) {
           el('div.chips', {}, fmtBtns),
           el('div.spacer'),
           status,
-          el('button.btn', { onclick: () => exportPng(player, `${fileName()}-${player.t.toFixed(2)}s`) }, 'PNG do frame'),
+          el('button.btn', { onclick: () => exportPng(player, `${fileName()}-${player.t.toFixed(2)}s`) }, 'Frame PNG'),
           videoBtn,
         ),
       ),
@@ -115,17 +115,17 @@ export function renderDetail(root, motion) {
                 mountControls();
               },
             },
-            'Restaurar padrão',
+            'Reset to defaults',
           ),
           el(
             'button.btn',
             {
               onclick: async () => {
                 await navigator.clipboard.writeText(JSON.stringify(params, null, 2));
-                status.textContent = 'Parâmetros copiados.';
+                status.textContent = 'Parameters copied.';
               },
             },
-            'Copiar parâmetros',
+            'Copy parameters',
           ),
         ),
       ),

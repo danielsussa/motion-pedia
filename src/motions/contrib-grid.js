@@ -2,8 +2,8 @@ import { clamp, seg, ease, rgba, rng, hexToRgb } from '../lib/anim.js';
 import { createNoise } from '../lib/noise.js';
 
 const fmtInt = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
-const MONTHS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
-const DAYS = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const DAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const WEEKS = 53;
 
 const INTER = (wt) => (s) => `${wt} ${s}px Inter, system-ui, sans-serif`;
@@ -25,20 +25,20 @@ const mixRGB = (A, B, k) => A.map((v, i) => Math.round(v + (B[i] - v) * k));
 export default {
   id: 'contrib-grid',
   title: 'Contribution Grid',
-  description: 'Grade de calendário estilo GitHub enchendo em ondas de intensidade, com legenda e o total contando.',
+  description: 'A GitHub-style calendar grid filling up in waves of intensity, with a legend and a counting total.',
   category: 'dados',
-  tags: ['dados', 'ui', 'padrão'],
+  tags: ['data', 'ui', 'pattern'],
   duration: 7,
   poster: 4.2,
 
   params: {
-    title: { type: 'text', label: 'Título ({n} = total)', default: '{n} contribuições no último ano' },
-    activity: { type: 'range', label: 'Atividade', min: 0.1, max: 1, step: 0.01, default: 0.62 },
-    weekends: { type: 'boolean', label: 'Fins de semana mais calmos', default: true },
-    accent: { type: 'color', label: 'Destaque', default: '#39d353' },
-    ink: { type: 'color', label: 'Texto', default: '#e6edf3' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d1117' },
-    startMonth: { type: 'range', label: 'Mês inicial', min: 1, max: 12, step: 1, default: 11 },
+    title: { type: 'text', label: 'Title ({n} = total)', default: '{n} contributions in the last year' },
+    activity: { type: 'range', label: 'Activity', min: 0.1, max: 1, step: 0.01, default: 0.62 },
+    weekends: { type: 'boolean', label: 'Quieter weekends', default: true },
+    accent: { type: 'color', label: 'Accent', default: '#39d353' },
+    ink: { type: 'color', label: 'Text', default: '#e6edf3' },
+    bg: { type: 'color', label: 'Background', default: '#0d1117' },
+    startMonth: { type: 'range', label: 'Start month', min: 1, max: 12, step: 1, default: 11 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 12 },
   },
 
@@ -252,8 +252,8 @@ export default {
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'right';
       ctx.fillStyle = rgba(p.ink, 0.5);
-      ctx.fillText('mais', right, ly);
-      let x = right - ctx.measureText('mais').width - ls * 0.7 - lsq;
+      ctx.fillText('more', right, ly);
+      let x = right - ctx.measureText('more').width - ls * 0.7 - lsq;
       for (let k = 4; k >= 0; k--) {
         ctx.fillStyle = `rgb(${lv[k][0]},${lv[k][1]},${lv[k][2]})`;
         ctx.beginPath();
@@ -262,20 +262,20 @@ export default {
         x -= lsq + lsq * 0.25;
       }
       ctx.fillStyle = rgba(p.ink, 0.5);
-      ctx.fillText('menos', x + lsq - ls * 0.2, ly);
+      ctx.fillText('less', x + lsq - ls * 0.2, ly);
       // dias com atividade (esquerda)
       ctx.textAlign = 'left';
       ctx.fillStyle = rgba(p.ink, 0.5);
-      if (right - (gx - labW) > m * 0.7) ctx.fillText('Calendário de contribuições', gx - labW, ly);
+      if (right - (gx - labW) > m * 0.7) ctx.fillText('Contribution calendar', gx - labW, ly);
       ctx.globalAlpha = 1;
     }
     y += legendH;
 
     // ---------- estatísticas ----------
     const stats = [
-      [active, 'dias com atividade'],
-      [streak, 'dias seguidos (recorde)'],
-      [best, 'no melhor dia'],
+      [active, 'active days'],
+      [streak, 'day streak (record)'],
+      [best, 'on the best day'],
     ];
     const sx0 = gx - labW;
     const sw = (gridWReal + labW) / 3;

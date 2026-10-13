@@ -150,23 +150,23 @@ function fitText(ctx, text, maxW, size, font) {
 
 export default {
   id: 'mapa-brasil',
-  title: 'Mapa do Brasil',
-  description: 'Mapa do Brasil por estado: as UFs acendem em escala de cor, os maiores ganham rótulo e um ranking top 5 entra ao lado.',
+  title: 'Brazil Map',
+  description: 'Brazil by state: states light up on a color scale, the largest get labels and a top-5 ranking slides in alongside.',
   category: 'dados',
-  tags: ['dados', 'ui', 'broadcast'],
+  tags: ['data', 'ui', 'broadcast'],
   duration: 8,
   poster: 5.6,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'População por estado' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Censo 2022 · milhões de habitantes' },
-    data: { type: 'textarea', label: 'Dados por UF ("SP: 44,4")', rows: 8, default: DEFAULT },
-    scale: { type: 'select', label: 'Escala de cor', options: ['linear', 'raiz', 'log'], default: 'raiz' },
-    order: { type: 'select', label: 'Ordem de entrada', options: ['região', 'valor'], default: 'região' },
-    labels: { type: 'range', label: 'Rótulos no mapa', min: 0, max: 10, step: 1, default: 5 },
-    accent: { type: 'color', label: 'Destaque', default: '#ffb020' },
-    ink: { type: 'color', label: 'Texto', default: '#eef0f3' },
-    bg: { type: 'color', label: 'Fundo', default: '#0c1016' },
+    title: { type: 'text', label: 'Title', default: 'Population by state' },
+    subtitle: { type: 'text', label: 'Subtitle', default: '2022 Census · millions of people' },
+    data: { type: 'textarea', label: 'Data by state ("SP: 44,4")', rows: 8, default: DEFAULT },
+    scale: { type: 'select', label: 'Color scale', options: ['linear', 'raiz', 'log'], default: 'raiz' },
+    order: { type: 'select', label: 'Entry order', options: ['região', 'valor'], default: 'região' },
+    labels: { type: 'range', label: 'Map labels', min: 0, max: 10, step: 1, default: 5 },
+    accent: { type: 'color', label: 'Accent', default: '#ffb020' },
+    ink: { type: 'color', label: 'Text', default: '#eef0f3' },
+    bg: { type: 'color', label: 'Background', default: '#0c1016' },
   },
 
   setup({ w, h, p, px }) {

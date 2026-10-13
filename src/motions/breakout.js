@@ -16,20 +16,20 @@ const LIFE = 1.0;
 export default {
   id: 'breakout',
   title: 'Breakout',
-  description: 'Demo de Breakout jogando sozinho: a raquete mira, a bola cava um túnel e os blocos quebram em partículas.',
+  description: 'A self-playing Breakout demo: the paddle aims, the ball digs a tunnel and bricks shatter into particles.',
   category: 'formas',
-  tags: ['forma', 'loop', 'simulação', 'partículas'],
+  tags: ['shape', 'loop', 'simulation', 'particles'],
   duration: 16,
   poster: 12.2,
 
   params: {
-    bg: { type: 'color', label: 'Fundo', default: '#101114' },
-    ink: { type: 'color', label: 'Blocos', default: '#e9e4da' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    rows: { type: 'range', label: 'Fileiras', min: 3, max: 9, step: 1, default: 5 },
-    speed: { type: 'range', label: 'Velocidade da bola', min: 0.6, max: 1.8, step: 0.05, default: 1 },
-    particles: { type: 'range', label: 'Partículas', min: 0, max: 1.5, step: 0.05, default: 1 },
-    hud: { type: 'boolean', label: 'Placar', default: true },
+    bg: { type: 'color', label: 'Background', default: '#101114' },
+    ink: { type: 'color', label: 'Bricks', default: '#e9e4da' },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    rows: { type: 'range', label: 'Rows', min: 3, max: 9, step: 1, default: 5 },
+    speed: { type: 'range', label: 'Ball speed', min: 0.6, max: 1.8, step: 0.05, default: 1 },
+    particles: { type: 'range', label: 'Particles', min: 0, max: 1.5, step: 0.05, default: 1 },
+    hud: { type: 'boolean', label: 'Scoreboard', default: true },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 1 },
   },
 
@@ -387,10 +387,10 @@ export default {
       ctx.letterSpacing = `${(fs * 0.1).toFixed(1)}px`;
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'left';
-      ctx.fillText('PONTOS', x0, yy);
+      ctx.fillText('SCORE', x0, yy);
       const lw2 = ctx.measureText('PONTOS  ').width;
       ctx.textAlign = 'right';
-      ctx.fillText('BLOCOS', x1 - ctx.measureText(' 00/00').width * 1.55, yy);
+      ctx.fillText('BRICKS', x1 - ctx.measureText(' 00/00').width * 1.55, yy);
       ctx.letterSpacing = '0px';
       ctx.font = `500 ${fs}px "JetBrains Mono"`;
       ctx.globalAlpha = a;

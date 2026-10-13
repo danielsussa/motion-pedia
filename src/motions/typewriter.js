@@ -32,21 +32,21 @@ function wrap(ctx, text, maxW) {
 export default {
   id: 'typewriter',
   title: 'Typewriter',
-  description: 'Texto digitado com cursor piscando, um erro de digitação apagado com backspace e corrigido.',
+  description: 'Text typed out with a blinking cursor, plus a typo that gets backspaced and fixed.',
   category: 'tipografia',
-  tags: ['tipografia', 'intro', 'ui'],
+  tags: ['typography', 'intro', 'ui'],
   duration: 7,
   poster: 3.2,
 
   params: {
-    text: { type: 'text', label: 'Texto ([certo|errado] = erro)', default: 'Ideias que viram [movimento|moviemnto] em segundos.' },
-    font: { type: 'select', label: 'Fonte', options: ['Sans', 'Mono', 'Serif'], default: 'Sans' },
-    size: { type: 'range', label: 'Tamanho', min: 0.03, max: 0.16, step: 0.001, default: 0.1 },
-    cps: { type: 'range', label: 'Letras por segundo', min: 5, max: 30, step: 1, default: 15 },
-    color: { type: 'color', label: 'Texto', default: '#f4f1ea' },
-    accent: { type: 'color', label: 'Cursor / destaque', default: '#ff4d2e' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0d10' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    text: { type: 'text', label: 'Text ([right|wrong] = typo)', default: 'Ideas that turn into [motion|motoin] in seconds.' },
+    font: { type: 'select', label: 'Font', options: ['Sans', 'Mono', 'Serif'], default: 'Sans' },
+    size: { type: 'range', label: 'Size', min: 0.03, max: 0.16, step: 0.001, default: 0.1 },
+    cps: { type: 'range', label: 'Letters per second', min: 5, max: 30, step: 1, default: 15 },
+    color: { type: 'color', label: 'Text', default: '#f4f1ea' },
+    accent: { type: 'color', label: 'Cursor / accent', default: '#ff4d2e' },
+    bg: { type: 'color', label: 'Background', default: '#0d0d10' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ p, duration }) {

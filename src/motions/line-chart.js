@@ -110,15 +110,15 @@ function ellipsize(ctx, text, maxW) {
 }
 
 const DEFAULT_DATA = `Jan, 1.820
-Fev, 2.140
+Feb, 2.140
 Mar, 1.960
-Abr, 2.710
-Mai, 3.050
+Apr, 2.710
+May, 3.050
 Jun, 2.880
 Jul, 3.640
-Ago, 4.210
-Set, 4.020
-Out, 4.980`;
+Aug, 4.210
+Sep, 4.020
+Oct, 4.980`;
 
 const T_DRAW0 = 1.0;
 const T_DRAW1 = 5.0;
@@ -127,23 +127,23 @@ const T_OUT = 6.6;
 export default {
   id: 'line-chart',
   title: 'Line Chart',
-  description: 'A linha do gráfico se desenha com uma cabeça luminosa e o valor acompanhando, sobre área em degradê.',
+  description: 'The chart line draws itself with a glowing head and the value following along, over a gradient area.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 8,
   poster: 5.6,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Receita mensal' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Em milhares de reais · 2025' },
-    data: { type: 'textarea', label: 'Dados (Rótulo, valor)', rows: 8, default: DEFAULT_DATA },
-    prefix: { type: 'text', label: 'Prefixo do valor', default: 'R$ ' },
-    suffix: { type: 'text', label: 'Sufixo do valor', default: '' },
-    area: { type: 'boolean', label: 'Área preenchida', default: true },
-    compact: { type: 'boolean', label: 'Números compactos (1,2 mi)', default: false },
-    accent: { type: 'color', label: 'Destaque', default: '#5b8cff' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0d0f14' },
+    title: { type: 'text', label: 'Title', default: 'Monthly revenue' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'In thousands of BRL · 2025' },
+    data: { type: 'textarea', label: 'Data (Label, value)', rows: 8, default: DEFAULT_DATA },
+    prefix: { type: 'text', label: 'Value prefix', default: 'R$ ' },
+    suffix: { type: 'text', label: 'Value suffix', default: '' },
+    area: { type: 'boolean', label: 'Filled area', default: true },
+    compact: { type: 'boolean', label: 'Compact numbers', default: false },
+    accent: { type: 'color', label: 'Accent', default: '#5b8cff' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0d0f14' },
   },
 
   setup({ p }) {
@@ -214,7 +214,7 @@ export default {
       ctx.font = INTER(500)(subSize * 1.3);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Use ao menos 2 linhas "Rótulo, valor"', w / 2, h / 2);
+      ctx.fillText('Use at least 2 "Label, value" lines', w / 2, h / 2);
       return;
     }
 

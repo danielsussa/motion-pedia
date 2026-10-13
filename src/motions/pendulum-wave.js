@@ -12,22 +12,22 @@ const T = 30;
 export default {
   id: 'pendulum-wave',
   title: 'Pendulum Wave',
-  description: 'Fileira de pêndulos de comprimentos diferentes que saem e voltam de fase, desenhando serpentes, ondas e tranças até realinhar.',
+  description: 'A row of pendulums of different lengths drifting in and out of phase, drawing snakes, waves and braids until they realign.',
   category: 'formas',
-  tags: ['3d', 'simulação', 'loop', 'padrão'],
+  tags: ['3d', 'simulation', 'loop', 'pattern'],
   duration: T,
   poster: 6.4,
 
   params: {
-    count: { type: 'range', label: 'Pêndulos', min: 6, max: 30, step: 1, default: 18 },
-    base: { type: 'range', label: 'Oscilações do mais lento', min: 12, max: 40, step: 1, default: 21 },
+    count: { type: 'range', label: 'Pendulums', min: 6, max: 30, step: 1, default: 18 },
+    base: { type: 'range', label: 'Swings of the slowest', min: 12, max: 40, step: 1, default: 21 },
     amp: { type: 'range', label: 'Amplitude', min: 0.1, max: 0.7, step: 0.01, default: 0.42 },
-    view: { type: 'select', label: 'Vista', options: ['perspectiva', 'topo'], default: 'perspectiva' },
-    snake: { type: 'boolean', label: 'Linha da serpente', default: true },
-    trail: { type: 'range', label: 'Rastro', min: 0, max: 1, step: 0.01, default: 0.6 },
-    accent: { type: 'color', label: 'Bolas', default: '#ff6a3d' },
-    ink: { type: 'color', label: 'Fios', default: '#ece6da' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f13' },
+    view: { type: 'select', label: 'View', options: ['perspectiva', 'topo'], default: 'perspectiva' },
+    snake: { type: 'boolean', label: 'Snake line', default: true },
+    trail: { type: 'range', label: 'Trail', min: 0, max: 1, step: 0.01, default: 0.6 },
+    accent: { type: 'color', label: 'Balls', default: '#ff6a3d' },
+    ink: { type: 'color', label: 'Strings', default: '#ece6da' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f13' },
   },
 
   render(ctx, t, { w, h, p, progress: u, px }) {

@@ -100,34 +100,34 @@ function roundRect(ctx, x, y, w, h, r) {
 const INTER = (wt) => (s) => `${wt} ${s}px Inter, system-ui, sans-serif`;
 const MONO = (s) => `500 ${s}px 'JetBrains Mono', ui-monospace, monospace`;
 
-const DEFAULT_DATA = `Brasil, 1.240
-México, 865
+const DEFAULT_DATA = `Brazil, 1.240
+Mexico, 865
 Argentina, 512
-Colômbia, 438
+Colombia, 438
 Chile, 297
 Peru, 214`;
 
 export default {
   id: 'bar-chart',
   title: 'Bar Chart',
-  description: 'Barras crescem com mola em sequência enquanto os valores contam, sobre um grid sutil com escala.',
+  description: 'Bars spring up one after another as values count up, over a subtle scaled grid.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 7,
   poster: 3.5,
 
   params: {
-    title: { type: 'text', label: 'Título', default: 'Usuários ativos por país' },
-    subtitle: { type: 'text', label: 'Subtítulo', default: 'Em milhares · 2025' },
-    data: { type: 'textarea', label: 'Dados (Rótulo, valor)', rows: 7, default: DEFAULT_DATA },
-    prefix: { type: 'text', label: 'Prefixo do valor', default: '' },
-    suffix: { type: 'text', label: 'Sufixo do valor', default: '' },
-    orientation: { type: 'select', label: 'Orientação', options: ['auto', 'vertical', 'horizontal'], default: 'auto' },
-    highlight: { type: 'select', label: 'Destaque', options: ['maior', 'todas', 'nenhuma'], default: 'maior' },
-    compact: { type: 'boolean', label: 'Números compactos (1,2 mi)', default: false },
-    accent: { type: 'color', label: 'Destaque', default: '#ff5a36' },
-    ink: { type: 'color', label: 'Texto', default: '#f2efe8' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f12' },
+    title: { type: 'text', label: 'Title', default: 'Active users by country' },
+    subtitle: { type: 'text', label: 'Subtitle', default: 'In thousands · 2025' },
+    data: { type: 'textarea', label: 'Data (label, value)', rows: 7, default: DEFAULT_DATA },
+    prefix: { type: 'text', label: 'Value prefix', default: '' },
+    suffix: { type: 'text', label: 'Value suffix', default: '' },
+    orientation: { type: 'select', label: 'Orientation', options: ['auto', 'vertical', 'horizontal'], default: 'auto' },
+    highlight: { type: 'select', label: 'Highlight', options: ['maior', 'todas', 'nenhuma'], default: 'maior' },
+    compact: { type: 'boolean', label: 'Compact numbers', default: false },
+    accent: { type: 'color', label: 'Accent', default: '#ff5a36' },
+    ink: { type: 'color', label: 'Text', default: '#f2efe8' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f12' },
   },
 
   setup({ p }) {
@@ -197,7 +197,7 @@ export default {
       ctx.font = INTER(500)(subSize * 1.3);
       ctx.fillStyle = rgba(p.ink, 0.5);
       ctx.textAlign = 'center';
-      ctx.fillText('Sem dados — use uma linha "Rótulo, valor" por barra', w / 2, h / 2);
+      ctx.fillText('No data — use one "Label, value" line per bar', w / 2, h / 2);
       return;
     }
 

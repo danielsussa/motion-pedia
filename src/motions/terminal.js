@@ -3,15 +3,15 @@ import { TAU, clamp, seg, ease, spring, rgba, mixHex, rng } from '../lib/anim.js
 const MONO = '"JetBrains Mono", ui-monospace, monospace';
 const F = 'Inter, system-ui, sans-serif';
 
-const DEFAULT = `$ npm create motion@latest meu-filme
-[spin] Baixando o template
-✓ Projeto criado em ./meu-filme
-$ cd meu-filme && npm install
-[progress] Instalando dependências
-  adicionados 128 pacotes em 3,2 s
+const DEFAULT = `$ npm create motion@latest my-film
+[spin] Downloading the template
+✓ Project created in ./my-film
+$ cd my-film && npm install
+[progress] Installing dependencies
+  added 128 packages in 3.2 s
 $ npm run render -- --fps 60
-[spin] Renderizando 720 quadros
-✓ Pronto: renders/meu-filme.mp4  (24,8 MB)`;
+[spin] Rendering 720 frames
+✓ Done: renders/my-film.mp4  (24.8 MB)`;
 
 const SPIN = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏';
 
@@ -51,25 +51,25 @@ function plan(src, seed) {
 export default {
   id: 'terminal',
   title: 'Terminal',
-  description: 'Comandos digitados num terminal, com saída surgindo linha a linha, spinner e barra de progresso.',
+  description: 'Commands typed into a terminal, with output appearing line by line, a spinner and a progress bar.',
   category: 'dados',
-  tags: ['ui', 'dados', 'tipografia'],
+  tags: ['ui', 'data', 'typography'],
   duration: 12,
   poster: 10.5,
 
   params: {
     script: {
       type: 'textarea',
-      label: 'Roteiro ($ comando · [spin] texto · [progress] texto · saída)',
+      label: 'Script ($ command · [spin] text · [progress] text · output)',
       rows: 9,
       default: DEFAULT,
     },
-    path: { type: 'text', label: 'Pasta no prompt', default: '~/projetos' },
-    accent: { type: 'color', label: 'Destaque', default: '#7ee2b8' },
-    window: { type: 'color', label: 'Janela', default: '#101218' },
-    bg: { type: 'color', label: 'Fundo', default: '#0a0b0e' },
-    speed: { type: 'range', label: 'Ritmo', min: 0.6, max: 1.8, step: 0.05, default: 1 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    path: { type: 'text', label: 'Prompt folder', default: '~/projects' },
+    accent: { type: 'color', label: 'Accent', default: '#7ee2b8' },
+    window: { type: 'color', label: 'Window', default: '#101218' },
+    bg: { type: 'color', label: 'Background', default: '#0a0b0e' },
+    speed: { type: 'range', label: 'Pace', min: 0.6, max: 1.8, step: 0.05, default: 1 },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, px, duration }) {

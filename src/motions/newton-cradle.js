@@ -10,22 +10,22 @@ const CYCLE = 2;
 export default {
   id: 'newton-cradle',
   title: "Newton's Cradle",
-  description: 'Pêndulo de Newton com bolas cromadas, reflexo no chão, sombras e um pulso discreto a cada choque.',
+  description: 'Newton\'s cradle with chrome balls, a floor reflection, shadows and a subtle pulse on every impact.',
   category: 'formas',
-  tags: ['forma', 'loop', 'simulação', '3d'],
+  tags: ['shape', 'loop', 'simulation', '3d'],
   duration: 4,
   poster: 0.42,
 
   params: {
-    balls: { type: 'range', label: 'Bolas', min: 3, max: 7, step: 1, default: 5 },
-    lift: { type: 'range', label: 'Bolas soltas', min: 1, max: 3, step: 1, default: 1 },
+    balls: { type: 'range', label: 'Balls', min: 3, max: 7, step: 1, default: 5 },
+    lift: { type: 'range', label: 'Lifted balls', min: 1, max: 3, step: 1, default: 1 },
     amp: { type: 'range', label: 'Amplitude', min: 0.2, max: 0.9, step: 0.01, default: 0.62 },
-    reflection: { type: 'range', label: 'Reflexo', min: 0, max: 0.6, step: 0.01, default: 0.26 },
-    pulse: { type: 'boolean', label: 'Pulso no choque', default: true },
-    ball: { type: 'color', label: 'Bolas', default: '#c9ccd2' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff6a3d' },
-    ink: { type: 'color', label: 'Estrutura', default: '#ece6da' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f13' },
+    reflection: { type: 'range', label: 'Reflection', min: 0, max: 0.6, step: 0.01, default: 0.26 },
+    pulse: { type: 'boolean', label: 'Impact pulse', default: true },
+    ball: { type: 'color', label: 'Ball color', default: '#c9ccd2' },
+    accent: { type: 'color', label: 'Accent', default: '#ff6a3d' },
+    ink: { type: 'color', label: 'Frame', default: '#ece6da' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f13' },
   },
 
   render(ctx, t, { w, h, p }) {

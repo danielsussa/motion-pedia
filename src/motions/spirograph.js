@@ -56,22 +56,22 @@ function curve(R, r, d) {
 export default {
   id: 'spirograph',
   title: 'Spirograph',
-  description: 'Camadas de hipotrocoides desenhadas por uma engrenagem que rola, sobrepostas em cores e depois desfeitas.',
+  description: 'Layers of hypotrochoids drawn by a rolling gear, stacked up in color and then undrawn.',
   category: 'formas',
-  tags: ['forma', 'loop'],
+  tags: ['shape', 'loop'],
   duration: 12,
   poster: 6.4,
 
   params: {
-    preset: { type: 'select', label: 'Curvas', options: Object.keys(PRESETS), default: 'clássico' },
-    layers: { type: 'range', label: 'Camadas', min: 1, max: 6, step: 1, default: 4 },
-    colorA: { type: 'color', label: 'Cor A', default: '#7cf5ff' },
-    colorB: { type: 'color', label: 'Cor B', default: '#ff4fa0' },
-    bg: { type: 'color', label: 'Fundo', default: '#07080d' },
-    width: { type: 'range', label: 'Espessura', min: 0.5, max: 6, step: 0.1, default: 1.8 },
-    size: { type: 'range', label: 'Tamanho', min: 0.2, max: 0.48, step: 0.01, default: 0.38 },
-    guides: { type: 'boolean', label: 'Engrenagem', default: true },
-    glow: { type: 'boolean', label: 'Brilho', default: true },
+    preset: { type: 'select', label: 'Curves', options: Object.keys(PRESETS), default: 'clássico' },
+    layers: { type: 'range', label: 'Layers', min: 1, max: 6, step: 1, default: 4 },
+    colorA: { type: 'color', label: 'Color A', default: '#7cf5ff' },
+    colorB: { type: 'color', label: 'Color B', default: '#ff4fa0' },
+    bg: { type: 'color', label: 'Background', default: '#07080d' },
+    width: { type: 'range', label: 'Thickness', min: 0.5, max: 6, step: 0.1, default: 1.8 },
+    size: { type: 'range', label: 'Size', min: 0.2, max: 0.48, step: 0.01, default: 0.38 },
+    guides: { type: 'boolean', label: 'Gear', default: true },
+    glow: { type: 'boolean', label: 'Glow', default: true },
   },
 
   setup({ p }) {

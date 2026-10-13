@@ -82,28 +82,28 @@ function wrapRaw(text, font, maxW, maxLines) {
 export default {
   id: 'audiogram',
   title: 'Audiogram',
-  description: 'Audiograma de podcast: capa que pulsa, onda de áudio rolando com o som e legenda palavra a palavra.',
+  description: 'Podcast audiogram: a pulsing cover, a scrolling waveform and word-by-word captions.',
   category: 'dados',
-  tags: ['áudio', 'dados', 'ui'],
+  tags: ['audio', 'data', 'ui'],
   duration: 12,
   poster: 4.3,
 
   params: {
-    audio: { type: 'audio', label: 'Áudio', default: '/samples/beat.wav' },
-    cover: { type: 'image', label: 'Capa', default: '/samples/portrait.jpg' },
-    show: { type: 'text', label: 'Podcast', default: 'Quadro a Quadro · Ep. 42' },
-    episode: { type: 'text', label: 'Episódio', default: 'Por que o ritmo importa mais que o efeito' },
+    audio: { type: 'audio', label: 'Audio', default: '/samples/beat.wav' },
+    cover: { type: 'image', label: 'Cover', default: '/samples/portrait.jpg' },
+    show: { type: 'text', label: 'Podcast', default: 'Frame by Frame · Ep. 42' },
+    episode: { type: 'text', label: 'Episode', default: 'Why timing matters more than effects' },
     caption: {
       type: 'textarea',
-      label: 'Legenda',
+      label: 'Caption',
       rows: 4,
       default:
-        'O segredo não é o efeito em si. É o tempo entre uma coisa e outra, a pausa antes do corte. Quando o ritmo está certo, o público nem percebe a técnica.',
+        'The secret is not the effect itself. It is the time between one thing and the next, the pause before the cut. When the timing is right, the audience never notices the technique.',
     },
-    wps: { type: 'range', label: 'Palavras por segundo', min: 1, max: 5, step: 0.1, default: 2.4 },
-    accent: { type: 'color', label: 'Destaque', default: '#e4572e' },
-    ink: { type: 'color', label: 'Texto', default: '#1c1a17' },
-    bg: { type: 'color', label: 'Fundo', default: '#efe9df' },
+    wps: { type: 'range', label: 'Words per second', min: 1, max: 5, step: 0.1, default: 2.4 },
+    accent: { type: 'color', label: 'Accent', default: '#e4572e' },
+    ink: { type: 'color', label: 'Text', default: '#1c1a17' },
+    bg: { type: 'color', label: 'Background', default: '#efe9df' },
   },
 
   setup({ w, h, p }) {
@@ -362,7 +362,7 @@ export default {
     ctx.textBaseline = 'top';
     ctx.fillText(fmt(tt), L.x, py + m * 0.016);
     ctx.textAlign = 'right';
-    ctx.fillText(a ? `-${fmt(total - tt)}` : 'carregando áudio…', L.x + L.cw, py + m * 0.016);
+    ctx.fillText(a ? `-${fmt(total - tt)}` : 'loading audio…', L.x + L.cw, py + m * 0.016);
     ctx.textAlign = 'left';
     ctx.globalAlpha = 1;
   },

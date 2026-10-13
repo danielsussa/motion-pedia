@@ -88,17 +88,17 @@ export function renderGallery(root, motions, compositions) {
     const comps = compositions.filter(match);
     const mots = motions.filter(match);
     sections.replaceChildren(...[
-      comps.length ? el('section', {}, el('h2.section-title', {}, 'Composições', el('span', {}, ` ${comps.length}`)), el('div.grid', {}, comps.map(compCard))) : null,
+      comps.length ? el('section', {}, el('h2.section-title', {}, 'Compositions', el('span', {}, ` ${comps.length}`)), el('div.grid', {}, comps.map(compCard))) : null,
       ...CATEGORIES.map((cat) => {
         const list = mots.filter((m) => (m.category ?? 'formas') === cat.id);
         return list.length ? el('section', {}, el('h2.section-title', {}, cat.label, el('span', {}, ` ${list.length}`)), el('div.grid', {}, list.map(motionCard))) : null;
       }),
-      !comps.length && !mots.length ? el('p.empty', {}, 'Nada encontrado.') : null,
+      !comps.length && !mots.length ? el('p.empty', {}, 'Nothing found.') : null,
     ].filter(Boolean));
-    count.textContent = `${comps.length + mots.length} de ${all.length}`;
+    count.textContent = `${comps.length + mots.length} of ${all.length}`;
     chips.replaceChildren(
       ...[null, ...tags].map((t) =>
-        el('button.chip' + (t === activeTag ? '.on' : ''), { onclick: () => ((activeTag = t), refresh()) }, t ?? 'todos'),
+        el('button.chip' + (t === activeTag ? '.on' : ''), { onclick: () => ((activeTag = t), refresh()) }, t ?? 'all'),
       ),
     );
   };
@@ -108,10 +108,17 @@ export function renderGallery(root, motions, compositions) {
       'header.top',
       {},
       el('a.brand', { href: '#/' }, 'motion', el('span', {}, '·'), 'pedia'),
-      el('input.search', { type: 'search', placeholder: 'Buscar motion, tag…', oninput: (e) => ((query = e.target.value), refresh()) }),
+      el('input.search', { type: 'search', placeholder: 'Search motions, tags…', oninput: (e) => ((query = e.target.value), refresh()) }),
       count,
+      el('a.gh', { href: 'https://github.com/danielsussa/motion-pedia', target: '_blank', rel: 'noopener' }, 'GitHub ↗'),
     ),
-    el('main.gallery', {}, chips, sections),
+    el(
+      'main.gallery',
+      {},
+      el('p.intro', {}, 'Motion graphics in pure JavaScript (Canvas 2D + WebGL). Hover a card to play it, open it to tweak every parameter live and export a video. Free, with the code on GitHub.'),
+      chips,
+      sections,
+    ),
   );
   refresh();
 

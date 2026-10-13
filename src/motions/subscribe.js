@@ -29,22 +29,22 @@ const press = (t, tc) => Math.sin(Math.PI * seg(t, tc - 0.07, tc + 0.13));
 export default {
   id: 'subscribe',
   title: 'Subscribe CTA',
-  description: 'Card de canal com cursor que clica em "Inscrever-se", ativa o sino e dá like, com ripple e micro-animações.',
+  description: 'A channel card where a cursor clicks "Subscribe", rings the bell and hits like, with ripples and micro-animations.',
   category: 'dados',
   tags: ['ui', 'overlay', 'alpha', 'broadcast'],
   duration: 6,
   poster: 4.4,
 
   params: {
-    channel: { type: 'text', label: 'Canal', default: 'motion·pedia' },
-    subs: { type: 'text', label: 'Inscritos', default: '128 mil inscritos' },
-    label: { type: 'text', label: 'Botão', default: 'Inscrever-se' },
-    doneLabel: { type: 'text', label: 'Botão (depois)', default: 'Inscrito' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff2e3a' },
-    bg: { type: 'color', label: 'Fundo', default: '#1b1e24' },
-    position: { type: 'select', label: 'Posição', options: ['centro', 'baixo'], default: 'centro' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
-    scale: { type: 'range', label: 'Escala', min: 0.5, max: 1.6, step: 0.01, default: 1 },
+    channel: { type: 'text', label: 'Channel', default: 'motion·pedia' },
+    subs: { type: 'text', label: 'Subscribers', default: '128K subscribers' },
+    label: { type: 'text', label: 'Button', default: 'Subscribe' },
+    doneLabel: { type: 'text', label: 'Button (after)', default: 'Subscribed' },
+    accent: { type: 'color', label: 'Accent', default: '#ff2e3a' },
+    bg: { type: 'color', label: 'Background', default: '#1b1e24' },
+    position: { type: 'select', label: 'Position', options: ['centro', 'baixo'], default: 'centro' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
+    scale: { type: 'range', label: 'Scale', min: 0.5, max: 1.6, step: 0.01, default: 1 },
   },
 
   render(ctx, t, { w, h, p, px }) {

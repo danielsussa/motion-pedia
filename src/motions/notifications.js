@@ -50,31 +50,31 @@ function ellipsize(ctx, text, maxW) {
 const F = 'Inter, system-ui, sans-serif';
 const hueOf = (s) => [...s].reduce((a, c) => a + c.charCodeAt(0) * 37, 0) % 360;
 
-const DEFAULT = `Loja | Nova venda | Você vendeu R$ 249,90 · Camiseta Oversized Preta
-Pix | Pagamento recebido | R$ 1.200,00 de Marina Souza
-Loja | Nova venda | Você vendeu R$ 89,00 · Boné Clássico
-Loja | Meta do dia batida | 100 vendas hoje, 32% acima de ontem
-Pix | Pagamento recebido | R$ 349,90 de Rafael Lima`;
+const DEFAULT = `Store | New sale | You sold R$ 249,90 · Black Oversized T-Shirt
+Pix | Payment received | R$ 1.200,00 from Marina Souza
+Store | New sale | You sold R$ 89,00 · Classic Cap
+Store | Daily goal reached | 100 sales today, 32% above yesterday
+Pix | Payment received | R$ 349,90 from Rafael Lima`;
 
 export default {
   id: 'notifications',
   title: 'Notifications',
-  description: 'Notificações no estilo iOS, em vidro translúcido, caindo do topo e empilhando com mola.',
+  description: 'iOS-style notifications in frosted glass, dropping from the top and stacking with a spring.',
   category: 'dados',
-  tags: ['ui', 'dados', 'overlay', 'alpha'],
+  tags: ['ui', 'data', 'overlay', 'alpha'],
   duration: 8,
   poster: 5.2,
 
   params: {
-    data: { type: 'textarea', label: 'Notificações (app | título | texto)', rows: 6, default: DEFAULT },
-    time: { type: 'text', label: 'Horário', default: 'agora' },
-    theme: { type: 'select', label: 'Tema', options: ['claro', 'escuro'], default: 'claro' },
-    align: { type: 'select', label: 'Posição', options: ['auto', 'centro', 'direita', 'esquerda'], default: 'auto' },
-    icons: { type: 'select', label: 'Ícones', options: ['destaque', 'coloridos'], default: 'destaque' },
-    visible: { type: 'range', label: 'Máx. visíveis', min: 1, max: 6, step: 1, default: 4 },
-    accent: { type: 'color', label: 'Destaque (ícone)', default: '#ff5a36' },
-    bg: { type: 'color', label: 'Fundo', default: '#1d2a3a' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    data: { type: 'textarea', label: 'Notifications (app | title | text)', rows: 6, default: DEFAULT },
+    time: { type: 'text', label: 'Time', default: 'now' },
+    theme: { type: 'select', label: 'Theme', options: ['claro', 'escuro'], default: 'claro' },
+    align: { type: 'select', label: 'Position', options: ['auto', 'centro', 'direita', 'esquerda'], default: 'auto' },
+    icons: { type: 'select', label: 'Icons', options: ['destaque', 'coloridos'], default: 'destaque' },
+    visible: { type: 'range', label: 'Max visible', min: 1, max: 6, step: 1, default: 4 },
+    accent: { type: 'color', label: 'Accent (icon)', default: '#ff5a36' },
+    bg: { type: 'color', label: 'Background', default: '#1d2a3a' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p, duration }) {

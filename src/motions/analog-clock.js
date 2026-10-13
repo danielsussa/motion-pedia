@@ -16,22 +16,22 @@ const ROMAN = ['XII', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X
 export default {
   id: 'analog-clock',
   title: 'Analog Clock',
-  description: 'Relógio analógico que tiqueteia, dispara os ponteiros com rastro para mostrar as horas passando e desacelera de volta.',
+  description: 'An analog clock that ticks, then whips its hands around with trails to show hours flying by, and eases back.',
   category: 'formas',
-  tags: ['forma', 'loop', 'ui', 'alpha'],
+  tags: ['shape', 'loop', 'ui', 'alpha'],
   duration: 10,
   poster: 5,
 
   params: {
-    start: { type: 'text', label: 'Hora inicial (hh:mm)', default: '10:10' },
-    turns: { type: 'range', label: 'Voltas de 12h', min: 1, max: 4, step: 1, default: 1 },
-    numerals: { type: 'select', label: 'Números', options: ['arábicos', 'romanos', 'nenhum'], default: 'arábicos' },
-    digital: { type: 'boolean', label: 'Leitura digital', default: true },
-    trail: { type: 'range', label: 'Rastro', min: 0, max: 1, step: 0.01, default: 0.7 },
-    accent: { type: 'color', label: 'Segundos', default: '#ff6a3d' },
-    ink: { type: 'color', label: 'Ponteiros', default: '#ece6da' },
-    bg: { type: 'color', label: 'Fundo', default: '#0e0f13' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    start: { type: 'text', label: 'Start time (hh:mm)', default: '10:10' },
+    turns: { type: 'range', label: '12h turns', min: 1, max: 4, step: 1, default: 1 },
+    numerals: { type: 'select', label: 'Numerals', options: ['arábicos', 'romanos', 'nenhum'], default: 'arábicos' },
+    digital: { type: 'boolean', label: 'Digital readout', default: true },
+    trail: { type: 'range', label: 'Trail', min: 0, max: 1, step: 0.01, default: 0.7 },
+    accent: { type: 'color', label: 'Seconds', default: '#ff6a3d' },
+    ink: { type: 'color', label: 'Hands', default: '#ece6da' },
+    bg: { type: 'color', label: 'Background', default: '#0e0f13' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   render(ctx, t, { w, h, p, duration: D }) {

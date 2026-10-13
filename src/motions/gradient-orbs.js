@@ -17,19 +17,19 @@ function noiseCanvas(size, rand) {
 export default {
   id: 'gradient-orbs',
   title: 'Gradient Orbs',
-  description: 'Orbes de gradiente flutuando em loop perfeito, com granulado de filme. Ótimo como fundo.',
+  description: 'Gradient orbs floating in a seamless loop, with film grain. Great as a background.',
   category: 'fundos',
-  tags: ['fundo', 'loop', 'gradiente'],
+  tags: ['background', 'loop', 'gradient'],
   duration: 10,
 
   params: {
-    c1: { type: 'color', label: 'Cor 1', default: '#ff3d7f' },
-    c2: { type: 'color', label: 'Cor 2', default: '#4d5bff' },
-    c3: { type: 'color', label: 'Cor 3', default: '#00d1b2' },
-    bg: { type: 'color', label: 'Fundo', default: '#0a0614' },
-    count: { type: 'range', label: 'Orbes', min: 2, max: 10, step: 1, default: 6 },
-    size: { type: 'range', label: 'Tamanho', min: 0.3, max: 1.3, step: 0.01, default: 0.75 },
-    grain: { type: 'range', label: 'Granulado', min: 0, max: 0.5, step: 0.01, default: 0.12 },
+    c1: { type: 'color', label: 'Color 1', default: '#ff3d7f' },
+    c2: { type: 'color', label: 'Color 2', default: '#4d5bff' },
+    c3: { type: 'color', label: 'Color 3', default: '#00d1b2' },
+    bg: { type: 'color', label: 'Background', default: '#0a0614' },
+    count: { type: 'range', label: 'Orbs', min: 2, max: 10, step: 1, default: 6 },
+    size: { type: 'range', label: 'Size', min: 0.3, max: 1.3, step: 0.01, default: 0.75 },
+    grain: { type: 'range', label: 'Grain', min: 0, max: 0.5, step: 0.01, default: 0.12 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
   },
 

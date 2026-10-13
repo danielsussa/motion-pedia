@@ -20,27 +20,27 @@ const two = (n) => String(n).padStart(2, '0');
 export default {
   id: 'scoreboard',
   title: 'Scoreboard',
-  description: 'Placar esportivo de transmissão: o relógio corre, sai um gol, o número vira e desce a tarja com o autor.',
+  description: 'A broadcast sports scoreboard: the clock runs, a goal goes in, the score flips and a scorer banner drops down.',
   category: 'dados',
   tags: ['broadcast', 'ui', 'overlay', 'alpha'],
   duration: 7,
   poster: 3.6,
 
   params: {
-    teamA: { type: 'text', label: 'Time da casa', default: 'FLA' },
-    teamB: { type: 'text', label: 'Visitante', default: 'PAL' },
-    colorA: { type: 'color', label: 'Cor da casa', default: '#d7263d' },
-    colorB: { type: 'color', label: 'Cor do visitante', default: '#1b9e5a' },
-    scoreA: { type: 'range', label: 'Gols da casa', min: 0, max: 9, step: 1, default: 1 },
-    scoreB: { type: 'range', label: 'Gols do visitante', min: 0, max: 9, step: 1, default: 1 },
-    goal: { type: 'select', label: 'Gol de', options: ['casa', 'visitante', 'ninguém'], default: 'casa' },
-    scorer: { type: 'text', label: 'Autor do gol', default: 'Pedro' },
-    clock: { type: 'text', label: 'Relógio inicial', default: '67:48' },
-    period: { type: 'text', label: 'Período', default: '2T' },
-    league: { type: 'text', label: 'Competição', default: 'BRASILEIRÃO · RODADA 32' },
-    accent: { type: 'color', label: 'Destaque', default: '#f4c430' },
-    scale: { type: 'range', label: 'Escala', min: 0.5, max: 1.8, step: 0.01, default: 1 },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    teamA: { type: 'text', label: 'Home team', default: 'FLA' },
+    teamB: { type: 'text', label: 'Away team', default: 'PAL' },
+    colorA: { type: 'color', label: 'Home color', default: '#d7263d' },
+    colorB: { type: 'color', label: 'Away color', default: '#1b9e5a' },
+    scoreA: { type: 'range', label: 'Home goals', min: 0, max: 9, step: 1, default: 1 },
+    scoreB: { type: 'range', label: 'Away goals', min: 0, max: 9, step: 1, default: 1 },
+    goal: { type: 'select', label: 'Goal by', options: ['casa', 'visitante', 'ninguém'], default: 'casa' },
+    scorer: { type: 'text', label: 'Goal scorer', default: 'Pedro' },
+    clock: { type: 'text', label: 'Start clock', default: '67:48' },
+    period: { type: 'text', label: 'Period', default: '2H' },
+    league: { type: 'text', label: 'Competition', default: 'BRASILEIRÃO · MATCHDAY 32' },
+    accent: { type: 'color', label: 'Accent', default: '#f4c430' },
+    scale: { type: 'range', label: 'Scale', min: 0.5, max: 1.8, step: 0.01, default: 1 },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   // Fundo de prévia: gramado com faixas de corte, linhas do campo e vinheta, pintado uma vez.
@@ -303,7 +303,7 @@ export default {
     const gs = bh * 0.5;
     ctx.font = INTER(900, gs);
     ctx.letterSpacing = `${gs * 0.08}px`;
-    const golW = ctx.measureText('GOL').width;
+    const golW = ctx.measureText('GOAL').width;
     ctx.letterSpacing = '0px';
     const name = `${p.scorer || ''}`.trim();
     const ns = bh * 0.42;
@@ -340,7 +340,7 @@ export default {
     ctx.translate(x0 + gw / 2 + gs * 0.04, by + bh / 2 + gs * 0.05);
     ctx.scale(0.6 + 0.4 * gk, 0.6 + 0.4 * gk);
     ctx.globalAlpha = clamp(gk * 2);
-    ctx.fillText('GOL', 0, 0);
+    ctx.fillText('GOAL', 0, 0);
     ctx.restore();
     ctx.letterSpacing = '0px';
     // autor e minuto

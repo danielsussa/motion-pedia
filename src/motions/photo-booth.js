@@ -51,21 +51,21 @@ function drawPose(g, img, w, h, pose, focusY, extraZoom = 1) {
 
 export default {
   id: 'photo-booth',
-  title: 'Cabine de fotos',
-  description: 'Contagem e flash numa cabine de fotos: quatro poses são tiradas e a tira impressa sai pela fenda da máquina.',
+  title: 'Photo Booth',
+  description: 'Countdown and flash in a photo booth: four poses are taken and the printed strip slides out of the machine slot.',
   category: 'imagem',
   tags: ['intro', 'ui'],
   duration: 9,
   poster: 8.2,
 
   params: {
-    image: { type: 'image', label: 'Foto', default: '/samples/portrait.jpg' },
-    style: { type: 'select', label: 'Impressão', options: ['P&B', 'sépia', 'cor'], default: 'P&B' },
-    caption: { type: 'text', label: 'Legenda da tira', default: 'sábado · 12.10' },
-    accent: { type: 'color', label: 'Destaque', default: '#ff4d3d' },
-    panel: { type: 'color', label: 'Painel da máquina', default: '#1f2126' },
-    paper: { type: 'color', label: 'Papel', default: '#f5f2ea' },
-    focusY: { type: 'range', label: 'Foco vertical', min: 0, max: 1, step: 0.01, default: 0.33 },
+    image: { type: 'image', label: 'Photo', default: '/samples/portrait.jpg' },
+    style: { type: 'select', label: 'Print', options: ['P&B', 'sépia', 'cor'], default: 'P&B' },
+    caption: { type: 'text', label: 'Strip caption', default: 'saturday · 10.12' },
+    accent: { type: 'color', label: 'Accent', default: '#ff4d3d' },
+    panel: { type: 'color', label: 'Machine panel', default: '#1f2126' },
+    paper: { type: 'color', label: 'Paper', default: '#f5f2ea' },
+    focusY: { type: 'range', label: 'Vertical focus', min: 0, max: 1, step: 0.01, default: 0.33 },
   },
 
   setup({ w, h, p, px }) {
@@ -211,7 +211,7 @@ export default {
       g.letterSpacing = `${fs * 0.3}px`;
       g.textAlign = 'left';
       g.textBaseline = 'middle';
-      const label = 'RETIRE SUAS FOTOS';
+      const label = 'COLLECT YOUR PHOTOS';
       const lw = g.measureText(label).width;
       g.fillStyle = 'rgba(255,255,255,0.5)';
       g.fillText(label, w / 2 - lw / 2 + fs * 0.9, py0 - fs * 1.6);
@@ -289,9 +289,9 @@ export default {
         ctx.fill();
         ctx.fillStyle = 'rgba(255,255,255,0.92)';
         ctx.letterSpacing = `${fs * 0.18}px`;
-        ctx.fillText('CABINE', inset + len * 0.5 + fs * 0.8, ty);
+        ctx.fillText('BOOTH', inset + len * 0.5 + fs * 0.8, ty);
         ctx.textAlign = 'right';
-        ctx.fillText(`FOTO ${Math.min(4, pose + 1)}/4`, w - inset - len * 0.5 + fs * 0.18, ty);
+        ctx.fillText(`PHOTO ${Math.min(4, pose + 1)}/4`, w - inset - len * 0.5 + fs * 0.18, ty);
         ctx.letterSpacing = '0px';
 
         // contagem 3-2-1 no anel antes de cada clique
@@ -375,7 +375,7 @@ export default {
       const ledOn = 0.55 + 0.45 * Math.cos(TAU * (t - act2) * 1.2);
       ctx.font = `500 ${fs}px ${MONO}`;
       ctx.letterSpacing = `${fs * 0.3}px`;
-      const lw = ctx.measureText('RETIRE SUAS FOTOS').width;
+      const lw = ctx.measureText('COLLECT YOUR PHOTOS').width;
       ctx.letterSpacing = '0px';
       const ly = s.slotY - s.plateH / 2 - fs * 1.6;
       const lx = w / 2 - lw / 2 - fs * 0.2;

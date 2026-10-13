@@ -27,7 +27,7 @@ export function renderCompDetail(root, comp) {
   mountControls();
 
   root.append(
-    el('header.top', {}, el('a.brand', { href: '#/' }, 'motion', el('span', {}, '·'), 'pedia'), el('a.back', { href: '#/' }, '← galeria')),
+    el('header.top', {}, el('a.brand', { href: '#/' }, 'motion', el('span', {}, '·'), 'pedia'), el('a.back', { href: '#/' }, '← gallery')),
     el(
       'main.detail',
       {},
@@ -43,7 +43,7 @@ export function renderCompDetail(root, comp) {
         el(
           'div.panel-actions',
           {},
-          el('button.btn', { onclick: () => (clearParams(comp), (params = defaults(comp)), player.setParams(params), mountControls()) }, 'Restaurar padrão'),
+          el('button.btn', { onclick: () => (clearParams(comp), (params = defaults(comp)), player.setParams(params), mountControls()) }, 'Reset to defaults'),
         ),
       ),
     ),

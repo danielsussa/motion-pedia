@@ -42,21 +42,21 @@ function tracePath(path, pts, first) {
 
 export default {
   id: 'photo-puzzle',
-  title: 'Quebra-cabeça',
-  description: 'A foto se monta peça por peça: peças de quebra-cabeça de verdade voam girando e encaixam com sombra.',
+  title: 'Jigsaw Puzzle',
+  description: 'The photo assembles piece by piece: real jigsaw pieces fly in spinning and snap into place with shadows.',
   category: 'imagem',
-  tags: ['intro', 'forma', 'transição'],
+  tags: ['intro', 'shape', 'transition'],
   duration: 8,
   poster: 3.2,
 
   params: {
-    image: { type: 'image', label: 'Foto', default: '/samples/landscape.jpg' },
-    pieces: { type: 'range', label: 'Peças (aprox.)', min: 6, max: 60, step: 1, default: 24 },
-    spin: { type: 'range', label: 'Giro no voo', min: 0, max: 1.5, step: 0.05, default: 0.7 },
-    bg: { type: 'color', label: 'Fundo (mesa)', default: '#17181b' },
-    bevel: { type: 'range', label: 'Chanfro', min: 0, max: 1, step: 0.05, default: 0.6 },
-    seamless: { type: 'boolean', label: 'Some as emendas no fim', default: true },
-    focusY: { type: 'range', label: 'Foco vertical', min: 0, max: 1, step: 0.01, default: 0.45 },
+    image: { type: 'image', label: 'Photo', default: '/samples/landscape.jpg' },
+    pieces: { type: 'range', label: 'Pieces (approx.)', min: 6, max: 60, step: 1, default: 24 },
+    spin: { type: 'range', label: 'Spin in flight', min: 0, max: 1.5, step: 0.05, default: 0.7 },
+    bg: { type: 'color', label: 'Background (table)', default: '#17181b' },
+    bevel: { type: 'range', label: 'Bevel', min: 0, max: 1, step: 0.05, default: 0.6 },
+    seamless: { type: 'boolean', label: 'Hide seams at the end', default: true },
+    focusY: { type: 'range', label: 'Vertical focus', min: 0, max: 1, step: 0.01, default: 0.45 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 7 },
   },
 
@@ -241,7 +241,7 @@ export default {
       ctx.font = `500 ${Math.min(w, h) * 0.022}px ${SANS}`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText('carregando foto…', w / 2, h / 2);
+      ctx.fillText('loading photo…', w / 2, h / 2);
     }
     // fecha no preto do fundo para o loop do player
     const out = seg(t, D - 0.45, D);

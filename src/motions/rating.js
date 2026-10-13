@@ -9,10 +9,10 @@ const measure = () => (MC ||= document.createElement('canvas').getContext('2d'))
 const fmt = new Intl.NumberFormat('pt-BR');
 const fmt1 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-const REVIEWS = `Marina Costa | 5 | Entrega rápida e acabamento impecável. Já é a terceira vez que compro e nunca me decepcionou.
-Rafael Lima | 5 | O suporte respondeu em minutos e resolveu tudo. Recomendo de olhos fechados.
-Júlia Prado | 4 | Muito bom! Só achei que a caixa poderia ser um pouco mais resistente.
-Bruno Alves | 5 | Superou as expectativas. A qualidade é bem melhor do que nas fotos.`;
+const REVIEWS = `Marina Costa | 5 | Fast delivery and a flawless finish. This is my third order and it has never let me down.
+Rafael Lima | 5 | Support replied within minutes and sorted everything out. Highly recommended.
+Júlia Prado | 4 | Very good! I just think the box could be a little sturdier.
+Bruno Alves | 5 | Exceeded my expectations. The quality is much better than in the photos.`;
 
 function parseReviews(text) {
   const out = [];
@@ -88,23 +88,23 @@ const T_ROLL = 5.6;
 export default {
   id: 'rating',
   title: 'Rating',
-  description: 'Avaliações: a nota conta, as estrelas enchem uma a uma, as barras de distribuição crescem e entram cards de review.',
+  description: 'Reviews: the score counts up, stars fill one by one, distribution bars grow and review cards slide in.',
   category: 'dados',
-  tags: ['dados', 'ui'],
+  tags: ['data', 'ui'],
   duration: 9,
   poster: 4.4,
 
   params: {
-    score: { type: 'range', label: 'Nota', min: 1, max: 5, step: 0.1, default: 4.8 },
-    count: { type: 'range', label: 'Nº de avaliações', min: 1, max: 100000, step: 1, default: 2431 },
-    label: { type: 'text', label: 'Selo', default: 'Excelente' },
-    dist: { type: 'text', label: 'Distribuição % (5★ a 1★)', default: '82, 12, 4, 1, 1' },
-    reviews: { type: 'textarea', label: 'Reviews (nome | estrelas | texto)', rows: 5, default: REVIEWS },
-    accent: { type: 'color', label: 'Estrelas', default: '#ffaa17' },
-    ink: { type: 'color', label: 'Texto', default: '#17181c' },
+    score: { type: 'range', label: 'Score', min: 1, max: 5, step: 0.1, default: 4.8 },
+    count: { type: 'range', label: 'Review count', min: 1, max: 100000, step: 1, default: 2431 },
+    label: { type: 'text', label: 'Badge', default: 'Excellent' },
+    dist: { type: 'text', label: 'Distribution % (5★ to 1★)', default: '82, 12, 4, 1, 1' },
+    reviews: { type: 'textarea', label: 'Reviews (name | stars | text)', rows: 5, default: REVIEWS },
+    accent: { type: 'color', label: 'Stars', default: '#ffaa17' },
+    ink: { type: 'color', label: 'Text', default: '#17181c' },
     card: { type: 'color', label: 'Cards', default: '#ffffff' },
-    bg: { type: 'color', label: 'Fundo', default: '#f2efe9' },
-    transparent: { type: 'boolean', label: 'Fundo transparente', default: false },
+    bg: { type: 'color', label: 'Background', default: '#f2efe9' },
+    transparent: { type: 'boolean', label: 'Transparent background', default: false },
   },
 
   setup({ w, h, p }) {
@@ -242,7 +242,7 @@ export default {
       ctx.font = F(500, 23 * su);
       ctx.fillStyle = rgba(ink, 0.55);
       ctx.textBaseline = 'middle';
-      ctx.fillText(`${fmt.format(Math.round(p.count * cnt))} avaliações`, 0, sy + 56 * su);
+      ctx.fillText(`${fmt.format(Math.round(p.count * cnt))} reviews`, 0, sy + 56 * su);
 
       // barras de distribuição
       const bx = sum.side ? 480 * su : 0;
@@ -340,7 +340,7 @@ export default {
       ctx.fillText(c.name, ax + ar + 18 * cu, ay - 12 * cu);
       ctx.font = F(500, 19 * cu);
       ctx.fillStyle = rgba(ink, 0.45);
-      ctx.fillText('Compra verificada', ax + ar + 18 * cu, ay + 18 * cu);
+      ctx.fillText('Verified purchase', ax + ar + 18 * cu, ay + 18 * cu);
       // estrelas pequenas à direita
       const r = 13 * cu;
       for (let i = 0; i < 5; i++) {

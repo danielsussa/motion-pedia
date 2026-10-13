@@ -96,6 +96,8 @@ function globRefresh() {
 }
 
 export default defineConfig({
+  // a galeria publicada fica em dekah.tech/motion-pedia/ (BASE_PATH no build); local continua na raiz
+  base: process.env.BASE_PATH ?? '/',
   plugins: [renderApi(), globRefresh()],
   server: {
     host: '127.0.0.1',
