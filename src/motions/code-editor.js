@@ -380,7 +380,7 @@ export default {
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'left';
     // pílula de modo com destaque
-    const pillTxt = saved ? '✓ salvo' : typing ? 'editando' : 'pronto';
+    const pillTxt = saved ? '✓ saved' : typing ? 'editing' : 'ready';
     const pw = ctx.measureText(pillTxt).width + statusH * 0.8;
     ctx.fillStyle = rgba(p.accent, saved ? 0.22 : 0.14);
     ctx.beginPath();
