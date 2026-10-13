@@ -7,7 +7,7 @@
 //   update(t) { cam.update(t); fala.update(t); }
 //
 // Exemplo completo: src/compositions/explica-demo.js.
-import { el, ease, seg, lerp, clamp, set } from './core.js';
+import { el, ease, seg, lerp, clamp, set, rng } from './core.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 export const svgEl = (tag, attrs = {}) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); return n; };
@@ -163,3 +163,65 @@ export function carta(root, forma, { cor = '#14b8a6', fundo = '#fff', lado = 130
 
 // Número que conta de `de` até `ate` entre a e b.
 export const conta = (t, a, b, ate, de = 0) => Math.round(lerp(de, ate, ease.outCubic(seg(t, a, b))));
+
+// Tabuleiro de casas (lado × lado px) com início em (x, y). `caos` 0 → 1 tira as casas do lugar: elas derivam, giram e
+// pulsam (de "regras claras" para "regras que mudam"). update(t, { a, caos, cor, o }): a = quando as casas entram;
+// caos/cor/o podem ser número/texto ou função (casa) → valor, por casa. pos(i, j) = centro atual da casa (segue o caos).
+export function grade(root, { x, y, cols = 4, rows = 3, lado = 100, vao = 14, cor = '#fff', borda = 'rgba(15,42,61,.10)', seed = 3 } = {}) {
+  const r = rng(seed), cel = [];
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+    const n = el('div', { style: { position: 'absolute', left: 0, top: 0, width: `${lado}px`, height: `${lado}px`, marginLeft: `${-lado / 2}px`, marginTop: `${-lado / 2}px`,
+      borderRadius: `${lado * 0.16}px`, background: cor, boxShadow: `0 6px 16px rgba(15,42,61,.12), inset 0 0 0 2px ${borda}`, opacity: 0, willChange: 'transform' } });
+    root.append(n);
+    cel.push({ n, i, j, ph: [r() * 6.28, r() * 6.28, r() * 6.28], f: 0.7 + r() * 0.9, d: r(), dir: [r() - 0.5, r() - 0.5] });
+  }
+  let tt = 0, kaos = () => 0;
+  const val = (v, c) => (typeof v === 'function' ? v(c) : v);
+  const centro = (c) => {
+    const k = kaos(c), a = k * lado * 0.6;
+    return [x + c.i * (lado + vao) + lado / 2 + Math.sin(tt * c.f * 2.2 + c.ph[0]) * a + c.dir[0] * k * lado * 0.8,
+      y + c.j * (lado + vao) + lado / 2 + Math.cos(tt * c.f * 2.6 + c.ph[1]) * a + c.dir[1] * k * lado * 0.8,
+      Math.sin(tt * c.f * 1.8 + c.ph[2]) * k * 34 + c.dir[0] * k * 30];
+  };
+  return {
+    cel,
+    pos(i, j) { return centro(cel[j * cols + i]).slice(0, 2); },
+    update(t, { a = 0, caos = 0, cor: fc, o = 1 } = {}) {
+      tt = t; kaos = (c) => val(caos, c);
+      cel.forEach((c) => {
+        const e = ease.outBack(seg(t, a + c.d * 0.4, a + c.d * 0.4 + 0.45)), [px, py, rz] = centro(c);
+        set(c.n, { opacity: clamp(e * 2) * val(o, c), transform: `translate(${px}px, ${py}px) rotate(${rz}deg) scale(${lerp(0.3, 1, e)})`, ...(fc && { background: val(fc, c) }) });
+      });
+    },
+  };
+}
+
+// Ficha (um "personagem" redondo) com sombra no chão: poe({ x, y, z, s, o }), z = altura do pulo (a sombra fica no chão).
+export function ficha(root, { cor = '#14b8a6', lado = 72 } = {}) {
+  const sombra = el('div', { style: { position: 'absolute', left: 0, top: 0, width: `${lado}px`, height: `${lado * 0.3}px`, marginLeft: `${-lado / 2}px`, marginTop: `${lado * 0.36}px`,
+    borderRadius: '50%', background: 'rgba(15,42,61,.25)', filter: 'blur(5px)', opacity: 0 } });
+  const n = el('div', { style: { position: 'absolute', left: 0, top: 0, width: `${lado}px`, height: `${lado}px`, marginLeft: `${-lado / 2}px`, marginTop: `${-lado / 2}px`, borderRadius: '50%',
+    background: `radial-gradient(circle at 34% 28%, rgba(255,255,255,.6), rgba(255,255,255,0) 42%), ${cor}`, boxShadow: '0 6px 14px rgba(15,42,61,.2)', opacity: 0, willChange: 'transform' } });
+  root.append(sombra, n);
+  return {
+    n,
+    poe({ x, y, z = 0, s = 1, o = 1 }) {
+      const h = Math.min(Math.max(z, 0), 240) / 240;
+      set(n, { transform: `translate(${x}px, ${y - z}px) scale(${s})`, opacity: o });
+      set(sombra, { transform: `translate(${x}px, ${y}px) scale(${s * (1 - 0.5 * h)})`, opacity: o * (1 - 0.6 * h) });
+    },
+  };
+}
+
+// Pulos de casa em casa: pontos [[x, y], …] (ou funções () → [x, y], para casas que se mexem), tempos [t1, …] (chegada
+// em cada ponto a partir do 2º). Devolve { x, y, z } com um arco de altura `alto` em cada pulo de `d` s.
+export function salto(t, pontos, tempos, { d = 0.32, alto = 90 } = {}) {
+  const p = (k) => (typeof pontos[k] === 'function' ? pontos[k]() : pontos[k]);
+  let k = 0;
+  while (k < tempos.length && t >= tempos[k]) k++;
+  const de = p(k), prox = k < tempos.length ? p(k + 1) : null;
+  if (!prox) return { x: de[0], y: de[1], z: 0 };
+  const u = seg(t, tempos[k] - d, tempos[k]);
+  const e = ease.inOutSine(u);
+  return { x: lerp(de[0], prox[0], e), y: lerp(de[1], prox[1], e), z: Math.sin(u * Math.PI) * alto };
+}
