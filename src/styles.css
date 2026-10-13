@@ -166,3 +166,29 @@ button, input, select { font: inherit; color: inherit; }
 .gh:hover { color: inherit; }
 .intro { color: var(--muted); max-width: 720px; margin: 4px 0 16px; line-height: 1.5; }
 .render-panel code { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+/* ================= galeria sem caixas: miniatura grande, texto solto embaixo ================= */
+html, body { overflow-x: clip; }
+.top { flex-wrap: wrap; }
+.grid { gap: 34px 22px; }
+.card { background: none; border: 0; border-radius: 0; overflow: visible; }
+.card:hover { transform: none; }
+.card .thumb-wrap { border-radius: var(--radius); overflow: hidden; background: #000; transition: transform 0.25s; }
+.card:hover .thumb-wrap { transform: translateY(-3px); }
+.card-body { padding: 12px 2px 0; }
+.card-body h3 { font-size: 16px; }
+
+@media (max-width: 640px) {
+  .top { padding: 10px 16px; row-gap: 10px; }
+  .top .search { order: 3; flex: 1 0 100%; max-width: none; }
+  .gallery { padding: 16px 0 48px; }
+  .intro, .section-title { padding: 0 16px; }
+  .gallery > .chips { flex-wrap: nowrap; overflow-x: auto; padding: 0 16px 2px; scrollbar-width: none; margin-bottom: 20px; }
+  .gallery > .chips::-webkit-scrollbar { display: none; }
+  .gallery > .chips .chip { flex: none; }
+  .grid { grid-template-columns: 1fr; gap: 28px; }
+  .card .thumb-wrap { border-radius: 0; }
+  .card-body { padding: 12px 16px 0; }
+  .card-body h3 { font-size: 18px; }
+  .card-body p { font-size: 14px; }
+}
