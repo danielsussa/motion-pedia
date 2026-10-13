@@ -11,7 +11,10 @@ import { TAU, lerp, rng, hexToRgb } from '../lib/anim.js';
 // Sombra: o recorte pintado em preto num buffer pequeno (1/8) e ampliado com drawImage (bilinear = desfoque barato).
 
 const NS = 64;          // pontos por curva
-const SB = 14;          // redução do buffer de sombra (maior = sombra mais larga e macia)
+// sombra em duas partes, como papel de verdade: de contato (curta, mais escura, colada na borda) e ambiente (larga e
+// fraca). Cada uma é pintada num buffer pequeno, desfocada lá dentro (barato) e ampliada; cor marrom quente, não preta.
+const SOMBRAS = [{ red: 3, blur: 1.4, off: 0.004, a: 0.30 }, { red: 8, blur: 4.5, off: 0.02, a: 0.22 }];
+const TOM = 'rgb(105,76,44)';
 
 const norm = ([x, y]) => { const l = Math.hypot(x, y); return [x / l, y / l]; };
 const mixC = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
@@ -40,7 +43,7 @@ export default {
     cena: { type: 'select', label: 'Cena', options: ['ondas', 'faixas', 'trilha', 'colunas', 'bordas'], default: 'ondas' },
     papel: { type: 'color', label: 'Papel', default: '#fbf2e2' },
     areia: { type: 'color', label: 'Areia', default: '#f3ddb9' },
-    verde: { type: 'color', label: 'Verde-água', default: '#c4e2d6' },
+    verde: { type: 'color', label: 'Verde-água', default: '#aed4c5' },
     ambar: { type: 'color', label: 'Âmbar', default: '#f4c27e' },
     sombra: { type: 'range', label: 'Sombra', min: 0, max: 1, step: 0.01, default: 0.5 },
     movimento: { type: 'range', label: 'Movimento', min: 0, max: 1, step: 0.01, default: 0.5 },
@@ -57,7 +60,7 @@ export default {
     const grupos = (CENAS[p.cena] || CENAS.ondas).map((g) => {
       const n = norm(g.n), tg = [-n[1], n[0]];
       const E = Math.abs(n[0]) * w / 2 + Math.abs(n[1]) * h / 2;          // centro → borda ao longo de n
-      const S = Math.abs(tg[0]) * w / 2 + Math.abs(tg[1]) * h / 2 + 80;   // meia largura ao longo da tangente
+      const S = Math.hypot(w, h) / 2 + 100;                               // meia largura ao longo da tangente (cobre a tela toda)
       const camadas = Array.from({ length: g.k }, (_, i) => {
         const cor = mixC(pal[ci++ % pal.length], papel, 0.02 + 0.08 * r());
         return {
@@ -80,22 +83,21 @@ export default {
     glow.addColorStop(0, 'rgba(255,250,240,0.45)'); glow.addColorStop(1, 'rgba(255,250,240,0)');
     b.fillStyle = glow; b.fillRect(0, 0, w, h);
     const grao = document.createElement('canvas');
-    const gw = Math.max(1, Math.round(w * px / 2)), gh = Math.max(1, Math.round(h * px / 2));
+    const gw = Math.max(1, Math.round(w * px)), gh = Math.max(1, Math.round(h * px));
     grao.width = gw; grao.height = gh;
     const g2 = grao.getContext('2d'), img = g2.createImageData(gw, gh), rr = rng(p.seed * 17 + 3);
-    for (let i = 0; i < gw * gh; i++) { const v = rr(), o = i * 4; img.data[o] = img.data[o + 1] = img.data[o + 2] = v < 0.5 ? 90 : 255; img.data[o + 3] = Math.abs(v - 0.5) * 2 * 18 * Math.min(1, px * 2); }
+    for (let i = 0; i < gw * gh; i++) { const v = rr(), o = i * 4; img.data[o] = img.data[o + 1] = img.data[o + 2] = v < 0.5 ? 90 : 255; img.data[o + 3] = Math.abs(v - 0.5) * 2 * 11 * Math.min(1, px * 2); }
     g2.putImageData(img, 0, 0);
     const pontos = [];
     if (p.pontos) for (let i = 0; i < 900; i++) { const x = r() * w, y = r() * h, dx = Math.min(x, w - x) / w, dy = Math.min(y, h - y) / h; if (Math.min(dx, dy) < 0.12) pontos.push([x, y]); }
-    const sh = document.createElement('canvas');
-    sh.width = Math.max(8, Math.round(w / SB)); sh.height = Math.max(8, Math.round(h / SB));
-    return { grupos, colunas, base, grao, pontos, sh, m: Math.min(w, h) };
+    const buf = SOMBRAS.map((o) => { const a = document.createElement('canvas'), b = document.createElement('canvas');
+      a.width = b.width = Math.max(8, Math.round(w * px / o.red)); a.height = b.height = Math.max(8, Math.round(h * px / o.red)); return { a, b }; });
+    return { grupos, colunas, base, grao, pontos, buf, m: Math.min(w, h) };
   },
 
   render(ctx, t, { w, h, p, px, progress: u, state }) {
-    const { grupos, colunas, base, grao, pontos, sh, m } = state;
+    const { grupos, colunas, base, grao, pontos, buf, m } = state;
     ctx.drawImage(base, 0, 0, w, h);
-    const sg = sh.getContext('2d');
     const mov = p.movimento;
     const cx = w / 2, cy = h / 2;
     // contorno da camada (região além da curva, até bem fora da tela)
@@ -117,20 +119,24 @@ export default {
     // camadas de dentro para fora, grupo a grupo (os grupos ficam em bordas diferentes e não se cruzam no centro)
     for (const g of grupos) {
       for (const c of g.camadas) {
-        if (p.sombra > 0) {
-          sg.setTransform(1, 0, 0, 1, 0, 0); sg.clearRect(0, 0, sh.width, sh.height);
-          sg.fillStyle = '#000'; caminho(g, c, sg, 1 / SB); sg.fill();
-          const off = m * 0.02;
-          ctx.globalAlpha = 0.42 * p.sombra;
-          ctx.drawImage(sh, -g.n[0] * off, -g.n[1] * off + off * 0.4, w, h);
+        if (p.sombra > 0) SOMBRAS.forEach((o, k) => {
+          const { a, b } = buf[k], ga = a.getContext('2d'), gb = b.getContext('2d'), esc = a.width / w;
+          ga.setTransform(1, 0, 0, 1, 0, 0); ga.clearRect(0, 0, a.width, a.height);
+          ga.fillStyle = TOM; caminho(g, c, ga, esc); ga.fill();
+          gb.setTransform(1, 0, 0, 1, 0, 0); gb.clearRect(0, 0, b.width, b.height);
+          gb.filter = `blur(${o.blur}px)`; gb.drawImage(a, 0, 0); gb.filter = 'none';
+          // a luz vem de cima: a sombra cai para dentro e um pouco para baixo
+          const off = m * o.off;
+          ctx.globalAlpha = o.a * p.sombra * 2;
+          ctx.drawImage(b, -g.n[0] * off, -g.n[1] * off + off * 0.6, w, h);
           ctx.globalAlpha = 1;
-        }
+        });
         const a0 = [cx + g.n[0] * c.D, cy + g.n[1] * c.D], a1 = [cx + g.n[0] * g.E * 1.1, cy + g.n[1] * g.E * 1.1];
         const gr = ctx.createLinearGradient(a0[0], a0[1], a1[0], a1[1]);
         gr.addColorStop(0, css(c.claro)); gr.addColorStop(0.35, css(c.cor)); gr.addColorStop(1, css(mixC(c.cor, [120, 100, 80], 0.08)));
         ctx.fillStyle = gr; caminho(g, c, ctx); ctx.fill();
         // fio de luz na borda recortada (espessura do papel)
-        ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.lineWidth = Math.max(1, m * 0.002); ctx.stroke();
+        ctx.strokeStyle = 'rgba(255,255,255,0.35)'; ctx.lineWidth = Math.max(1, m * 0.002); ctx.stroke();
       }
     }
     for (const k of colunas) {
