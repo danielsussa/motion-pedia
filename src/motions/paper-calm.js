@@ -22,7 +22,7 @@ const css = (c, a = 1) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
 
 // grupos por cena: direção (do centro para a borda), nº de camadas, faixa de distância (fração da distância até a
 // borda) e quanto ondula
-const CENAS = {
+export const CENAS = {
   ondas: [{ n: [1, -1.15], k: 4, de: 0.22, ate: 0.8, amp: 1.7 }, { n: [-1, 1.2], k: 5, de: 0.18, ate: 0.84, amp: 1.7 }],
   faixas: [{ n: [1, 0.08], k: 4, de: 0.05, ate: 0.75, amp: 0.6 }, { n: [-1, 0], k: 3, de: 0.45, ate: 0.85, amp: 0.55 }],
   trilha: [{ n: [0.12, 1], k: 5, de: 0.25, ate: 0.85, amp: 1.4 }, { n: [0.5, -1], k: 3, de: 0.4, ate: 0.85, amp: 1 }],

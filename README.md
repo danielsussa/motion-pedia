@@ -5,7 +5,7 @@ editor and a frame-by-frame renderer to MP4 or ProRes with alpha.
 
 **Try it in the browser: https://dekah.tech/motion-pedia/**
 
-- **209 motions** in 7 categories: typography, backgrounds & loops, shapes & geometry, particles & simulation,
+- **210 motions** in 7 categories: typography, backgrounds & loops, shapes & geometry, particles & simulation,
   transitions & overlays, UI/data/broadcast and image & photo. Every one works in 16:9, 9:16, 1:1 and 4:5.
 - **Compositions**: short films with scenes, a 2.5D camera and DOM/CSS UI, using the motions as layers.
 - **Renderer** (`scripts/render.mjs`): headless Chrome + ffmpeg, motion blur by sub-sampling, alpha output. Every
