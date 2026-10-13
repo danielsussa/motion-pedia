@@ -19,3 +19,10 @@ public/devlife/
 # procrastinar (anúncio, outra sessão): fora do repositório público
 src/compositions/_procrastinar.js
 src/compositions/procrastinar-*.js
+
+# Loopedia (loopedia.app, outra sessão): guias e marca fora do repositório público
+src/compositions/_pratica.js
+src/compositions/pratica-*.js
+public/pratica/
+src/compositions/loopedia-*.js
+public/loopedia/

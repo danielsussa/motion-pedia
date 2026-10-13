@@ -171,6 +171,13 @@ Regras:
 - Motion de canvas dentro da cena: `canvasLayer('dot-wave', {params})` → `{ el, update(t) }`.
 - Fontes: Inter, Instrument Serif (itálico para palavras de destaque), JetBrains Mono.
 - Para conferir visualmente: `npm run render -- --comp <id> --frame 12.5` gera um PNG em `renders/`.
+- **Kit `explica`** (`src/comp/explica.js`, demo `explica-demo`): explicativo vertical em que o motion conta a história
+  sem legenda. `camera()` (tremor/soco/clarão por impactos + zoom lento, fundo em paralaxe), `palavras()` (texto cinético
+  palavra a palavra nos tempos da fala, com marca-texto), `barras()` (crescem contando), `carimbo()`, `marca()` (✓/✗
+  desenhados), `traco()` (setas e sublinhados que se desenham), `carta()` (cartas com forma, posição por keyframe).
+- Texto perto da borda: `node scripts/limites.mjs --comp <id> --margem 70` mede, quadro a quadro, a folga lateral de
+  cada texto visível (só conta texto parado ≥ 0,6 s); sai 1 se algum ficar abaixo da margem. Vídeo vertical mostrado
+  em "cover" num celular mais estreito que 9:16 corta as laterais.
 
 ## Renderizador (`scripts/render.mjs`)
 
