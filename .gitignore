@@ -26,4 +26,5 @@ src/compositions/_pratica.js
 src/compositions/pratica-*.js
 public/pratica/
 src/compositions/loopedia-*.js
+src/compositions/_loopedia.js
 public/loopedia/
