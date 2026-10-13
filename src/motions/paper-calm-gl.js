@@ -37,6 +37,7 @@ export default {
     relevo: { type: 'range', label: 'Relevo', min: 0, max: 1, step: 0.01, default: 0.5 },
     movimento: { type: 'range', label: 'Movimento', min: 0, max: 1, step: 0.01, default: 0.5 },
     seed: { type: 'range', label: 'Seed', min: 1, max: 99, step: 1, default: 5 },
+    escala: { type: 'range', label: 'Resolução do shader', min: 0.3, max: 1, step: 0.05, default: 1 },
   },
 
   setup({ w, h, p }) {
@@ -89,21 +90,26 @@ void main() {
   for (int i = 0; i < ${N}; i++) {
     float d = sd(i, q);
     // sombras: a camada projeta na direção oposta à luz; contato (curta) + ambiente (larga), em marrom quente
-    float dc = sd(i, q + luz * 5.0), da = sd(i, q + luz * 26.0);
-    float sh = 0.30 * exp(min(dc, 0.0) / 7.0) + 0.20 * exp(min(da, 0.0) / 48.0);
-    sh *= u_sombra * 1.8 * (1.0 - smoothstep(-px, px, d));
-    col = mix(col, col * vec3(0.66, 0.58, 0.5), clamp(sh, 0.0, 0.85));
+    // (longe da borda, fora da camada, a sombra já é ~0: pula as duas distâncias extras)
+    if (d < 0.0 && d > -320.0) {
+      float dc = sd(i, q + luz * 5.0), da = sd(i, q + luz * 26.0);
+      float sh = 0.30 * exp(min(dc, 0.0) / 7.0) + 0.20 * exp(min(da, 0.0) / 48.0);
+      sh *= u_sombra * 1.8 * (1.0 - smoothstep(-px, px, d));
+      col = mix(col, col * vec3(0.66, 0.58, 0.5), clamp(sh, 0.0, 0.85));
+    }
     // a camada: cor com degradê (mais clara perto da borda recortada) e relevo leve
     float cobre = smoothstep(-px, px, d);
     if (cobre > 0.0) {
       vec3 c = LC[i] * mix(1.07, 0.97, smoothstep(0.0, 360.0, d));
-      float rel = snoise(vec3(q * 0.0025, float(i) * 3.1)) * 0.5 + snoise(vec3(q * 0.006, float(i) * 1.7)) * 0.25;
+      float rel = snoise(vec3(q * 0.0028, float(i) * 3.1)) * 0.6;
       c *= 1.0 + rel * 0.035 * u_relevo;
       // espessura do papel: borda voltada para a luz acende, a oposta escurece um pouco
-      vec2 gr = vec2(sd(i, q + vec2(1.0, 0.0)) - d, sd(i, q + vec2(0.0, 1.0)) - d);
-      float face = dot(normalize(gr + 1e-5), -luz);
-      float aresta = 1.0 - smoothstep(0.0, 4.0, d);
-      c = mix(c, c * (face > 0.0 ? 1.12 : 0.92), aresta * abs(face) * u_relevo * 1.4);
+      float aresta = 1.0 - smoothstep(0.0, 4.0 * max(1.0, px), d);
+      if (aresta > 0.0) {
+        vec2 gr = vec2(sd(i, q + vec2(1.0, 0.0)) - d, sd(i, q + vec2(0.0, 1.0)) - d);
+        float face = dot(normalize(gr + 1e-5), -luz);
+        c = mix(c, c * (face > 0.0 ? 1.12 : 0.92), aresta * abs(face) * u_relevo * 1.4);
+      }
       col = mix(col, c, cobre);
     }
   }
@@ -115,6 +121,7 @@ void main() {
 
   render(ctx, t, env) {
     const { p, progress, state } = env;
-    shader(ctx, state.FRAG, { u_p: progress, u_mov: p.movimento, u_sombra: p.sombra, u_relevo: p.relevo }, env);
+    // `escala` < 1 roda o shader em resolução menor e amplia (o fundo é macio; no render por software isso é o que mais pesa)
+    shader(ctx, state.FRAG, { u_p: progress, u_mov: p.movimento, u_sombra: p.sombra, u_relevo: p.relevo }, { ...env, px: env.px * p.escala });
   },
 };
