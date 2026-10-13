@@ -23,7 +23,9 @@ function route() {
 Promise.all([
   ...['100', '200', '300', '400', '500', '600', '700', '800', '900'].map((wt) => document.fonts.load(`${wt} 40px Inter`)),
   document.fonts.load("italic 40px 'Instrument Serif'"),
-  document.fonts.load("500 40px 'JetBrains Mono'"),
+  document.fonts.load("40px 'Instrument Serif'"),
+  document.fonts.load("400 40px 'JetBrains Mono'"),
+  document.fonts.load("600 40px 'JetBrains Mono'"),
 ])
   .catch(() => {})
   .then(() => {

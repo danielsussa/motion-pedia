@@ -39,7 +39,7 @@ ou 1080×1350), `p` os parâmetros, `px` a escala real do canvas (miniaturas usa
 - Loops perfeitos: frequências inteiras de `progress` (`Math.sin(TAU * n * progress)`) ou `noise.loop2`.
 - Desempenho: `render` idealmente < 8 ms em 1920×1080; `setup` < 300 ms. Dezenas de miniaturas rodam na galeria.
   Em laços grandes, agrupe por cor (um `fill()` por lote), evite trocar `fillStyle`/`font` a cada item, evite `ctx.filter` por item.
-- Fontes: `Inter` (variável, 100–900), `Instrument Serif` (normal e itálico) e `JetBrains Mono` — já carregadas.
+- Fontes: `Inter` (variável, 100–900), `Instrument Serif` (normal e itálico) e `JetBrains Mono` (400 e 600) — já carregadas.
 - Padrões visuais (do estudo `docs/ESTUDO-REVID.md`): paleta contida (neutro + 1 cor de destaque), easing generoso
   (`outExpo`, mola com overshoot leve), stagger, momentos de pausa. O padrão (sem mexer em nada) tem que ficar bonito.
 - Parâmetros: 4–10 que importam (cores de fundo/destaque, texto quando houver, intensidade/quantidade, `seed` se for aleatório).
@@ -57,6 +57,7 @@ ou 1080×1350), `p` os parâmetros, `px` a escala real do canvas (miniaturas usa
 - `imageSmoothingQuality = 'high'` ao ampliar um buffer custa 40–70 ms por frame aqui: deixe o padrão.
 - Milhares de `arc()`/`drawImage` por frame (retícula, grade de caracteres) não ficam baratos nem na miniatura: passe a
   grade como textura pequena e desenhe num shader (ver `halftone`, `ascii-art`).
+- Dados grandes de um motion (contornos de mapa etc.): `src/motions/_<nome>.js` (a galeria ignora `_*`). Ex.: `_brasil-uf.js`.
 - Shader "pixelado" (dither, mosaico): rode na resolução da grade, `shader(ctx, F, u, { w: W*c/px, h: H*c/px, px: px/c })`
   com `ctx.imageSmoothingEnabled = false`. Calcular por pixel real ficou 10–30× mais caro.
 - Antialias em shader com `smoothstep(aa, -aa, d - r)`: com `r = 0` ainda sai 50% de cobertura. Pule quando `r ≈ 0`.
@@ -93,6 +94,16 @@ ou 1080×1350), `p` os parâmetros, `px` a escala real do canvas (miniaturas usa
 - Máscara por matiz em foto: exija croma mínimo (`sat*val`), senão os escuros do JPEG viram manchas.
 - Medir texto no `setup` (sem `ctx`): `OffscreenCanvas(4, 4).getContext('2d')` em cache de módulo.
 - `render.mjs --frame` sem `--alpha` sai RGB com fundo branco; para conferir `transparent`, use `--alpha`.
+- Shader em resolução reduzida (`{w, h, px: px*k}`): uniforms em pixels (centro, raio) também × k. `smoothstep(a, b, x)` com
+  `a > b` é indefinido em GLSL ES — use `1.0 - smoothstep(b, a, x)`. Normal de relevo: soma de senos com gradiente
+  analítico (diferenças finitas do `snoise` riscam as arestas do simplex).
+- Malha com milhares de triângulos: não passe `stroke()` para tapar frestas (3× o custo); infle cada triângulo ~0,7 px
+  reais a partir do centróide. Faces coplanares de cubos: traço de `1.6 / px`.
+- Feixe/raio com halo: sprite (gaussiana transversal × queda) pintado no setup, um `drawImage` por feixe — não `lineWidth` grande.
+- Fade de objeto opaco em camadas (celular, card): `globalAlpha` mostra as camadas de baixo; cubra com o fundo a `k`.
+- Layout que ordena por média ponderada: compare com tolerância e desempate pela ordem do texto (senão muda com o formato).
+- Física sem atrito: a trajetória não depende de `g`; simule com qualquer `g` e estique o tempo para caber na `duration`.
+  Loop com N objetos na mesma trajetória: defase em 1/N.
 - O Chrome headless daqui renderiza Canvas e WebGL **por software** (SwiftShader): tempos medidos no render são 5–10×
   maiores que num navegador com GPU. Compare com os motions existentes, não com o orçamento absoluto.
 

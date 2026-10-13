@@ -10,3 +10,12 @@ public/uploads
 src/compositions/_labirinto.js
 src/compositions/reler-*.js
 public/labirinto/
+
+# trajetória (dekah.tech, outra sessão): fora do repositório público
+src/compositions/_devlife.js
+src/compositions/devlife-*.js
+public/devlife/
+
+# procrastinar (anúncio, outra sessão): fora do repositório público
+src/compositions/_procrastinar.js
+src/compositions/procrastinar-*.js
