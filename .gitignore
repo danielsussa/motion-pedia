@@ -1,0 +1,12 @@
+node_modules
+dist
+.vite-dev.log
+renders
+public/uploads
+# capturas soltas
+/sm-*.png
+/smv-*.png
+# projeto Labirinto (outra sessão; fora do repositório público por enquanto)
+src/compositions/_labirinto.js
+src/compositions/reler-*.js
+public/labirinto/

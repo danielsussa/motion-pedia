@@ -1,0 +1,75 @@
+/* Kit de UI das composições. Cores vêm de variáveis definidas pela composição:
+   --accent, --ink, --paper. Tamanhos em px do quadro lógico (1920×1080). */
+
+.ui-cursor { position: absolute; left: 0; top: 0; width: 46px; height: 46px; pointer-events: none; z-index: 50; }
+.ui-ripple {
+  position: absolute; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%;
+  border: 3px solid var(--accent); pointer-events: none;
+}
+
+.ui-prompt {
+  position: absolute; display: flex; align-items: center; gap: 22px;
+  height: 104px; padding: 0 20px 0 34px; border-radius: 52px; box-sizing: border-box;
+  background: #fff; color: var(--ink);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
+  font: 500 32px/1 Inter, sans-serif; letter-spacing: -0.01em;
+}
+.ui-prompt-text { flex: 1; white-space: nowrap; overflow: hidden; color: #55534e; }
+.ui-prompt-text b { color: var(--ink); font-weight: 650; background: color-mix(in srgb, var(--accent) 14%, transparent); border-radius: 8px; padding: 0 4px; }
+.ui-caret { display: inline-block; width: 3px; height: 38px; margin-left: 2px; vertical-align: -7px; background: var(--accent); }
+.ui-send {
+  flex: none; width: 66px; height: 66px; border-radius: 50%; background: var(--accent);
+  display: grid; place-items: center;
+}
+
+.ui-task {
+  position: absolute; box-sizing: border-box; border-radius: 14px; padding: 12px 16px;
+  font: 600 19px/1.2 Inter, sans-serif; letter-spacing: -0.01em; overflow: hidden;
+  background: #f1f0ec; color: var(--ink); border: 1.5px solid #e4e2dc;
+}
+.ui-task small { display: block; margin-top: 5px; font-weight: 500; font-size: 15px; opacity: 0.55; }
+.ui-task.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+.ui-task.accent { background: color-mix(in srgb, var(--accent) 12%, #fff); border-color: color-mix(in srgb, var(--accent) 45%, #fff); }
+.ui-task.accent::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--accent); }
+.ui-task.hatch {
+  background: repeating-linear-gradient(-45deg, #f4f3ef 0 9px, #e9e7e1 9px 11px);
+  color: #8a877f; border-style: dashed;
+}
+.ui-task.outline { background: #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
+
+.ui-board {
+  position: absolute; width: 1600px; height: 900px; border-radius: 30px; overflow: hidden;
+  background: #fff; color: var(--ink); font-family: Inter, sans-serif;
+  box-shadow: 0 50px 120px rgba(0, 0, 0, 0.16), 0 0 0 1.5px #e7e5df;
+}
+.ui-board-top {
+  position: absolute; left: 0; right: 0; top: 0; height: 72px; display: flex; align-items: center; gap: 18px;
+  padding: 0 28px; border-bottom: 1.5px solid #eeece7; font-size: 22px; font-weight: 700;
+}
+.ui-board-top .chip { font: 600 15px Inter; padding: 6px 12px; border-radius: 99px; background: #f1f0ec; color: #6b6861; }
+.ui-board-top .sp { flex: 1; }
+.ui-board-top .av { width: 34px; height: 34px; border-radius: 50%; margin-left: -10px; border: 3px solid #fff; }
+.ui-board-top .btn { font: 600 16px Inter; padding: 9px 18px; border-radius: 10px; background: var(--ink); color: #fff; }
+.ui-board-side {
+  position: absolute; left: 0; top: 72px; bottom: 0; width: 300px; padding: 26px 26px; box-sizing: border-box;
+  border-right: 1.5px solid #eeece7; font-size: 15px; color: #6b6861;
+}
+.ui-board-side h4 { margin: 0 0 14px; font-size: 17px; color: var(--ink); }
+.ui-mini { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px 0; text-align: center; font-weight: 500; margin-bottom: 34px; }
+.ui-mini span { height: 30px; line-height: 30px; border-radius: 8px; }
+.ui-mini .wk { background: #f1f0ec; color: var(--ink); font-weight: 700; }
+.ui-mini .today { background: var(--accent); color: #fff; }
+.ui-list { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; font-weight: 500; color: var(--ink); }
+.ui-list i { width: 12px; height: 12px; border-radius: 4px; }
+.ui-board-head { position: absolute; top: 72px; height: 62px; display: flex; align-items: center; gap: 10px; font: 600 18px Inter; color: #6b6861; }
+.ui-board-head b { font-size: 22px; color: var(--ink); }
+.ui-board-head b.today { background: var(--ink); color: #fff; border-radius: 9px; padding: 3px 9px; }
+.ui-hour { position: absolute; font: 500 14px 'JetBrains Mono', monospace; color: #a3a097; }
+.ui-hline { position: absolute; height: 1.5px; background: #f0eee9; }
+.ui-vline { position: absolute; width: 1.5px; background: #f0eee9; }
+.ui-now { position: absolute; height: 3px; background: var(--accent); }
+.ui-now-pill {
+  position: absolute; font: 700 14px 'JetBrains Mono', monospace; color: #fff; background: var(--accent);
+  padding: 4px 8px; border-radius: 7px;
+}
+.ui-now-dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
