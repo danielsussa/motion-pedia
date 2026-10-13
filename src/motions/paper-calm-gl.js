@@ -11,6 +11,28 @@ import { CENAS } from './paper-calm.js';
 // As camadas são pintadas na ordem (de dentro para fora), então a sombra de cada uma cai sobre as de baixo.
 // Os dados das camadas entram no GLSL como constantes (o shader é gerado no setup e fica em cache por texto).
 
+// Além das cenas de faixas (as do paper-calm), cenas com camadas CIRCULARES: um grupo com `c` (centro, em fração da tela,
+// pode ficar fora dela) empilha discos de raio `de`→`ate` (fração da altura), do maior para o menor, com a borda
+// ondulando ao longo do ângulo. Dão o sol nascendo, os arcos de canto e as bolhas.
+const CIRC = {
+  sol: [{ c: [0.5, 1.06], k: 4, de: 0.44, ate: 0.16, amp: 0.7 }, { n: [0.15, -1], k: 2, de: 0.66, ate: 0.86, amp: 0.8 }],
+  arcos: [{ c: [1.04, -0.03], k: 4, de: 0.4, ate: 0.12, amp: 0.8 }, { c: [-0.06, 1.04], k: 3, de: 0.32, ate: 0.12, amp: 0.8 }],
+  bolhas: [{ c: [0.02, 0.06], k: 2, de: 0.2, ate: 0.11, amp: 0.9 }, { c: [1.0, 0.42], k: 2, de: 0.15, ate: 0.08, amp: 0.9 },
+    { c: [0.12, 0.84], k: 3, de: 0.18, ate: 0.07, amp: 0.9 }, { c: [0.92, 1.02], k: 2, de: 0.22, ate: 0.12, amp: 0.9 }],
+  diagonal: [{ n: [1, -0.7], k: 6, de: 0.32, ate: 0.9, amp: 1.2 }],
+  moldura: [{ n: [0.05, -1], k: 3, de: 0.66, ate: 0.88, amp: 1.3 }, { n: [-0.05, 1], k: 3, de: 0.66, ate: 0.88, amp: 1.3 }],
+};
+const TODAS = { ...CENAS, ...CIRC };
+// paletas prontas (papel, areia, verde, âmbar); 'livre' usa as cores dos parâmetros
+const PALETAS = {
+  praia: ['#fbf2e2', '#f3ddb9', '#aed4c5', '#f4c27e'],
+  'por-do-sol': ['#fcf1e8', '#f8d2bd', '#f2a98f', '#f6c98a'],
+  ceu: ['#f4f5f6', '#cfe0ee', '#a9cbe6', '#f2dcb3'],
+  lavanda: ['#f7f3f6', '#e1d6ec', '#c3b4e0', '#f3cfc0'],
+  menta: ['#f3f6ee', '#d6e7cf', '#a8d3b8', '#e9dca6'],
+  pessego: ['#fdf3ea', '#fbdcc6', '#f5c0a0', '#bcdcd2'],
+};
+
 const norm = ([x, y]) => { const l = Math.hypot(x, y); return [x / l, y / l]; };
 const mix3 = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
 const f = (x) => (Number.isInteger(x) ? `${x}.0` : `${+x.toFixed(5)}`);
@@ -27,7 +49,8 @@ export default {
   poster: 3,
 
   params: {
-    cena: { type: 'select', label: 'Cena', options: ['ondas', 'faixas', 'trilha', 'colunas', 'bordas'], default: 'ondas' },
+    cena: { type: 'select', label: 'Cena', options: Object.keys(TODAS), default: 'ondas' },
+    paleta: { type: 'select', label: 'Paleta', options: [...Object.keys(PALETAS), 'livre'], default: 'livre' },
     papel: { type: 'color', label: 'Papel', default: '#fbf2e2' },
     areia: { type: 'color', label: 'Areia', default: '#f3ddb9' },
     verde: { type: 'color', label: 'Verde-água', default: '#aed4c5' },
@@ -42,15 +65,23 @@ export default {
 
   setup({ w, h, p }) {
     const r = rng(p.seed);
-    const papel = hexToRgb(p.papel), areia = hexToRgb(p.areia), verde = hexToRgb(p.verde), ambar = hexToRgb(p.ambar);
+    const [papel, areia, verde, ambar] = (PALETAS[p.paleta] ?? [p.papel, p.areia, p.verde, p.ambar]).map(hexToRgb);
     const pal = [areia, verde, ambar, mix3(papel, areia, 0.5), verde, mix3(ambar, areia, 0.5)];
     let ci = Math.floor(r() * 3);
     const L = [];
-    for (const g of CENAS[p.cena] || CENAS.ondas) {
+    for (const g of TODAS[p.cena] || CENAS.ondas) {
+      if (g.c) {
+        for (let i = 0; i < g.k; i++) {
+          const R = h * lerp(g.de, g.ate, g.k > 1 ? i / (g.k - 1) : 0);
+          L.push({ circ: 1, o: [g.c[0] * w, g.c[1] * h], n: [0, 0], tg: [0, 0], S: 1, D: R, cor: mix3(pal[ci++ % pal.length], papel, 0.02 + 0.08 * r()),
+            a: [0.05, 0.025, 0.012].map((a) => R * g.amp * a * (0.6 + r() * 0.6)), ph: [r(), r(), r()].map((x) => x * TAU), m: [1, 2, 3].map((k) => (r() < 0.5 ? -1 : 1) * k) });
+        }
+        continue;
+      }
       const n = norm(g.n), tg = [-n[1], n[0]];
       const E = Math.abs(n[0]) * w / 2 + Math.abs(n[1]) * h / 2, S = Math.hypot(w, h) / 2;
       for (let i = 0; i < g.k; i++) {
-        L.push({ n, tg, S, D: Math.min(E * 0.95, E * lerp(g.de, g.ate, g.k > 1 ? i / (g.k - 1) : 0) * p.centro), cor: mix3(pal[ci++ % pal.length], papel, 0.02 + 0.08 * r()),
+        L.push({ circ: 0, o: [0, 0], n, tg, S, D: Math.min(E * 0.95, E * lerp(g.de, g.ate, g.k > 1 ? i / (g.k - 1) : 0) * p.centro), cor: mix3(pal[ci++ % pal.length], papel, 0.02 + 0.08 * r()),
           a: [0.07, 0.035, 0.015].map((a) => E * g.amp * a * (0.6 + r() * 0.6)), ph: [r(), r(), r()].map((x) => x * TAU), m: [1, 2, 3].map((k) => (r() < 0.5 ? -1 : 1) * k) });
       }
     }
@@ -67,9 +98,20 @@ const vec3 LA[${N}] = ${arr('vec3', (l) => `vec3(${l.a.map(f).join(',')})`)};
 const vec3 LP[${N}] = ${arr('vec3', (l) => `vec3(${l.ph.map(f).join(',')})`)};
 const vec3 LM[${N}] = ${arr('vec3', (l) => `vec3(${l.m.map(f).join(',')})`)};
 const vec3 LC[${N}] = ${arr('vec3', (l) => v3(l.cor))};
+const float LK[${N}] = ${arr('float', (l) => f(l.circ))};
+const vec2 LO[${N}] = ${arr('vec2', (l) => v2(l.o))};
 ${GLSL_NOISE}
 // distância com sinal até a borda da camada i (> 0 = dentro da camada), em px lógicos
 float sd(int i, vec2 q) {
+  if (LK[i] > 0.5) {
+    // disco: raio LD com a borda ondulando ao longo do ângulo (harmônicos 3, 5 e 7 dão a volta inteira sem emenda)
+    vec2 o = q - LO[i];
+    float r = length(o), th = atan(o.y, o.x);
+    vec3 kc = vec3(3.0, 5.0, 7.0) * th + LP[i] + 6.2831853 * u_p * LM[i] * step(0.001, u_mov);
+    float wc = dot(LA[i] * (0.6 + 0.4 * u_mov), sin(kc));
+    float dwc = dot(LA[i] * (0.6 + 0.4 * u_mov), vec3(3.0, 5.0, 7.0) * cos(kc)) / max(r, 1.0);
+    return (LD[i] + wc - r) / sqrt(1.0 + dwc * dwc);
+  }
   vec2 c = q - SZ * 0.5;
   float s = dot(c, LT[i]) / LS[i];
   vec3 k = vec3(1.0, 2.0, 3.0) * 3.14159265 * s + LP[i] + 6.2831853 * u_p * LM[i] * step(0.001, u_mov);
