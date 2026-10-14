@@ -225,3 +225,29 @@ export function salto(t, pontos, tempos, { d = 0.32, alto = 90 } = {}) {
   const e = ease.inOutSine(u);
   return { x: lerp(de[0], prox[0], e), y: lerp(de[1], prox[1], e), z: Math.sin(u * Math.PI) * alto };
 }
+
+// Quadro: uma imagem numa moldura de papel (borda clara, sombra, leve giro), que entra se revelando do centro e dá um
+// zoom lento por dentro (Ken Burns). Bom para trazer uma ilustração escura para dentro de uma cena clara.
+// update(t, a, { sai, d }) — entra em a, sai (encolhe e some) em `sai`. `legenda` = faixa de texto embaixo, dentro da moldura.
+export function quadro(root, src, { x, y, w = 480, h = 720, rz = -3, borda = 14, cor = '#fffaf1', raio = 18, legenda = null, font = "'Inter', sans-serif" } = {}) {
+  const n = el('div', { style: { position: 'absolute', left: `${x}px`, top: `${y}px`, width: `${w}px`, height: `${h}px`, padding: `${borda}px`, paddingBottom: legenda ? `${borda * 4}px` : `${borda}px`,
+    boxSizing: 'border-box', background: cor, borderRadius: `${raio}px`, boxShadow: '0 30px 70px rgba(15,42,61,.30), 0 4px 0 rgba(15,42,61,.06)', opacity: 0, transformOrigin: '50% 50%', willChange: 'transform, opacity' } });
+  const jan = el('div', { style: { position: 'relative', width: '100%', height: '100%', overflow: 'hidden', borderRadius: `${Math.max(4, raio - borda / 2)}px` } });
+  const img = el('img', { src, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transformOrigin: '50% 45%' } });
+  jan.append(img); n.append(jan);
+  if (legenda) {
+    const l = el('div', { style: { position: 'absolute', left: 0, right: 0, bottom: `${borda * 1.1}px`, textAlign: 'center', font: `800 ${borda * 2}px/1 ${font}`, color: '#0f2a3d' } });
+    l.textContent = legenda; n.append(l);
+  }
+  root.append(n);
+  return {
+    n,
+    update(t, a, { sai: s = Infinity, d = 0.55 } = {}) {
+      const k = ease.outCubic(seg(t, a, a + d)), mola = ease.outBack(seg(t, a, a + d * 1.2)), out = Number.isFinite(s) ? ease.inCubic(seg(t, s, s + 0.4)) : 0;
+      const abre = 50 * (1 - k);
+      set(n, { opacity: t < a ? 0 : clamp(k * 3) * (1 - out), transform: `rotate(${lerp(rz - 8, rz, mola)}deg) scale(${lerp(0.82, 1, mola) * (1 - 0.25 * out)}) translateY(${-out * 60}px)`,
+        clipPath: k < 1 ? `inset(${abre}% ${abre * 0.6}% ${abre}% ${abre * 0.6}% round ${raio}px)` : 'none' });
+      set(img, { transform: `scale(${1.14 - 0.12 * clamp((t - a) / 8)})` });
+    },
+  };
+}
